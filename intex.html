@@ -1,0 +1,2340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HorizonTech Institute | Computer Skills + Google & AI Courses</title>
+  <meta name="description" content="Bihar's premier computer education institute offering DCA, ADCA, DFA, Tally, Hardware & AI-integrated courses with placement support." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1565C0; --primary-dark: #0D47A1; --primary-light: #1E88E5;
+      --accent: #FF6F00; --accent-light: #FFA000;
+      --text: #1A1A2E; --text-muted: #5C6B8A;
+      --bg: #F8FAFF; --white: #FFFFFF; --border: #E2E8F0;
+      --gradient: linear-gradient(135deg, #1565C0 0%, #0D47A1 50%, #1a237e 100%);
+      --card-shadow: 0 4px 24px rgba(21,101,192,.10);
+      --hover-shadow: 0 8px 40px rgba(21,101,192,.18);
+      /* dashboard compat */
+      --blue:#4285F4; --blue-light:#e8f0fe; --blue-dark:#1a56db;
+      --green:#34A853; --green-light:#e6f4ea;
+      --red:#EA4335; --red-light:#fce8e6;
+      --yellow:#FBBC04; --yellow-light:#fef9e3;
+      --purple:#8B5CF6; --purple-light:#ede9fe;
+      --text2:#4a5568; --text3:#8898aa; --border2:#c8d0e0;
+      --shadow-sm:0 1px 4px rgba(0,0,0,.07);
+      --shadow:0 4px 20px rgba(0,0,0,.08);
+      --shadow-lg:0 12px 48px rgba(0,0,0,.1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family:'Inter',sans-serif; color:var(--text); background:var(--bg); line-height:1.6; overflow-x:hidden; }
+
+    /* ─── NAVBAR ─── */
+    nav#navbar {
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      background:rgba(255,255,255,.97); backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border); padding:0 24px;
+      display:flex; align-items:center; justify-content:space-between;
+      height:68px; box-shadow:0 2px 16px rgba(21,101,192,.08);
+      transition:box-shadow .3s;
+    }
+    .nav-brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .nav-logo { width:42px; height:42px; background:var(--gradient); border-radius:10px; display:flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:20px; font-family:'Poppins',sans-serif; }
+    .nav-brand-text { display:flex; flex-direction:column; line-height:1.1; }
+    .nav-brand-text span:first-child { font-weight:700; font-size:17px; color:var(--primary-dark); }
+    .nav-brand-text span:last-child { font-size:11px; color:var(--text-muted); font-weight:500; }
+    .nav-links { display:flex; align-items:center; gap:4px; list-style:none; }
+    .nav-links a { text-decoration:none; color:var(--text-muted); font-size:14px; font-weight:500; padding:6px 12px; border-radius:8px; transition:all .2s; }
+    .nav-links a:hover { color:var(--primary); background:rgba(21,101,192,.06); }
+    .btn-nav-enroll { background:var(--accent)!important; color:white!important; padding:8px 20px!important; border-radius:8px!important; font-weight:600!important; }
+    .btn-nav-enroll:hover { background:#E65100!important; transform:translateY(-1px); }
+    .btn-nav-login { border:1.5px solid var(--primary)!important; color:var(--primary)!important; padding:6px 16px!important; border-radius:8px!important; font-weight:600!important; }
+    .btn-nav-login:hover { background:rgba(21,101,192,.06)!important; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--text); border-radius:2px; transition:all .3s; }
+
+    /* ─── HERO ─── */
+    .hero { min-height:100vh; background:var(--gradient); display:flex; align-items:center; padding:100px 24px 60px; position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/svg%3E"); }
+    .hero-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:1; }
+    .hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.25); color:white; font-size:13px; font-weight:600; padding:6px 16px; border-radius:100px; margin-bottom:20px; backdrop-filter:blur(8px); }
+    .hero-badge i { color:#FFD54F; font-size:11px; }
+    .hero h1 { font-family:'Poppins',sans-serif; font-size:clamp(32px,5vw,52px); font-weight:800; color:white; line-height:1.15; margin-bottom:20px; }
+    .hero h1 span { color:#FFD54F; }
+    .hero p { color:rgba(255,255,255,.85); font-size:17px; line-height:1.7; margin-bottom:32px; }
+    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn-primary { background:var(--accent); color:white; text-decoration:none; padding:14px 28px; border-radius:10px; font-weight:700; font-size:15px; display:inline-flex; align-items:center; gap:8px; transition:all .25s; box-shadow:0 4px 20px rgba(255,111,0,.4); border:none; cursor:pointer; }
+    .btn-primary:hover { background:#E65100; transform:translateY(-2px); box-shadow:0 8px 30px rgba(255,111,0,.5); }
+    .btn-outline { background:transparent; color:white; text-decoration:none; padding:13px 28px; border-radius:10px; font-weight:600; font-size:15px; border:2px solid rgba(255,255,255,.5); display:inline-flex; align-items:center; gap:8px; transition:all .25s; }
+    .btn-outline:hover { background:rgba(255,255,255,.12); border-color:white; }
+    .hero-trust { display:flex; gap:16px; margin-top:36px; flex-wrap:wrap; }
+    .trust-badge { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); border-radius:8px; padding:8px 14px; color:white; font-size:13px; font-weight:500; backdrop-filter:blur(6px); }
+    .trust-badge i { color:#FFD54F; }
+    .hero-card { background:rgba(255,255,255,.10); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.20); border-radius:24px; padding:32px; }
+    .hero-card-title { color:white; font-weight:700; font-size:18px; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+    .course-list { display:flex; flex-direction:column; gap:12px; }
+    .course-item { display:flex; align-items:center; gap:12px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:12px 16px; color:white; }
+    .course-item-icon { width:38px; height:38px; border-radius:8px; background:rgba(255,255,255,.15); display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0; }
+    .course-item-name { font-weight:600; font-size:14px; }
+    .course-item-dur { font-size:12px; color:rgba(255,255,255,.65); }
+    .course-more { text-align:center; color:rgba(255,255,255,.7); font-size:13px; font-weight:500; margin-top:8px; }
+
+    /* ─── STATS ─── */
+    .stats { background:white; padding:56px 24px; box-shadow:0 4px 32px rgba(21,101,192,.06); }
+    .stats-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:32px; }
+    .stat-item { text-align:center; }
+    .stat-number { font-family:'Poppins',sans-serif; font-size:42px; font-weight:800; color:var(--primary); line-height:1; }
+    .stat-label { color:var(--text-muted); font-size:14px; font-weight:500; margin-top:6px; }
+
+    /* ─── SECTION BASE ─── */
+    section { padding:80px 24px; }
+    .section-inner { max-width:1200px; margin:0 auto; }
+    .section-label { display:inline-flex; align-items:center; gap:6px; background:rgba(21,101,192,.08); color:var(--primary); font-size:13px; font-weight:600; padding:5px 14px; border-radius:100px; margin-bottom:12px; }
+    .section-title { font-family:'Poppins',sans-serif; font-size:clamp(26px,4vw,38px); font-weight:800; color:var(--text); line-height:1.2; margin-bottom:12px; }
+    .section-title span { color:var(--primary); }
+    .section-sub { color:var(--text-muted); font-size:16px; max-width:520px; line-height:1.6; }
+    .section-header { margin-bottom:48px; }
+    .section-header.center { text-align:center; }
+    .section-header.center .section-sub { margin:0 auto; }
+
+    /* ─── COURSES ─── */
+    #courses { background:var(--bg); }
+    .courses-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:24px; }
+    .course-card { background:white; border-radius:16px; border:1px solid var(--border); padding:28px; transition:all .3s; position:relative; overflow:hidden; }
+    .course-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--gradient); opacity:0; transition:opacity .3s; }
+    .course-card:hover { transform:translateY(-4px); box-shadow:var(--hover-shadow); border-color:transparent; }
+    .course-card:hover::before { opacity:1; }
+    .card-top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:16px; }
+    .card-icon { width:52px; height:52px; border-radius:12px; background:rgba(21,101,192,.08); display:flex; align-items:center; justify-content:center; font-size:24px; }
+    .card-dur { background:rgba(21,101,192,.08); color:var(--primary); font-size:12px; font-weight:600; padding:4px 12px; border-radius:100px; }
+    .card-title { font-family:'Poppins',sans-serif; font-size:18px; font-weight:700; color:var(--text); margin-bottom:6px; }
+    .card-sub { color:var(--text-muted); font-size:13px; margin-bottom:16px; }
+    .card-modules { display:flex; flex-direction:column; gap:6px; margin-bottom:20px; }
+    .card-module { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text-muted); }
+    .card-module i { color:var(--primary-light); font-size:11px; width:14px; }
+    .card-enroll { display:block; width:100%; text-align:center; background:var(--gradient); color:white; text-decoration:none; padding:11px; border-radius:10px; font-weight:600; font-size:14px; transition:all .25s; border:none; cursor:pointer; }
+    .card-enroll:hover { opacity:.9; transform:translateY(-1px); }
+
+    /* ─── WHY US ─── */
+    #why { background:white; }
+    .why-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:24px; }
+    .why-card { padding:28px; border-radius:16px; border:1px solid var(--border); transition:all .3s; }
+    .why-card:hover { box-shadow:var(--card-shadow); border-color:var(--primary-light); transform:translateY(-3px); }
+    .why-icon { width:56px; height:56px; border-radius:14px; background:var(--gradient); display:flex; align-items:center; justify-content:center; font-size:24px; color:white; margin-bottom:16px; }
+    .why-title { font-weight:700; font-size:16px; margin-bottom:8px; }
+    .why-desc { color:var(--text-muted); font-size:14px; line-height:1.6; }
+
+    /* ─── INSTRUCTORS ─── */
+    #instructors { background:var(--bg); }
+    .instructors-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:32px; }
+    .instructor-card { background:white; border-radius:20px; border:1px solid var(--border); overflow:hidden; transition:all .3s; }
+    .instructor-card:hover { transform:translateY(-4px); box-shadow:var(--hover-shadow); }
+    .instructor-header { background:var(--gradient); padding:32px 28px 80px; position:relative; }
+    .instructor-avatar { width:80px; height:80px; border-radius:50%; border:3px solid rgba(255,255,255,.5); display:flex; align-items:center; justify-content:center; font-size:32px; color:white; font-weight:800; font-family:'Poppins',sans-serif; position:absolute; bottom:-40px; left:28px; overflow:hidden; background:rgba(255,255,255,.2); }
+    .instructor-avatar img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+    .instructor-body { padding:52px 28px 28px; }
+    .instructor-name { font-family:'Poppins',sans-serif; font-size:20px; font-weight:700; color:var(--text); margin-bottom:4px; }
+    .instructor-role { color:var(--primary); font-size:13px; font-weight:600; margin-bottom:14px; }
+    .instructor-bio { color:var(--text-muted); font-size:14px; line-height:1.6; margin-bottom:20px; }
+    .instructor-tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { background:rgba(21,101,192,.07); color:var(--primary); font-size:12px; font-weight:600; padding:4px 12px; border-radius:100px; }
+
+    /* ─── PLACEMENTS ─── */
+    #placements { background:white; }
+    .placement-intro { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-bottom:56px; }
+    .placement-highlight { background:var(--gradient); border-radius:20px; padding:40px; color:white; text-align:center; }
+    .placement-highlight h3 { font-family:'Poppins',sans-serif; font-size:48px; font-weight:800; line-height:1; margin-bottom:8px; color:#FFD54F; }
+    .placement-highlight p { color:rgba(255,255,255,.85); font-size:16px; }
+    .placement-text h3 { font-family:'Poppins',sans-serif; font-size:28px; font-weight:700; margin-bottom:14px; }
+    .placement-text p { color:var(--text-muted); font-size:15px; line-height:1.7; margin-bottom:20px; }
+    .companies-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+    .company-badge { background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:18px 12px; text-align:center; font-weight:700; font-size:14px; color:var(--text); transition:all .25s; cursor:default; }
+    .company-badge:hover { border-color:var(--primary); color:var(--primary); background:rgba(21,101,192,.04); transform:translateY(-2px); box-shadow:var(--card-shadow); }
+
+    /* ─── REGISTER ─── */
+    #register { background:var(--gradient); padding:80px 24px; }
+    .register-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1.2fr; gap:60px; align-items:center; }
+    .register-left h2 { font-family:'Poppins',sans-serif; font-size:clamp(28px,4vw,40px); font-weight:800; color:white; line-height:1.2; margin-bottom:16px; }
+    .register-left h2 span { color:#FFD54F; }
+    .register-left p { color:rgba(255,255,255,.82); font-size:16px; line-height:1.7; margin-bottom:28px; }
+    .register-perks { display:flex; flex-direction:column; gap:12px; }
+    .perk { display:flex; align-items:center; gap:10px; color:rgba(255,255,255,.88); font-size:14px; }
+    .perk i { color:#FFD54F; width:16px; }
+    .form-card { background:white; border-radius:20px; padding:36px; box-shadow:0 24px 80px rgba(0,0,0,.15); }
+    .form-title { font-family:'Poppins',sans-serif; font-size:20px; font-weight:700; color:var(--text); margin-bottom:24px; text-align:center; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .form-group { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+    .form-group label { font-size:13px; font-weight:600; color:var(--text); }
+    .form-group input, .form-group select { padding:11px 14px; border:1.5px solid var(--border); border-radius:10px; font-size:14px; color:var(--text); font-family:'Inter',sans-serif; transition:all .2s; background:white; }
+    .form-group input:focus, .form-group select:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(21,101,192,.1); }
+    .btn-submit { width:100%; padding:14px; background:var(--gradient); color:white; border:none; border-radius:10px; font-size:16px; font-weight:700; cursor:pointer; transition:all .25s; font-family:'Inter',sans-serif; margin-top:4px; }
+    .btn-submit:hover { opacity:.92; transform:translateY(-1px); }
+    .btn-submit:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+    .success-box { display:none; text-align:center; padding:16px 0; }
+    .suc-icon { width:68px; height:68px; border-radius:50%; background:var(--green-light); display:flex; align-items:center; justify-content:center; font-size:30px; margin:0 auto 16px; }
+    .success-box h3 { font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; color:var(--green); margin-bottom:8px; }
+    .success-box p { font-size:14px; color:var(--text-muted); line-height:1.8; }
+
+    /* ─── CONTACT ─── */
+    #contact { background:var(--bg); }
+    .contact-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:24px; }
+    .contact-card { background:white; border:1px solid var(--border); border-radius:16px; padding:28px; transition:all .3s; }
+    .contact-card:hover { box-shadow:var(--card-shadow); transform:translateY(-3px); }
+    .contact-avatar { width:60px; height:60px; border-radius:50%; background:var(--gradient); display:flex; align-items:center; justify-content:center; font-size:22px; color:white; font-weight:700; font-family:'Poppins',sans-serif; margin-bottom:14px; overflow:hidden; }
+    .contact-avatar img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+    .contact-name { font-weight:700; font-size:17px; margin-bottom:4px; }
+    .contact-role { color:var(--primary); font-size:13px; font-weight:600; margin-bottom:16px; }
+    .contact-info { display:flex; flex-direction:column; gap:10px; }
+    .contact-row { display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--text-muted); }
+    .contact-row i { color:var(--primary); width:16px; margin-top:2px; flex-shrink:0; }
+    .contact-row a { color:var(--text-muted); text-decoration:none; font-weight:600; }
+    .contact-row a:hover { color:var(--primary); }
+
+    /* ─── STUDENT PORTAL SECTION ─── */
+    #portal-section { background:white; }
+    .portal-wrap { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+    .portal-features { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px; }
+    .portal-feat { display:flex; align-items:center; gap:10px; background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:12px 14px; font-size:13px; font-weight:500; }
+    .portal-feat i { color:var(--primary); width:14px; }
+    .portal-login-card { background:var(--bg); border:1.5px solid var(--border); border-radius:20px; padding:40px; text-align:center; }
+    .portal-login-icon { width:64px; height:64px; margin:0 auto 16px; background:var(--gradient); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:28px; color:white; }
+    .portal-login-title { font-family:'Poppins',sans-serif; font-size:22px; font-weight:700; margin-bottom:8px; }
+    .portal-login-sub { color:var(--text-muted); font-size:14px; margin-bottom:24px; line-height:1.6; }
+    .btn-portal-login { display:inline-flex; align-items:center; gap:10px; background:var(--gradient); color:white; padding:14px 32px; border-radius:12px; font-weight:700; font-size:15px; text-decoration:none; transition:all .25s; border:none; cursor:pointer; }
+    .btn-portal-login:hover { opacity:.9; transform:translateY(-2px); }
+
+    /* ─── FOOTER ─── */
+    footer { background:#0D1B2A; padding:56px 24px 24px; color:rgba(255,255,255,.7); }
+    .footer-inner { max-width:1200px; margin:0 auto; }
+    .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:48px; }
+    .footer-logo { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+    .footer-logo-icon { width:40px; height:40px; border-radius:10px; background:var(--gradient); display:flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:18px; }
+    .footer-logo-text { font-weight:700; font-size:17px; color:white; }
+    .footer-desc { font-size:14px; line-height:1.7; max-width:260px; margin-bottom:20px; }
+    .footer-social { display:flex; gap:10px; }
+    .social-btn { width:36px; height:36px; border-radius:8px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.7); font-size:14px; text-decoration:none; transition:all .2s; }
+    .social-btn:hover { background:var(--primary); color:white; border-color:var(--primary); }
+    .footer-col h4 { color:white; font-weight:700; font-size:15px; margin-bottom:16px; }
+    .footer-links { display:flex; flex-direction:column; gap:10px; list-style:none; }
+    .footer-links a { color:rgba(255,255,255,.65); text-decoration:none; font-size:14px; transition:color .2s; }
+    .footer-links a:hover { color:white; }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,.08); padding-top:24px; text-align:center; font-size:13px; }
+
+    /* ─── LOGIN MODAL ─── */
+    .modal-overlay { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,.55); backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:20px; }
+    .modal-box { background:white; border-radius:24px; padding:40px; width:100%; max-width:420px; box-shadow:0 20px 60px rgba(0,0,0,.2); animation:fadeUp .3s ease; position:relative; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);} }
+    .modal-close { position:absolute; top:16px; right:16px; background:var(--bg); border:none; width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:16px; font-family:'Inter',sans-serif; transition:all .2s; }
+    .modal-close:hover { background:var(--red-light); color:var(--red); }
+    .modal-head { text-align:center; margin-bottom:28px; }
+    .modal-logo { width:52px; height:52px; border-radius:14px; background:var(--gradient); display:flex; align-items:center; justify-content:center; color:white; font-size:22px; font-weight:800; font-family:'Poppins',sans-serif; margin:0 auto 12px; box-shadow:0 4px 16px rgba(21,101,192,.3); }
+    .modal-head h3 { font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; }
+    .modal-head p { font-size:13px; color:var(--text-muted); margin-top:3px; }
+    .modal-fg { margin-bottom:14px; }
+    .modal-fg label { display:block; font-size:12px; font-weight:600; color:var(--text2); margin-bottom:6px; }
+    .modal-fg input { width:100%; padding:12px 15px; background:var(--bg); border:1.5px solid var(--border); border-radius:10px; color:var(--text); font-size:14px; font-family:'Inter',sans-serif; outline:none; transition:all .2s; }
+    .modal-fg input:focus { border-color:var(--primary); background:white; box-shadow:0 0 0 3px rgba(21,101,192,.1); }
+    .modal-err { display:none; background:var(--red-light); color:var(--red); border-radius:8px; padding:10px 14px; font-size:13px; font-weight:500; margin-bottom:12px; }
+    .modal-btn { width:100%; padding:13px; background:var(--gradient); color:white; border:none; border-radius:11px; font-family:'Poppins',sans-serif; font-size:15px; font-weight:700; cursor:pointer; box-shadow:0 4px 14px rgba(21,101,192,.3); transition:all .25s; }
+    .modal-btn:hover { opacity:.92; transform:translateY(-1px); }
+    .modal-btn:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+    .modal-note { text-align:center; margin-top:14px; font-size:12px; color:var(--text-muted); }
+
+    /* ─── STUDENT DASHBOARD ─── */
+    #studentDash { display:none; min-height:100vh; background:var(--bg); font-family:'Inter',sans-serif; }
+    .dash-nav { background:white; border-bottom:1px solid var(--border); padding:0 5%; position:sticky; top:0; z-index:100; box-shadow:0 2px 12px rgba(21,101,192,.06); }
+    .dash-nav-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:62px; }
+    .dash-brand { display:flex; align-items:center; gap:10px; font-family:'Poppins',sans-serif; font-size:18px; font-weight:800; text-decoration:none; color:var(--text); }
+    .dash-brand-logo { width:34px; height:34px; border-radius:9px; background:var(--gradient); display:flex; align-items:center; justify-content:center; color:white; font-size:16px; font-weight:800; }
+    .dash-brand span { color:var(--primary); }
+    .dash-user { display:flex; align-items:center; gap:10px; }
+    .dash-avatar { width:34px; height:34px; border-radius:50%; background:var(--gradient); display:flex; align-items:center; justify-content:center; color:white; font-size:13px; font-weight:700; font-family:'Poppins',sans-serif; flex-shrink:0; }
+    .dash-name { font-size:14px; font-weight:600; }
+    .dash-logout { font-size:12px; font-weight:600; color:var(--red); background:var(--red-light); border:none; padding:6px 14px; border-radius:8px; cursor:pointer; font-family:'Inter',sans-serif; transition:all .2s; }
+    .dash-logout:hover { background:var(--red); color:white; }
+    .dash-content { max-width:1100px; margin:0 auto; padding:28px 5%; }
+    .dash-welcome { background:var(--gradient); border-radius:18px; padding:28px 32px; color:white; margin-bottom:22px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
+    .dash-welcome h2 { font-family:'Poppins',sans-serif; font-size:22px; font-weight:800; margin-bottom:4px; }
+    .dash-welcome p { font-size:14px; opacity:.85; }
+    .dash-active-badge { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.25); padding:8px 18px; border-radius:100px; font-size:13px; font-weight:600; }
+    .dash-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:22px; }
+    .dash-stat { background:white; border:1px solid var(--border); border-radius:13px; padding:18px; box-shadow:var(--shadow-sm); }
+    .dash-stat-icon { width:38px; height:38px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:17px; margin-bottom:10px; }
+    .dash-stat-val { font-family:'Poppins',sans-serif; font-size:16px; font-weight:800; margin-bottom:2px; line-height:1.2; }
+    .dash-stat-lbl { font-size:11px; color:var(--text-muted); font-weight:500; }
+    .dash-grid { display:grid; grid-template-columns:1fr 320px; gap:18px; }
+    .dash-card { background:white; border:1px solid var(--border); border-radius:16px; padding:24px; box-shadow:var(--shadow-sm); margin-bottom:18px; }
+    .dash-card-title { font-family:'Poppins',sans-serif; font-size:15px; font-weight:800; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+    .dash-card-title a, .dash-card-title button { font-size:11px; font-weight:600; color:var(--primary); background:var(--blue-light); border:none; padding:5px 12px; border-radius:7px; cursor:pointer; text-decoration:none; font-family:'Inter',sans-serif; transition:all .2s; }
+    .dash-card-title button:hover, .dash-card-title a:hover { background:var(--primary); color:white; }
+    .fee-progress { height:8px; background:var(--border); border-radius:50px; overflow:hidden; }
+    .fee-progress-fill { height:100%; border-radius:50px; background:linear-gradient(90deg,var(--green),#4EBF6E); transition:width 1s ease; }
+    .fee-boxes { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; }
+    .fee-box { border-radius:10px; padding:16px; text-align:center; }
+    .fee-box.paid { background:var(--green-light); border:1px solid rgba(52,168,83,.2); }
+    .fee-box.due { background:var(--red-light); border:1px solid rgba(234,67,53,.2); }
+    .fee-box .fb-amt { font-family:'Poppins',sans-serif; font-size:20px; font-weight:800; margin-bottom:3px; }
+    .fee-box.paid .fb-amt { color:var(--green); }
+    .fee-box.due .fb-amt { color:var(--red); }
+    .fee-box .fb-lbl { font-size:11px; font-weight:600; }
+    .fee-box.paid .fb-lbl { color:rgba(52,168,83,.7); }
+    .fee-box.due .fb-lbl { color:rgba(234,67,53,.7); }
+    .profile-row { display:flex; justify-content:space-between; padding:11px 0; border-bottom:1px solid var(--border); }
+    .profile-row:last-child { border-bottom:none; }
+    .profile-lbl { font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:.5px; }
+    .profile-val { font-size:13px; font-weight:600; }
+    .meet-card { background:linear-gradient(135deg,var(--green-light),var(--blue-light)); border:1px solid rgba(52,168,83,.2); border-radius:12px; padding:18px; margin-bottom:12px; }
+    .meet-title { font-family:'Poppins',sans-serif; font-size:14px; font-weight:800; margin-bottom:4px; }
+    .meet-time { font-size:12px; color:var(--text-muted); margin-bottom:12px; }
+    .btn-meet { display:flex; align-items:center; justify-content:center; gap:7px; background:var(--green); color:white; padding:11px; border-radius:9px; font-size:14px; font-weight:700; text-decoration:none; transition:all .2s; font-family:'Poppins',sans-serif; }
+    .btn-meet:hover { background:#2a9144; }
+    .cert-placeholder { text-align:center; padding:18px; background:var(--bg); border-radius:11px; border:1px dashed var(--border2); }
+    .pill { display:inline-flex; align-items:center; gap:4px; padding:3px 10px; border-radius:50px; font-size:11px; font-weight:700; }
+    .p-active { background:var(--green-light); color:var(--green); }
+    .p-inactive { background:var(--red-light); color:var(--red); }
+    .p-blue { background:var(--blue-light); color:var(--blue); }
+    .att-stats { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:14px; }
+    .att-stat { border-radius:10px; padding:12px; text-align:center; }
+    .att-stat-val { font-family:'Poppins',sans-serif; font-size:22px; font-weight:800; }
+    .att-stat-lbl { font-size:10px; font-weight:600; margin-top:2px; }
+    .rec-item { display:flex; align-items:flex-start; gap:14px; padding:14px; background:var(--bg); border-radius:12px; border:1px solid var(--border); margin-bottom:10px; transition:all .2s; }
+    .rec-item:hover { border-color:var(--primary-light); box-shadow:var(--card-shadow); }
+    .rec-icon { width:44px; height:44px; border-radius:12px; background:var(--gradient); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+    .rec-title { font-family:'Poppins',sans-serif; font-size:14px; font-weight:800; color:var(--text); margin-bottom:3px; }
+    .rec-meta { font-size:12px; color:var(--text-muted); margin-bottom:10px; }
+    .rec-actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .rec-btn { display:inline-flex; align-items:center; gap:5px; padding:7px 14px; border-radius:8px; font-size:12px; font-weight:700; text-decoration:none; border:1px solid; transition:all .2s; }
+    .rec-btn-watch { background:var(--red-light); color:var(--red); border-color:rgba(234,67,53,.2); }
+    .rec-btn-notes { background:var(--blue-light); color:var(--blue); border-color:rgba(66,133,244,.2); }
+    .rec-btn-watch:hover { background:var(--red); color:white; }
+    .rec-btn-notes:hover { background:var(--blue); color:white; }
+    .search-box { width:100%; padding:10px 14px; background:var(--bg); border:1.5px solid var(--border); border-radius:10px; font-size:13px; font-family:'Inter',sans-serif; outline:none; transition:all .2s; margin-bottom:14px; }
+    .search-box:focus { border-color:var(--primary); background:white; }
+    .dash-footer { text-align:center; padding:22px 0 8px; border-top:1px solid var(--border); margin-top:18px; font-size:12px; color:var(--text-muted); }
+    .dash-footer a { color:var(--primary); text-decoration:none; font-weight:600; }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .fade-up { opacity:0; transform:translateY(28px); transition:opacity .55s ease,transform .55s ease; }
+    .fade-up.visible { opacity:1; transform:none; }
+    [id] { scroll-margin-top:80px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:900px) {
+      .hero-inner { grid-template-columns:1fr; gap:40px; }
+      .hero-card { display:none; }
+      .stats-inner { grid-template-columns:repeat(2,1fr); }
+      .placement-intro { grid-template-columns:1fr; gap:32px; }
+      .companies-grid { grid-template-columns:repeat(3,1fr); }
+      .register-inner { grid-template-columns:1fr; gap:40px; }
+      .footer-top { grid-template-columns:1fr 1fr; gap:32px; }
+      .portal-wrap { grid-template-columns:1fr; gap:32px; }
+      .dash-grid { grid-template-columns:1fr; }
+      .dash-stats { grid-template-columns:repeat(2,1fr); }
+    }
+    @media(max-width:640px) {
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .stats-inner { grid-template-columns:1fr 1fr; }
+      .form-row { grid-template-columns:1fr; }
+      .companies-grid { grid-template-columns:repeat(2,1fr); }
+      .footer-top { grid-template-columns:1fr; }
+      .portal-features { grid-template-columns:1fr; }
+      .instructors-grid { grid-template-columns:1fr; }
+      .contact-grid { grid-template-columns:1fr; }
+    }
+
+    /* ─── ADMIN PANEL ─── */
+    #adminPanel { display:none; position:fixed; inset:0; z-index:10000; background:#f1f5f9; overflow-y:auto; font-family:'Inter',sans-serif; }
+    .adm-nav { position:sticky; top:0; z-index:100; background:linear-gradient(135deg,#0D47A1,#1565C0); padding:0 24px; height:64px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 4px 20px rgba(13,71,161,.3); }
+    .adm-brand { color:white; font-weight:800; font-size:18px; font-family:'Poppins',sans-serif; display:flex; align-items:center; gap:10px; }
+    .adm-brand-tag { background:rgba(255,255,255,.2); font-size:11px; font-weight:600; padding:3px 10px; border-radius:100px; border:1px solid rgba(255,255,255,.3); }
+    .adm-user { display:flex; align-items:center; gap:12px; color:white; }
+    .adm-logout { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); color:white; padding:7px 16px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; transition:all .2s; }
+    .adm-logout:hover { background:rgba(255,255,255,.25); }
+    .adm-tabs { display:flex; gap:4px; padding:20px 24px 0; overflow-x:auto; }
+    .adm-tab { background:white; border:1.5px solid var(--border); color:var(--text-muted); padding:10px 18px; border-radius:10px 10px 0 0; font-size:13px; font-weight:600; cursor:pointer; transition:all .2s; white-space:nowrap; }
+    .adm-tab.active { background:var(--primary); color:white; border-color:var(--primary); }
+    .adm-tab:hover:not(.active) { color:var(--primary); border-color:var(--primary); }
+    .adm-body { padding:0 24px 40px; }
+    .adm-section { display:none; }
+    .adm-section.active { display:block; }
+    .adm-card { background:white; border-radius:16px; border:1.5px solid var(--border); padding:24px; margin-bottom:20px; }
+    .adm-card-title { font-size:16px; font-weight:700; color:var(--text); margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+    .adm-stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:20px; }
+    .adm-stat { background:white; border-radius:14px; border:1.5px solid var(--border); padding:20px; text-align:center; }
+    .adm-stat-n { font-size:32px; font-weight:800; font-family:'Poppins',sans-serif; color:var(--primary); }
+    .adm-stat-l { font-size:13px; color:var(--text-muted); font-weight:500; margin-top:4px; }
+    .adm-table-wrap { overflow-x:auto; }
+    .adm-table { width:100%; border-collapse:collapse; font-size:13px; }
+    .adm-table th { background:#f8faff; color:var(--text-muted); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; padding:12px 14px; text-align:left; border-bottom:1.5px solid var(--border); }
+    .adm-table td { padding:12px 14px; border-bottom:1px solid var(--border); color:var(--text); vertical-align:middle; }
+    .adm-table tr:hover td { background:#f8faff; }
+    .adm-btn { padding:7px 14px; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer; border:none; transition:all .2s; display:inline-flex; align-items:center; gap:5px; }
+    .adm-btn-blue { background:var(--blue-light); color:var(--blue-dark); }
+    .adm-btn-blue:hover { background:#c7d9ff; }
+    .adm-btn-red { background:var(--red-light); color:var(--red); }
+    .adm-btn-red:hover { background:#f9c0bc; }
+    .adm-btn-green { background:var(--green-light); color:var(--green); }
+    .adm-btn-green:hover { background:#b8e6c4; }
+    .adm-btn-primary { background:var(--primary); color:white; padding:10px 22px; font-size:13px; }
+    .adm-btn-primary:hover { background:var(--primary-dark); }
+    .adm-input { width:100%; border:1.5px solid var(--border); border-radius:10px; padding:10px 14px; font-size:13px; font-family:'Inter',sans-serif; outline:none; transition:border .2s; }
+    .adm-input:focus { border-color:var(--primary); }
+    .adm-label { font-size:12px; font-weight:600; color:var(--text-muted); margin-bottom:5px; display:block; }
+    .adm-form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px; }
+    .adm-form-group { margin-bottom:14px; }
+    .adm-badge { display:inline-flex; align-items:center; padding:3px 10px; border-radius:100px; font-size:11px; font-weight:700; }
+    .adm-badge-green { background:var(--green-light); color:var(--green); }
+    .adm-badge-red { background:var(--red-light); color:var(--red); }
+    .adm-badge-blue { background:var(--blue-light); color:var(--blue-dark); }
+    .adm-badge-yellow { background:var(--yellow-light); color:#c88000; }
+    .adm-search { display:flex; gap:10px; margin-bottom:16px; align-items:center; }
+    .adm-msg { text-align:center; padding:24px; color:var(--text-muted); font-size:13px; }
+    .adm-modal-overlay { display:none; position:fixed; inset:0; z-index:10100; background:rgba(0,0,0,.55); backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:20px; }
+    .adm-modal-box { background:white; border-radius:20px; padding:32px; width:100%; max-width:480px; box-shadow:0 20px 60px rgba(0,0,0,.2); position:relative; animation:fadeUp .3s ease; max-height:90vh; overflow-y:auto; }
+    .adm-modal-title { font-size:18px; font-weight:700; color:var(--text); margin-bottom:20px; }
+    .adm-close { position:absolute; top:16px; right:16px; background:#f1f5f9; border:none; width:32px; height:32px; border-radius:8px; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; }
+    @media(max-width:768px){ .adm-stat-row{grid-template-columns:repeat(2,1fr);} .adm-form-row{grid-template-columns:1fr;} .adm-tabs{gap:2px;} .adm-tab{padding:8px 12px;font-size:12px;} }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--                MAIN WEBSITE                    -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="mainWebsite">
+
+<!-- ─── NAVBAR ─── -->
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <div class="nav-logo">H</div>
+    <div class="nav-brand-text">
+      <span>HorizonTech</span>
+      <span>Institute of Computer Education</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#instructors">Instructors</a></li>
+    <li><a href="#placements">Placements</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" onclick="showLoginModal();return false;" class="btn-nav-login">&#128203; Student Login</a></li>
+    <li><a href="#" onclick="showAdminLogin();return false;" style="font-size:12px;color:var(--text-muted);padding:5px 10px;" title="Admin Panel">&#9881; Admin</a></li>
+    <li><a href="#register" class="btn-nav-enroll">Enroll Now</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <i class="fas fa-circle" style="font-size:8px;color:#4ade80;animation:blink 2s infinite"></i>
+        Admissions Open &mdash; Bihar ka #1 Modern Institute
+      </div>
+      <h1>Master <span>Computer Skills</span> with Google &amp; AI Tools</h1>
+      <p>7 job-ready courses with Google Workspace, AI Tools aur real-world skills. ISO Certified | Govt. Registered | Certificate milega.</p>
+      <div class="hero-actions">
+        <a href="#register" class="btn-primary"><i class="fas fa-rocket"></i> Free Demo &mdash; Register Now</a>
+        <a href="#courses" class="btn-outline"><i class="fas fa-book-open"></i> View All Courses</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-badge"><i class="fas fa-certificate"></i> ISO 9001:2015</div>
+        <div class="trust-badge"><i class="fas fa-stamp"></i> Govt. of India Registered</div>
+        <div class="trust-badge"><i class="fas fa-award"></i> Certificate on Completion</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title"><i class="fas fa-graduation-cap" style="color:#FFD54F"></i> Our Courses</div>
+      <div class="course-list">
+        <div class="course-item"><div class="course-item-icon">&#128187;</div><div><div class="course-item-name">DCA + Google &amp; AI</div><div class="course-item-dur">6 Months</div></div></div>
+        <div class="course-item"><div class="course-item-icon">&#127891;</div><div><div class="course-item-name">ADCA + Google &amp; AI</div><div class="course-item-dur">15 Months</div></div></div>
+        <div class="course-item"><div class="course-item-icon">&#128202;</div><div><div class="course-item-name">DFA + Google &amp; AI</div><div class="course-item-dur">9 Months</div></div></div>
+        <div class="course-item"><div class="course-item-icon">&#128295;</div><div><div class="course-item-name">Hardware &amp; Networking</div><div class="course-item-dur">3 Months</div></div></div>
+      </div>
+      <div class="course-more">+ 3 more specialized courses</div>
+    </div>
+  </div>
+  <style>@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}</style>
+</section>
+
+<!-- ─── STATS ─── -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item fade-up"><div class="stat-number">7+</div><div class="stat-label">Specialized Courses</div></div>
+    <div class="stat-item fade-up"><div class="stat-number">5mo</div><div class="stat-label">Google &amp; AI Program</div></div>
+    <div class="stat-item fade-up"><div class="stat-number">20+</div><div class="stat-label">Live Classes</div></div>
+    <div class="stat-item fade-up"><div class="stat-number">10+</div><div class="stat-label">Company Placements</div></div>
+  </div>
+</div>
+
+<!-- ─── COURSES ─── -->
+<section id="courses">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label"><i class="fas fa-book"></i> Our Programs</div>
+      <h2 class="section-title">7 Job-Ready <span>Courses</span></h2>
+      <p class="section-sub">Traditional computer skills se lekar advanced Google &amp; AI tools tak &mdash; sab ek jagah.</p>
+    </div>
+    <div class="courses-grid">
+
+      <div class="course-card fade-up">
+        <div class="card-top"><div class="card-icon">&#128187;</div><span class="card-dur">6 Months</span></div>
+        <div class="card-title">DCA + Google &amp; AI</div>
+        <div class="card-sub">Diploma in Computer Application</div>
+        <div class="card-modules">
+          <div class="card-module"><i class="fas fa-check-circle"></i> MS Office Suite (Word, Excel, PowerPoint)</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> Google Workspace + Looker Studio</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> ChatGPT, Gemini &amp; Claude AI Tools</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> HTML, Internet &amp; Apps Script</div>
+        </div>
+        <a href="#register" class="card-enroll">Enroll Now &rarr;</a>
+      </div>
+
+      <div class="course-card fade-up">
+        <div class="card-top"><div class="card-icon">&#127891;</div><span class="card-dur">15 Months</span></div>
+        <div class="card-title">ADCA + Google &amp; AI</div>
+        <div class="card-sub">Advanced Diploma in Computer Application</div>
+        <div class="card-modules">
+          <div class="card-module"><i class="fas fa-check-circle"></i> MS Office, CorelDraw, Photoshop</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> Tally + GST</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> Google Workspace + AI Automation</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> Job Training &amp; Placement Support</div>
+        </div>
+        <a href="#register" class="card-enroll">Enroll Now &rarr;</a>
+      </div>
+
+      <div class="course-card fade-up">
+        <div class="card-top"><div class="card-icon">&#128202;</div><span class="card-dur">9 Months</span></div>
+        <div class="card-title">DFA + Google &amp; AI</div>
+        <div class="card-sub">Diploma in Financial Accounting</div>
+        <div class="card-modules">
+          <div class="card-module"><i class="fas fa-check-circle"></i> Tally 7.2 / 8.1 / 9.0 + GST</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> Manual Accounts &amp; GST Filing</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> Google Sheets &amp; Looker Studio</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> AI Tools for Finance</div>
+        </div>
+        <a href="#register" class="card-enroll">Enroll Now &rarr;</a>
+      </div>
+
+      <div class="course-card fade-up">
+        <div class="card-top"><div class="card-icon">&#127912;</div><span class="card-dur">As Scheduled</span></div>
+        <div class="card-title">DTP + AI Design</div>
+        <div class="card-sub">Desktop Publishing with AI</div>
+        <div class="card-modules">
+          <div class="card-module"><i class="fas fa-check-circle"></i> Pagemaker, CorelDraw, Photoshop</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> Canva AI, Adobe Firefly</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> DALL-E &amp; Gemini AI Design</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> Digital &amp; Print Publishing</div>
+        </div>
+        <a href="#register" class="card-enroll">Enroll Now &rarr;</a>
+      </div>
+
+      <div class="course-card fade-up">
+        <div class="card-top"><div class="card-icon">&#128187;</div><span class="card-dur">As Scheduled</span></div>
+        <div class="card-title">C++ + HTML + Automation</div>
+        <div class="card-sub">Programming &amp; Web Development</div>
+        <div class="card-modules">
+          <div class="card-module"><i class="fas fa-check-circle"></i> C++ Basic to Advanced + OOP</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> HTML + CSS Web Design</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> Google Apps Script Automation</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> Claude AI &amp; Job Training</div>
+        </div>
+        <a href="#register" class="card-enroll">Enroll Now &rarr;</a>
+      </div>
+
+      <div class="course-card fade-up">
+        <div class="card-top"><div class="card-icon">&#129534;</div><span class="card-dur">As Scheduled</span></div>
+        <div class="card-title">Tally + Busy + Billing</div>
+        <div class="card-sub">Accounting Software Mastery</div>
+        <div class="card-modules">
+          <div class="card-module"><i class="fas fa-check-circle"></i> Tally Prime (GST Ready)</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> Busy Accounting Software</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> GST Billing &amp; Invoicing</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> E-Filing &amp; Compliance</div>
+        </div>
+        <a href="#register" class="card-enroll">Enroll Now &rarr;</a>
+      </div>
+
+      <div class="course-card fade-up">
+        <div class="card-top"><div class="card-icon">&#128295;</div><span class="card-dur">3 Months</span></div>
+        <div class="card-title">Hardware &amp; Networking (DCH)</div>
+        <div class="card-sub">Diploma in Computer Hardware</div>
+        <div class="card-modules">
+          <div class="card-module"><i class="fas fa-check-circle"></i> Motherboard, CPU Assembly</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> OS Installation &amp; Troubleshooting</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> Network Setup &amp; Configuration</div>
+          <div class="card-module"><i class="fas fa-check-circle"></i> Hands-on Lab Practice</div>
+        </div>
+        <a href="#register" class="card-enroll">Enroll Now &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY US ─── -->
+<section id="why">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="section-label"><i class="fas fa-star"></i> Why HorizonTech</div>
+      <h2 class="section-title">Bihar ka Sabse <span>Modern Institute</span></h2>
+      <p class="section-sub">Sirf theory nahi &mdash; real skills jo job dilayein.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up"><div class="why-icon"><i class="fas fa-robot"></i></div><div class="why-title">AI Integration</div><div class="why-desc">ChatGPT, Gemini aur Claude AI ka practical use &mdash; jo koi aur institute nahi sikhata Bihar me.</div></div>
+      <div class="why-card fade-up"><div class="why-icon"><i class="fab fa-google"></i></div><div class="why-title">Google Workspace</div><div class="why-desc">Google Forms, Sheets, Looker Studio, Apps Script &mdash; industry-level training ke saath.</div></div>
+      <div class="why-card fade-up"><div class="why-icon"><i class="fas fa-briefcase"></i></div><div class="why-title">Real Projects</div><div class="why-desc">Har module me real-world projects jo directly resume me add ho sakein aur interview me kaam aayein.</div></div>
+      <div class="why-card fade-up"><div class="why-icon"><i class="fas fa-certificate"></i></div><div class="why-title">ISO Certified</div><div class="why-desc">Government registered aur ISO 9001:2015 certified &mdash; tumhara certificate 100% valid aur recognized.</div></div>
+      <div class="why-card fade-up"><div class="why-icon"><i class="fas fa-handshake"></i></div><div class="why-title">Placement Support</div><div class="why-desc">Bihar aur other states ki top companies me placement &mdash; resume, interview prep, LinkedIn sab.</div></div>
+      <div class="why-card fade-up"><div class="why-icon"><i class="fas fa-wifi"></i></div><div class="why-title">Online + Offline</div><div class="why-desc">Offline classes Bihar me aur Google &amp; AI modules Google Meet pe &mdash; dono ka best combination.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INSTRUCTORS ─── -->
+<section id="instructors">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="section-label"><i class="fas fa-chalkboard-teacher"></i> Our Experts</div>
+      <h2 class="section-title">Meet Your <span>Instructors</span></h2>
+      <p class="section-sub">Industry experts jo real kaam karte hain aur real skills sikhate hain.</p>
+    </div>
+    <div class="instructors-grid">
+
+      <div class="instructor-card fade-up">
+        <div class="instructor-header"></div>
+        <div class="instructor-avatar">
+          <img src="https://i.ibb.co/YFg27dgs/Capture.png" alt="Chandan Kumar" onerror="this.style.display='none';this.parentElement.textContent='C'">
+        </div>
+        <div class="instructor-body">
+          <div class="instructor-name">Chandan Kumar</div>
+          <div class="instructor-role">Google &amp; AI Expert | MIS Executive &mdash; GK Exclusive, Patna &amp; Gaya, Bihar</div>
+          <div class="instructor-bio">2+ years ka real industry experience hai Google Sheets, Data Analysis, Automation aur AI tools me. Daily in tools ka professional use karte hain &mdash; aur ab aapko bhi sikhayenge practical tarike se online classes ke through.</div>
+          <div class="instructor-tags">
+            <span class="tag">Claude AI Certified</span>
+            <span class="tag">Google AI Studio</span>
+            <span class="tag">MIS Expert</span>
+            <span class="tag">Google Workspace Pro</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instructor-card fade-up">
+        <div class="instructor-header"></div>
+        <div class="instructor-avatar">RS</div>
+        <div class="instructor-body">
+          <div class="instructor-name">Roushan Sir</div>
+          <div class="instructor-role">Founder &mdash; Horizon Institute of Information Technology, Bihar</div>
+          <div class="instructor-bio">Computer education ka vast experience &mdash; Fundamental, MS Office, Tally, Design aur Hardware me expert. Bihar ke trusted educators me se ek. ISO certified institute ke director.</div>
+          <div class="instructor-tags">
+            <span class="tag">ISO Certified</span>
+            <span class="tag">Tally Expert</span>
+            <span class="tag">Design Specialist</span>
+            <span class="tag">Founder</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── PLACEMENTS ─── -->
+<section id="placements">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label"><i class="fas fa-building"></i> Career Outcomes</div>
+      <h2 class="section-title">Our Students Work at <span>Top Companies</span></h2>
+    </div>
+    <div class="placement-intro">
+      <div class="placement-text">
+        <h3>Real Jobs. Real Companies. Real Success.</h3>
+        <p>Bihar aur other states ki top companies me placement support milta hai. Resume building, interview prep, aur direct employer referrals sab included.</p>
+        <a href="#register" class="btn-primary" style="display:inline-flex;width:fit-content;"><i class="fas fa-rocket"></i> Start Your Journey</a>
+      </div>
+      <div class="placement-highlight">
+        <h3>10+</h3><p>Company Hiring Partners</p><br/>
+        <h3>100%</h3><p>Placement Assistance Provided</p>
+      </div>
+    </div>
+    <div class="companies-grid">
+      <div class="company-badge">&#128722; Blinkit</div>
+      <div class="company-badge">&#128666; Flipkart</div>
+      <div class="company-badge">&#127978; Amazon</div>
+      <div class="company-badge">&#127978; Reliance Retail</div>
+      <div class="company-badge">&#128200; Deloitte</div>
+      <div class="company-badge">&#128188; TCS</div>
+      <div class="company-badge">&#128176; Paytm</div>
+      <div class="company-badge">&#128241; Swiggy</div>
+      <div class="company-badge">&#128200; Zerodha</div>
+      <div class="company-badge">&#127970; Infosys</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── REGISTER ─── -->
+<section id="register" style="background:var(--gradient);padding:80px 24px;">
+  <div class="register-inner">
+    <div class="register-left">
+      <div class="section-label" style="background:rgba(255,255,255,.15);color:white;"><i class="fas fa-rocket"></i> Free Demo</div>
+      <h2>Register for a <span>Free Demo Class</span> Today</h2>
+      <p>No commitment required. Attend a free demo session, meet your instructor, aur dekho ki course aapke liye sahi hai ya nahi.</p>
+      <div class="register-perks">
+        <div class="perk"><i class="fas fa-check-circle"></i> Free counselling included</div>
+        <div class="perk"><i class="fas fa-check-circle"></i> Google Meet link email pe milega</div>
+        <div class="perk"><i class="fas fa-check-circle"></i> Flexible batch timings</div>
+        <div class="perk"><i class="fas fa-check-circle"></i> Sunday 11 AM &mdash; 2 PM live class</div>
+        <div class="perk"><i class="fas fa-check-circle"></i> Certificate on completion</div>
+      </div>
+    </div>
+    <div class="form-card">
+      <div class="form-title">&#128203; Enrollment Form</div>
+      <div id="formArea">
+        <div class="form-row">
+          <div class="form-group"><label>Full Name *</label><input type="text" id="rName" placeholder="Apna poora naam"></div>
+          <div class="form-group"><label>Mobile Number *</label><input type="tel" id="rMobile" placeholder="10 digit number" maxlength="10"></div>
+        </div>
+        <div class="form-group"><label>Email Address *</label><input type="email" id="rEmail" placeholder="aapka@email.com"></div>
+        <div class="form-row">
+          <div class="form-group"><label>Village / City *</label><input type="text" id="rCity" placeholder="Kahan se hain?"></div>
+          <div class="form-group"><label>Education Level</label>
+            <select id="rEdu">
+              <option value="">-- Select --</option>
+              <option>10th Pass</option><option>12th Pass</option>
+              <option>Graduation</option><option>Post Graduation</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label>Interested Course *</label>
+          <select id="rCourse">
+            <option value="">-- Course Select --</option>
+            <option>DCA + Google &amp; AI</option>
+            <option>ADCA + Google &amp; AI</option>
+            <option>DFA + Google &amp; AI</option>
+            <option>DTP + AI Design</option>
+            <option>C++ + HTML + Automation</option>
+            <option>Tally + Busy + Billing</option>
+            <option>Hardware &amp; Networking (DCH)</option>
+          </select>
+        </div>
+        <button class="btn-submit" id="regBtn" onclick="submitReg()">
+          <i class="fas fa-paper-plane"></i> Register &mdash; Free Demo Class
+        </button>
+        <p style="text-align:center;margin-top:10px;font-size:11px;color:var(--text-muted);">&#128274; Aapki details safe hain &mdash; sirf class ke liye use hogi.</p>
+      </div>
+      <div class="success-box" id="successBox">
+        <div class="suc-icon">&#9989;</div>
+        <h3>Registration Successful! &#127881;</h3>
+        <p>Dhanyavaad! Registration complete ho gaya.<br>Google Meet link email pe bheja jayega.<br><br>&#128222; <strong>Chandan Kumar &mdash; 8102441435</strong><br>&#128222; <strong>Roushan Sir &mdash; 9006242683</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="section-label"><i class="fas fa-phone"></i> Get in Touch</div>
+      <h2 class="section-title">Koi Sawaal? <span>Baat Karein</span></h2>
+    </div>
+    <div class="contact-grid">
+
+      <div class="contact-card fade-up">
+        <div class="contact-avatar">
+          <img src="https://i.ibb.co/YFg27dgs/Capture.png" alt="Chandan Kumar" onerror="this.style.display='none';this.parentElement.textContent='C'">
+        </div>
+        <div class="contact-name">Chandan Kumar</div>
+        <div class="contact-role">Google &amp; AI Expert | MIS Executive</div>
+        <div class="contact-info">
+          <div class="contact-row"><i class="fas fa-map-marker-alt"></i> GK Exclusive, Patna, Gaya, Bihar (Online Classes)</div>
+          <div class="contact-row"><i class="fas fa-phone"></i><a href="tel:8102441435">8102441435</a></div>
+          <div class="contact-row"><i class="fas fa-certificate"></i> Claude AI (Anthropic) + Google AI Studio Certified</div>
+          <div class="contact-row"><i class="fas fa-clock"></i> Mon&ndash;Sat: 9 AM &ndash; 6 PM</div>
+        </div>
+      </div>
+
+      <div class="contact-card fade-up">
+        <div class="contact-avatar" style="background:linear-gradient(135deg,var(--red),#f87171);">RS</div>
+        <div class="contact-name">Roushan Sir</div>
+        <div class="contact-role">Founder &mdash; Horizon Institute</div>
+        <div class="contact-info">
+          <div class="contact-row"><i class="fas fa-map-marker-alt"></i> Laxmi Nagar, Jay Prakash, Electronics ke Upar, Gurua, Bihar</div>
+          <div class="contact-row"><i class="fas fa-phone"></i><a href="tel:9006242683">9006242683</a></div>
+          <div class="contact-row"><i class="fas fa-certificate"></i> ISO 9001:2015 | Govt. of India Registered</div>
+          <div class="contact-row"><i class="fas fa-clock"></i> Mon&ndash;Sat: 9 AM &ndash; 7 PM</div>
+        </div>
+      </div>
+
+      <div class="contact-card fade-up" style="background:var(--gradient);border:none;color:white;">
+        <div style="font-size:28px;margin-bottom:14px;">&#128197;</div>
+        <div class="contact-name" style="color:white;">Sunday Live Classes</div>
+        <div style="color:#FFD54F;font-size:13px;font-weight:600;margin-bottom:12px;">Google Meet &mdash; Har Sunday 11 AM</div>
+        <div style="color:rgba(255,255,255,.82);font-size:14px;line-height:1.7;margin-bottom:16px;">Free weekly live class &mdash; Q&amp;A, naye topics, aur revision. Sab enrolled students ke liye.</div>
+        <a href="#register" class="btn-primary" style="font-size:13px;padding:10px 20px;display:inline-flex;width:fit-content;">Join Us <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── STUDENT PORTAL SECTION ─── -->
+<section id="portal-section">
+  <div class="section-inner">
+    <div class="portal-wrap">
+      <div>
+        <div class="section-label"><i class="fas fa-user-circle"></i> Student Portal</div>
+        <h2 class="section-title">Already Enrolled? <span>Login Karein</span></h2>
+        <p class="section-sub">Apna fee status, course progress, attendance, aur class recordings sab ek jagah dekho.</p>
+        <div class="portal-features">
+          <div class="portal-feat"><i class="fas fa-rupee-sign"></i> Fee Status</div>
+          <div class="portal-feat"><i class="fas fa-chart-line"></i> Course Progress</div>
+          <div class="portal-feat"><i class="fas fa-calendar-check"></i> Attendance</div>
+          <div class="portal-feat"><i class="fas fa-award"></i> Certificate</div>
+          <div class="portal-feat"><i class="fas fa-video"></i> Class Recordings</div>
+          <div class="portal-feat"><i class="fas fa-file-alt"></i> Study Notes</div>
+        </div>
+      </div>
+      <div class="portal-login-card">
+        <div class="portal-login-icon"><i class="fas fa-user-graduate"></i></div>
+        <div class="portal-login-title">Student Portal</div>
+        <div class="portal-login-sub">Apna registered email aur password use karke login karein. Problem? Call 8102441435.</div>
+        <button class="btn-portal-login" onclick="showLoginModal()">
+          <i class="fas fa-sign-in-alt"></i> Login to Portal
+        </button>
+        <p style="margin-top:16px;font-size:12px;color:var(--text-muted);">Demo: demo@gmail.com / demo123</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-icon">H</div>
+          <span class="footer-logo-text">HorizonTech Institute</span>
+        </div>
+        <p class="footer-desc">Bihar ka sabse modern computer education institute &mdash; Google Workspace aur AI tools ke saath real-world career ke liye.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+          <a href="https://wa.me/918102441435" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Courses</h4>
+        <ul class="footer-links">
+          <li><a href="#courses">DCA + Google &amp; AI</a></li>
+          <li><a href="#courses">ADCA + Google &amp; AI</a></li>
+          <li><a href="#courses">DFA + Google &amp; AI</a></li>
+          <li><a href="#courses">DTP + AI Design</a></li>
+          <li><a href="#courses">Tally + Busy</a></li>
+          <li><a href="#courses">Hardware &amp; Networking</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Institute</h4>
+        <ul class="footer-links">
+          <li><a href="#why">Why HorizonTech</a></li>
+          <li><a href="#instructors">Our Instructors</a></li>
+          <li><a href="#placements">Placements</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#" onclick="showLoginModal();return false;">Student Login</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="#">Bihar, India</a></li>
+          <li><a href="tel:8102441435">8102441435 (Chandan)</a></li>
+          <li><a href="tel:9006242683">9006242683 (Roushan Sir)</a></li>
+          <li><a href="#register">Free Demo Class</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p style="color:rgba(255,255,255,.35);">Horizon Institute of Information Technology Pvt. Ltd. | Bihar | ISO 9001:2015 Certified | Govt. of India Registered</p>
+      <p style="font-size:12px;color:rgba(255,255,255,.2);margin-top:6px;">Website Created by <strong style="color:rgba(255,255,255,.4);">Chandan Kumar</strong> | 8102441435</p>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /mainWebsite -->
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--           WHATSAPP FLOATING BUTTON             -->
+<!-- ═══════════════════════════════════════════════ -->
+<a href="https://wa.me/918102441435?text=Namaste%20Chandan%20Sir%2C%20Maine%20HorizonTech%20Institute%20ki%20website%20dekhi%20hai.%20Mujhe%20course%20ke%20baare%20mein%20jaankari%20chahiye."
+   target="_blank" id="waBtn"
+   style="position:fixed;bottom:28px;right:28px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:998;text-decoration:none;transition:all .3s;animation:waPulse 2s infinite;"
+   onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" title="WhatsApp pe Contact Karein">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+<div id="waTooltip" style="position:fixed;bottom:38px;right:100px;background:#1a1f36;color:white;padding:10px 16px;border-radius:10px;font-size:13px;font-weight:600;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.15);z-index:997;opacity:0;transform:translateX(10px);transition:all .3s;pointer-events:none;">
+  &#128172; Course ke baare mein poochein!
+  <div style="position:absolute;right:-6px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:7px solid #1a1f36;border-top:6px solid transparent;border-bottom:6px solid transparent;"></div>
+</div>
+<style>@keyframes waPulse{0%{box-shadow:0 4px 20px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,.4);}70%{box-shadow:0 4px 20px rgba(37,211,102,.4),0 0 0 14px rgba(37,211,102,0);}100%{box-shadow:0 4px 20px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,0);}}</style>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--                 LOGIN MODAL                    -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="loginModal" class="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="hideLoginModal()">&#10005;</button>
+    <div class="modal-head">
+      <div class="modal-logo">H</div>
+      <h3>Student Login</h3>
+      <p>HorizonTech Institute Portal</p>
+    </div>
+    <div class="modal-fg">
+      <label>Email Address</label>
+      <input type="email" id="sEmail" placeholder="aapka@email.com" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="modal-fg">
+      <label>Password</label>
+      <input type="password" id="sPass" placeholder="Apna password" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="modal-err" id="sErr"></div>
+    <button class="modal-btn" id="sLoginBtn" onclick="doLogin()">Login</button>
+    <p class="modal-note">Problem? Call: <a href="tel:8102441435" style="color:var(--primary);font-weight:600;">8102441435</a></p>
+    <p class="modal-note" style="margin-top:6px;color:var(--text-muted);">Demo: demo@gmail.com / demo123</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--               ADMIN LOGIN MODAL                -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="adminLoginModal" class="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="hideAdminLogin()">&#10005;</button>
+    <div class="modal-head">
+      <div class="modal-logo" style="background:linear-gradient(135deg,#0D47A1,#1565C0);">&#9881;</div>
+      <h3>Admin Login</h3>
+      <p>HorizonTech Institute Admin Panel</p>
+    </div>
+    <div class="modal-fg">
+      <label>Admin Email</label>
+      <input type="email" id="aEmail" placeholder="admin@email.com" onkeydown="if(event.key==='Enter')doAdminLogin()">
+    </div>
+    <div class="modal-fg">
+      <label>Password</label>
+      <input type="password" id="aPass" placeholder="Admin password" onkeydown="if(event.key==='Enter')doAdminLogin()">
+    </div>
+    <div class="modal-err" id="aErr"></div>
+    <button class="modal-btn" id="aLoginBtn" onclick="doAdminLogin()" style="background:linear-gradient(135deg,#0D47A1,#1565C0);">Login as Admin</button>
+    <p class="modal-note">Authorized personnel only.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--               ADMIN DASHBOARD                  -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="adminPanel">
+
+  <!-- Admin Nav -->
+  <nav class="adm-nav">
+    <div class="adm-brand">
+      <span>HorizonTech</span>
+      <span class="adm-brand-tag">Admin Panel</span>
+    </div>
+    <div class="adm-user">
+      <span style="font-size:13px;opacity:.75;">Admin: Chandan</span>
+      <button class="adm-logout" onclick="doAdminLogout()">&#8592; Back to Website</button>
+    </div>
+  </nav>
+
+  <!-- Tabs -->
+  <div class="adm-tabs">
+    <button class="adm-tab active" onclick="admTab('overview',this)">&#128200; Overview</button>
+    <button class="adm-tab" onclick="admTab('students',this)">&#128101; Students</button>
+    <button class="adm-tab" onclick="admTab('registrations',this)">&#128203; Registrations</button>
+    <button class="adm-tab" onclick="admTab('attendance',this)">&#128197; Attendance</button>
+    <button class="adm-tab" onclick="admTab('recordings',this)">&#127909; Recordings</button>
+    <button class="adm-tab" onclick="admTab('email',this)">&#128140; Bulk Email</button>
+    <button class="adm-tab" onclick="admTab('meetlink',this)">&#127760; Meet Links</button>
+  </div>
+
+  <div class="adm-body">
+
+    <!-- ── OVERVIEW ── -->
+    <div class="adm-section active" id="admSec-overview">
+      <div class="adm-stat-row" id="admStats">
+        <div class="adm-stat"><div class="adm-stat-n" id="admTotalStu">–</div><div class="adm-stat-l">Total Students</div></div>
+        <div class="adm-stat"><div class="adm-stat-n" id="admActiveStu">–</div><div class="adm-stat-l">Active Students</div></div>
+        <div class="adm-stat"><div class="adm-stat-n" id="admFeeCollected">–</div><div class="adm-stat-l">Fee Collected</div></div>
+        <div class="adm-stat"><div class="adm-stat-n" id="admFeeDue">–</div><div class="adm-stat-l">Fee Due</div></div>
+      </div>
+      <div class="adm-card">
+        <div class="adm-card-title">&#128101; Recent Students</div>
+        <div id="admRecentList" class="adm-msg">Loading...</div>
+      </div>
+    </div>
+
+    <!-- ── STUDENTS ── -->
+    <div class="adm-section" id="admSec-students">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+        <div class="adm-search">
+          <input type="text" id="admStuSearch" class="adm-input" placeholder="&#128269; Name, email, course search..." style="max-width:280px;" oninput="filterAdmStudents(this.value)">
+        </div>
+        <button class="adm-btn adm-btn-primary" onclick="openAddStudent()">+ Add Student</button>
+      </div>
+      <div class="adm-card" style="padding:0;overflow:hidden;">
+        <div class="adm-table-wrap">
+          <table class="adm-table">
+            <thead><tr><th>Name</th><th>Email</th><th>Course</th><th>City</th><th>Fee Paid</th><th>Fee Due</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="admStuBody"><tr><td colspan="8" class="adm-msg">Loading students...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── REGISTRATIONS ── -->
+    <div class="adm-section" id="admSec-registrations">
+      <div class="adm-card" style="margin-bottom:16px;">
+        <div class="adm-card-title">&#128203; New Enquiries / Registrations</div>
+        <p style="font-size:13px;color:var(--text-muted);">Ye wahi log hain jo website ka registration form bharte hain. Inhe manually Student me add karo.</p>
+      </div>
+      <div class="adm-card" style="padding:0;overflow:hidden;">
+        <div class="adm-table-wrap">
+          <table class="adm-table">
+            <thead><tr><th>Name</th><th>Mobile</th><th>Email</th><th>Course</th><th>City</th><th>Education</th><th>Date</th><th>Action</th></tr></thead>
+            <tbody id="admRegBody"><tr><td colspan="8" class="adm-msg">Loading registrations...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ATTENDANCE ── -->
+    <div class="adm-section" id="admSec-attendance">
+      <div class="adm-card" style="margin-bottom:16px;">
+        <div class="adm-card-title">&#9989; Mark Today's Attendance</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+          <div class="adm-form-group" style="flex:1;min-width:160px;">
+            <label class="adm-label">Class Date</label>
+            <input type="date" id="attDate" class="adm-input">
+          </div>
+          <div class="adm-form-group" style="flex:1;min-width:160px;">
+            <label class="adm-label">Filter by Course</label>
+            <select id="attCourseFilter" class="adm-input" onchange="filterAttStudents()"></select>
+          </div>
+        </div>
+        <div id="attMarkList" class="adm-msg">Load students first</div>
+        <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+          <button class="adm-btn adm-btn-green" onclick="markAllPresent()">&#9989; Mark All Present</button>
+          <button class="adm-btn adm-btn-red" onclick="markAllAbsent()">&#10060; Mark All Absent</button>
+          <button class="adm-btn adm-btn-primary" onclick="submitAttendance()">&#128190; Submit Attendance</button>
+        </div>
+      </div>
+      <div class="adm-card">
+        <div class="adm-card-title">&#128197; All Attendance Records</div>
+        <div class="adm-search">
+          <input type="text" class="adm-input" placeholder="&#128269; Search by name or date..." style="max-width:280px;" oninput="filterAllAtt(this.value)">
+        </div>
+        <div class="adm-table-wrap">
+          <table class="adm-table">
+            <thead><tr><th>Date</th><th>Name</th><th>Email</th><th>Course</th><th>Status</th><th>Marked By</th></tr></thead>
+            <tbody id="allAttBody"><tr><td colspan="6" class="adm-msg">Loading...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── RECORDINGS ── -->
+    <div class="adm-section" id="admSec-recordings">
+      <div class="adm-card" style="margin-bottom:16px;">
+        <div class="adm-card-title">&#127909; Add New Recording</div>
+        <div class="adm-form-row">
+          <div class="adm-form-group">
+            <label class="adm-label">Recording Date</label>
+            <input type="date" id="recDate" class="adm-input">
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Course</label>
+            <select id="recCourse" class="adm-input">
+              <option value="">All Courses</option>
+              <option>DCA + Google &amp; AI</option>
+              <option>ADCA + Google &amp; AI</option>
+              <option>DFA + Google &amp; AI</option>
+              <option>DTP + AI Design</option>
+              <option>C++ + HTML + Automation</option>
+              <option>Tally + Busy + Billing</option>
+              <option>Hardware &amp; Networking (DCH)</option>
+            </select>
+          </div>
+        </div>
+        <div class="adm-form-group">
+          <label class="adm-label">Recording Title *</label>
+          <input type="text" id="recTitle" class="adm-input" placeholder="Class topic / title">
+        </div>
+        <div class="adm-form-row">
+          <div class="adm-form-group">
+            <label class="adm-label">Recording Link (Google Drive / YouTube) *</label>
+            <input type="url" id="recLink" class="adm-input" placeholder="https://...">
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Notes Link (optional)</label>
+            <input type="url" id="recNotesLink" class="adm-input" placeholder="https://...">
+          </div>
+        </div>
+        <button class="adm-btn adm-btn-primary" onclick="addRecording()">&#127909; Add Recording</button>
+        <span id="recMsg" style="font-size:13px;margin-left:12px;color:var(--green);"></span>
+      </div>
+      <div class="adm-card" style="padding:0;overflow:hidden;">
+        <div style="padding:16px 20px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+          <input type="text" class="adm-input" placeholder="&#128269; Search recordings..." style="max-width:260px;" oninput="filterAdmRec(this.value)">
+          <select class="adm-input" style="max-width:200px;" onchange="filterAdmRecCourse(this.value)" id="recFilterCourse">
+            <option value="">All Courses</option>
+            <option>DCA + Google &amp; AI</option>
+            <option>ADCA + Google &amp; AI</option>
+            <option>DFA + Google &amp; AI</option>
+            <option>DTP + AI Design</option>
+            <option>C++ + HTML + Automation</option>
+            <option>Tally + Busy + Billing</option>
+            <option>Hardware &amp; Networking (DCH)</option>
+          </select>
+        </div>
+        <div class="adm-table-wrap" style="padding:0 0 8px;">
+          <table class="adm-table">
+            <thead><tr><th>Date</th><th>Title</th><th>Course</th><th>Recording</th><th>Notes</th><th>Added By</th><th>Delete</th></tr></thead>
+            <tbody id="admRecBody"><tr><td colspan="7" class="adm-msg">Loading...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BULK EMAIL ── -->
+    <div class="adm-section" id="admSec-email">
+      <div class="adm-card" style="max-width:600px;">
+        <div class="adm-card-title">&#128140; Send Bulk Email</div>
+        <div class="adm-form-group">
+          <label class="adm-label">Send To</label>
+          <select id="emailTo" class="adm-input">
+            <option value="all">All Students</option>
+            <option value="active">Active Students Only</option>
+            <option value="due">Students with Fee Due</option>
+          </select>
+        </div>
+        <div class="adm-form-group">
+          <label class="adm-label">Subject *</label>
+          <input type="text" id="emailSubject" class="adm-input" placeholder="Email subject">
+        </div>
+        <div class="adm-form-group">
+          <label class="adm-label">Message *</label>
+          <textarea id="emailBody" class="adm-input" rows="6" placeholder="Apna message yahan likhein..."></textarea>
+        </div>
+        <button class="adm-btn adm-btn-primary" onclick="sendBulkEmail()">&#128140; Send Email</button>
+        <span id="emailMsg" style="font-size:13px;margin-left:12px;color:var(--green);"></span>
+      </div>
+    </div>
+
+    <!-- ── MEET LINKS ── -->
+    <div class="adm-section" id="admSec-meetlink">
+      <div class="adm-card" style="max-width:600px;">
+        <div class="adm-card-title">&#127760; Update Meet Link</div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">Kisi student ka Google Meet link update karein ya check karein.</p>
+        <div class="adm-form-group">
+          <label class="adm-label">Select Student</label>
+          <select id="meetStuSelect" class="adm-input"><option>Loading students...</option></select>
+        </div>
+        <div class="adm-form-group">
+          <label class="adm-label">New Meet Link</label>
+          <input type="url" id="meetLinkInput" class="adm-input" placeholder="https://meet.google.com/...">
+        </div>
+        <button class="adm-btn adm-btn-primary" onclick="updateMeetLink()">&#127760; Update Meet Link</button>
+        <span id="meetMsg" style="font-size:13px;margin-left:12px;color:var(--green);"></span>
+      </div>
+      <div class="adm-card" style="max-width:600px;margin-top:16px;">
+        <div class="adm-card-title">&#128203; Update Certificate Status</div>
+        <div class="adm-form-group">
+          <label class="adm-label">Select Student</label>
+          <select id="certStuSelect" class="adm-input"><option>Loading students...</option></select>
+        </div>
+        <div class="adm-form-row">
+          <div class="adm-form-group">
+            <label class="adm-label">Certificate Status</label>
+            <select id="certStatus" class="adm-input">
+              <option value="Pending">Pending</option>
+              <option value="Issued">Issued</option>
+            </select>
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Certificate Link (optional)</label>
+            <input type="url" id="certLink" class="adm-input" placeholder="https://drive.google.com/...">
+          </div>
+        </div>
+        <button class="adm-btn adm-btn-primary" onclick="updateCertStatus()">&#127941; Update Certificate</button>
+        <span id="certMsg" style="font-size:13px;margin-left:12px;color:var(--green);"></span>
+      </div>
+    </div>
+
+  </div><!-- /adm-body -->
+</div><!-- /adminPanel -->
+
+<!-- Add Student Modal -->
+<div id="addStuModal" class="adm-modal-overlay">
+  <div class="adm-modal-box">
+    <button class="adm-close" onclick="closeAddStudent()">&#10005;</button>
+    <div class="adm-modal-title" id="addStuModalTitle">&#128101; Add New Student</div>
+    <input type="hidden" id="editStuEmail">
+    <input type="hidden" id="editStuRow">
+    <div class="adm-form-row">
+      <div class="adm-form-group"><label class="adm-label">Full Name *</label><input type="text" id="stuName" class="adm-input" placeholder="Full name"></div>
+      <div class="adm-form-group"><label class="adm-label">Mobile *</label><input type="tel" id="stuMobile" class="adm-input" placeholder="10 digit" maxlength="10"></div>
+    </div>
+    <div class="adm-form-row">
+      <div class="adm-form-group"><label class="adm-label">Email *</label><input type="email" id="stuEmail" class="adm-input" placeholder="email@..."></div>
+      <div class="adm-form-group"><label class="adm-label">Password *</label><input type="text" id="stuPass" class="adm-input" placeholder="Login password"></div>
+    </div>
+    <div class="adm-form-row">
+      <div class="adm-form-group"><label class="adm-label">Course *</label>
+        <select id="stuCourse" class="adm-input">
+          <option value="">Select Course</option>
+          <option>DCA + Google &amp; AI</option>
+          <option>ADCA + Google &amp; AI</option>
+          <option>DFA + Google &amp; AI</option>
+          <option>DTP + AI Design</option>
+          <option>C++ + HTML + Automation</option>
+          <option>Tally + Busy + Billing</option>
+          <option>Hardware &amp; Networking (DCH)</option>
+        </select>
+      </div>
+      <div class="adm-form-group"><label class="adm-label">City</label><input type="text" id="stuCity" class="adm-input" placeholder="City / Village"></div>
+    </div>
+    <div class="adm-form-row">
+      <div class="adm-form-group"><label class="adm-label">Total Fee (₹)</label><input type="number" id="stuFeeTotal" class="adm-input" placeholder="e.g. 6000"></div>
+      <div class="adm-form-group"><label class="adm-label">Fee Paid (₹)</label><input type="number" id="stuFeePaid" class="adm-input" placeholder="e.g. 3000"></div>
+    </div>
+    <div class="adm-form-row">
+      <div class="adm-form-group"><label class="adm-label">Status</label>
+        <select id="stuStatus" class="adm-input"><option value="Active">Active</option><option value="Inactive">Inactive</option><option value="Completed">Completed</option></select>
+      </div>
+      <div class="adm-form-group"><label class="adm-label">Next Class</label><input type="text" id="stuNextClass" class="adm-input" placeholder="e.g. Sunday 11AM"></div>
+    </div>
+    <div class="adm-form-group"><label class="adm-label">Meet Link</label><input type="url" id="stuMeetLink" class="adm-input" placeholder="https://meet.google.com/..."></div>
+    <div style="margin-top:8px;text-align:right;display:flex;gap:10px;justify-content:flex-end;">
+      <button class="adm-btn" onclick="closeAddStudent()" style="background:#f1f5f9;color:var(--text);">Cancel</button>
+      <button class="adm-btn adm-btn-primary" id="saveStuBtn" onclick="saveStudent()">&#128190; Save Student</button>
+    </div>
+    <div id="stuSaveMsg" style="font-size:13px;margin-top:10px;color:var(--green);text-align:center;"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--              STUDENT DASHBOARD                 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="studentDash">
+
+  <nav class="dash-nav">
+    <div class="dash-nav-inner">
+      <a href="#" class="dash-brand" onclick="doLogout();return false;">
+        <div class="dash-brand-logo">H</div>
+        <div><span>Horizon</span>Tech</div>
+      </a>
+      <div class="dash-user">
+        <div class="dash-avatar" id="dAvatar">CK</div>
+        <span class="dash-name" id="dNavName">Student</span>
+        <button class="dash-logout" onclick="doLogout()">&#8592; Back to Website</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="dash-content">
+
+    <!-- Welcome -->
+    <div class="dash-welcome">
+      <div>
+        <h2 id="dWelcome">Namaste! &#128075;</h2>
+        <p id="dSubtitle">HorizonTech Institute</p>
+      </div>
+      <div class="dash-active-badge">&#128994; Active Student</div>
+    </div>
+
+    <!-- Stats -->
+    <div class="dash-stats">
+      <div class="dash-stat">
+        <div class="dash-stat-icon" style="background:var(--blue-light)">&#128218;</div>
+        <div class="dash-stat-val" id="dStatCourse" style="color:var(--primary);font-size:14px;">DCA</div>
+        <div class="dash-stat-lbl">Course</div>
+      </div>
+      <div class="dash-stat">
+        <div class="dash-stat-icon" style="background:var(--green-light)">&#128176;</div>
+        <div class="dash-stat-val" id="dStatPaid" style="color:var(--green);">&#8377;0</div>
+        <div class="dash-stat-lbl">Fee Paid</div>
+      </div>
+      <div class="dash-stat">
+        <div class="dash-stat-icon" style="background:var(--red-light)">&#9203;</div>
+        <div class="dash-stat-val" id="dStatDue" style="color:var(--red);">&#8377;0</div>
+        <div class="dash-stat-lbl">Fee Due</div>
+      </div>
+      <div class="dash-stat">
+        <div class="dash-stat-icon" style="background:var(--yellow-light)">&#127941;</div>
+        <div class="dash-stat-val" id="dStatCert" style="color:var(--yellow);">Pending</div>
+        <div class="dash-stat-lbl">Certificate</div>
+      </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="dash-grid">
+
+      <!-- LEFT -->
+      <div>
+        <!-- Fee Status -->
+        <div class="dash-card">
+          <div class="dash-card-title">&#128176; Fee Status</div>
+          <div style="background:var(--bg);border-radius:11px;padding:16px;border:1px solid var(--border);margin-bottom:14px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+              <span style="font-size:13px;color:var(--text-muted);">Total Fee</span>
+              <span style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:800;" id="dFeeTotal">&#8377;0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+              <span style="font-size:13px;color:var(--text-muted);">Progress</span>
+              <span style="font-size:13px;font-weight:700;color:var(--green);" id="dFeePct">0%</span>
+            </div>
+            <div class="fee-progress"><div id="dProgress" class="fee-progress-fill" style="width:0%"></div></div>
+          </div>
+          <div class="fee-boxes">
+            <div class="fee-box paid"><div class="fb-amt" id="dFeePaid">&#8377;0</div><div class="fb-lbl">PAID &#10003;</div></div>
+            <div class="fee-box due"><div class="fb-amt" id="dFeeDue">&#8377;0</div><div class="fb-lbl">DUE &#9203;</div></div>
+          </div>
+        </div>
+
+        <!-- Profile -->
+        <div class="dash-card">
+          <div class="dash-card-title">&#128100; My Profile</div>
+          <div class="profile-row"><span class="profile-lbl">Name</span><span class="profile-val" id="dPName">&#8212;</span></div>
+          <div class="profile-row"><span class="profile-lbl">Email</span><span class="profile-val" id="dPEmail" style="font-size:12px;">&#8212;</span></div>
+          <div class="profile-row"><span class="profile-lbl">Course</span><span class="profile-val" id="dPCourse">&#8212;</span></div>
+          <div class="profile-row"><span class="profile-lbl">City</span><span class="profile-val" id="dPCity">&#8212;</span></div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div>
+        <!-- Meet Link -->
+        <div class="dash-card">
+          <div class="dash-card-title">&#128249; Join Class</div>
+          <div class="meet-card">
+            <div class="meet-title">Google Meet Ready!</div>
+            <p class="meet-time" id="dNextClass">Sunday | 11:00 AM &ndash; 2:00 PM</p>
+            <a id="dMeetBtn" href="#" target="_blank" class="btn-meet">&#127918; Join Google Meet</a>
+          </div>
+          <p style="font-size:11px;color:var(--text-muted);text-align:center;">Problem? Call: <strong>8102441435</strong></p>
+        </div>
+
+        <!-- Schedule -->
+        <div class="dash-card">
+          <div class="dash-card-title">&#128197; Schedule</div>
+          <div style="display:flex;gap:12px;align-items:center;background:var(--bg);border:1px solid var(--border);border-radius:11px;padding:14px;">
+            <div style="width:42px;height:42px;border-radius:9px;background:var(--primary);color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="font-size:8px;font-weight:700;opacity:.85;">SUN</span>
+              <span style="font-size:16px;font-weight:800;font-family:'Poppins',sans-serif;line-height:1;">&#127775;</span>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:700;margin-bottom:2px;">Google &amp; AI Class</div>
+              <div style="font-size:12px;color:var(--text-muted);">Every Sunday | 11AM&ndash;2PM</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certificate -->
+        <div class="dash-card">
+          <div class="dash-card-title">&#127941; Certificate</div>
+          <div id="dCert" class="cert-placeholder">
+            <div style="font-size:32px;margin-bottom:8px;">&#9203;</div>
+            <div style="font-size:12px;color:var(--text-muted);">Course complete hone ke baad certificate milega.</div>
+          </div>
+        </div>
+
+        <!-- Attendance -->
+        <div class="dash-card">
+          <div class="dash-card-title">
+            &#128197; My Attendance
+            <button onclick="loadMyAttendance()">&#8635; Load</button>
+          </div>
+          <div class="att-stats">
+            <div class="att-stat" style="background:var(--green-light);">
+              <div class="att-stat-val" id="attPresent" style="color:var(--green);">0</div>
+              <div class="att-stat-lbl" style="color:rgba(52,168,83,.7);">Present</div>
+            </div>
+            <div class="att-stat" style="background:var(--red-light);">
+              <div class="att-stat-val" id="attAbsent" style="color:var(--red);">0</div>
+              <div class="att-stat-lbl" style="color:rgba(234,67,53,.7);">Absent</div>
+            </div>
+            <div class="att-stat" style="background:var(--blue-light);">
+              <div class="att-stat-val" id="attPct" style="color:var(--blue);">0%</div>
+              <div class="att-stat-lbl" style="color:rgba(66,133,244,.7);">Rate</div>
+            </div>
+          </div>
+          <div id="attList" style="font-size:13px;color:var(--text-muted);text-align:center;padding:14px;">
+            "Load" click karein attendance dekhne ke liye
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recordings & Notes - Full Width -->
+    <div class="dash-card" style="margin-top:0;">
+      <div class="dash-card-title">
+        &#127910; Class Recordings &amp; Notes
+        <button onclick="loadMyRecordings()">&#8635; Load</button>
+      </div>
+      <input type="text" id="recSearchBox" class="search-box" placeholder="&#128269; Class search karein..." oninput="filterMyRec(this.value)">
+      <div id="myRecList" style="text-align:center;color:var(--text-muted);padding:24px;">
+        "Load" click karein recordings dekhne ke liye &#127910;
+      </div>
+    </div>
+
+    <div class="dash-footer">
+      <p>HorizonTech Institute &nbsp;|&nbsp; Chandan Kumar: <a href="tel:8102441435">8102441435</a> &nbsp;|&nbsp; Roushan Sir: <a href="tel:9006242683">9006242683</a></p>
+      <p style="margin-top:4px;">Website Created by Chandan Kumar</p>
+    </div>
+  </div>
+</div><!-- /studentDash -->
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--                  JAVASCRIPT                    -->
+<!-- ═══════════════════════════════════════════════ -->
+<script>
+// ─── APPS SCRIPT URLs ───
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxId3-hP5GrEuu9AYylyo-USgn9lsNY-2qcy4s1hjm80dOFnmWkZXm5GKbvyi5GKsAE/exec';
+const LOGIN_URL  = 'https://script.google.com/macros/s/AKfycbxId3-hP5GrEuu9AYylyo-USgn9lsNY-2qcy4s1hjm80dOFnmWkZXm5GKbvyi5GKsAE/exec';
+const ATT_URL    = LOGIN_URL;
+
+// ===== EMAIL VIA GET (CORS fix) =====
+function sendEmailViaGet(to, subject, body) {
+  const url = LOGIN_URL
+    + '?action=sendEmail'
+    + '&to='      + encodeURIComponent(to)
+    + '&subject=' + encodeURIComponent(subject)
+    + '&body='    + encodeURIComponent(body);
+  return new Promise((resolve, reject) => {
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = url;
+    iframe.onload = () => { try{document.body.removeChild(iframe);}catch(e){} resolve({status:'success'}); };
+    iframe.onerror = () => { try{document.body.removeChild(iframe);}catch(e){} resolve({status:'success'}); };
+    document.body.appendChild(iframe);
+    setTimeout(() => { try{document.body.removeChild(iframe);}catch(e){} resolve({status:'success'}); }, 6000);
+  });
+}
+
+let currentStudentEmail  = '';
+let currentStudentCourse = '';
+let myRecordings         = [];
+
+const waBtn     = document.getElementById('waBtn');
+const waTooltip = document.getElementById('waTooltip');
+
+// ─── REGISTRATION FORM ───
+function submitReg() {
+  const n  = document.getElementById('rName').value.trim();
+  const m  = document.getElementById('rMobile').value.trim();
+  const e  = document.getElementById('rEmail').value.trim();
+  const c  = document.getElementById('rCity').value.trim();
+  const co = document.getElementById('rCourse').value;
+  const ed = document.getElementById('rEdu').value;
+  if (!n || !m || !e || !c || !co) { alert('Please sabhi * wale fields bharein!'); return; }
+  if (m.length !== 10 || isNaN(m)) { alert('Sahi 10 digit mobile number daalein!'); return; }
+  const btn = document.getElementById('regBtn');
+  btn.disabled = true; btn.textContent = '⏳ Please wait...';
+  fetch(SCRIPT_URL, {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name:n, mobile:m, email:e, city:c, course:co, education:ed, occupation:'Student' })
+  }).then(() => showRegSuccess()).catch(() => showRegSuccess());
+}
+
+function showRegSuccess() {
+  document.getElementById('formArea').style.display = 'none';
+  document.getElementById('successBox').style.display = 'block';
+}
+
+// ─── LOGIN MODAL ───
+function showLoginModal() {
+  document.getElementById('loginModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('sEmail').focus(), 100);
+}
+
+function hideLoginModal() {
+  document.getElementById('loginModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function doLogin() {
+  const email = document.getElementById('sEmail').value.trim().toLowerCase();
+  const pass  = document.getElementById('sPass').value.trim();
+  const btn   = document.getElementById('sLoginBtn');
+  const err   = document.getElementById('sErr');
+  if (!email || !pass) { err.style.display='block'; err.textContent='❌ Email aur Password dono daalein!'; return; }
+  btn.disabled = true; btn.textContent = '⏳ Checking...'; err.style.display = 'none';
+
+  fetch(`${LOGIN_URL}?action=login&email=${encodeURIComponent(email)}&password=${encodeURIComponent(pass)}`)
+    .then(r => r.json())
+    .then(data => {
+      if (data.status === 'success') {
+        sessionStorage.setItem('htS', JSON.stringify(data.student));
+        hideLoginModal();
+        showDash(data.student);
+      } else {
+        err.style.display = 'block'; err.textContent = '❌ Email ya Password galat hai!';
+        btn.disabled = false; btn.textContent = 'Login';
+      }
+    })
+    .catch(() => {
+      const d = getDemoStudent(email, pass);
+      if (d) { sessionStorage.setItem('htS', JSON.stringify(d)); hideLoginModal(); showDash(d); }
+      else { err.style.display='block'; err.textContent='❌ Email ya Password galat hai!'; btn.disabled=false; btn.textContent='Login'; }
+    });
+}
+
+function getDemoStudent(e, p) {
+  if (e === 'demo@gmail.com' && p === 'demo123') {
+    return { name:'Demo Student', email:'demo@gmail.com', course:'DCA + Google & AI', city:'Gaya, Bihar',
+      feeTotal:5000, feePaid:2000, feeDue:3000, mobile:'9876543210',
+      meetLink:'https://meet.google.com/ctq-wakw-oqx', certificate:'Pending',
+      status:'Active', nextClass:'Sunday, 25 May 2026 | 11:00 AM - 2:00 PM' };
+  }
+  return null;
+}
+
+// ─── STUDENT DASHBOARD ───
+function showDash(s) {
+  currentStudentEmail  = s.email;
+  currentStudentCourse = s.course;
+  document.getElementById('mainWebsite').style.display = 'none';
+  document.getElementById('studentDash').style.display  = 'block';
+  if (waBtn) waBtn.style.display     = 'none';
+  if (waTooltip) waTooltip.style.display = 'none';
+  window.scrollTo(0, 0);
+
+  const initials = s.name.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+  document.getElementById('dAvatar').textContent   = initials;
+  document.getElementById('dNavName').textContent  = s.name.split(' ')[0];
+  document.getElementById('dWelcome').textContent  = `Namaste, ${s.name.split(' ')[0]}! 👋`;
+  document.getElementById('dSubtitle').textContent = `${s.course} — HorizonTech Institute`;
+  document.getElementById('dStatCourse').textContent = s.course.split('+')[0].trim();
+
+  const paid  = Number(s.feePaid  || 0);
+  const due   = Number(s.feeDue   || 0);
+  const total = Number(s.feeTotal || 0);
+  const pct   = total > 0 ? Math.round((paid / total) * 100) : 0;
+
+  document.getElementById('dStatPaid').textContent = `₹${paid.toLocaleString('en-IN')}`;
+  document.getElementById('dStatDue').textContent  = `₹${due.toLocaleString('en-IN')}`;
+  document.getElementById('dStatCert').textContent = s.certificate || 'Pending';
+  document.getElementById('dFeeTotal').textContent = `₹${total.toLocaleString('en-IN')}`;
+  document.getElementById('dFeePaid').textContent  = `₹${paid.toLocaleString('en-IN')}`;
+  document.getElementById('dFeeDue').textContent   = `₹${due.toLocaleString('en-IN')}`;
+  document.getElementById('dFeePct').textContent   = `${pct}% Paid`;
+  setTimeout(() => { document.getElementById('dProgress').style.width = pct + '%'; }, 400);
+
+  const ml = document.getElementById('dMeetBtn');
+  ml.href  = s.meetLink || '#';
+  document.getElementById('dNextClass').textContent = s.nextClass || 'Sunday 11AM - 2PM';
+
+  document.getElementById('dPName').textContent   = s.name;
+  document.getElementById('dPEmail').textContent  = s.email;
+  document.getElementById('dPCourse').textContent = s.course;
+  document.getElementById('dPCity').textContent   = s.city || '—';
+
+  if (s.certificate === 'Issued') {
+    const certLink = s.certificateLink || '';
+    document.getElementById('dCert').innerHTML = `
+      <div style="text-align:center;padding:8px 0;">
+        <div style="font-size:40px;margin-bottom:10px;">🏆</div>
+        <div style="font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--green);margin-bottom:6px;">Certificate Ready hai!</div>
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Congratulations! Aapka certificate issue ho gaya hai.</p>
+        ${certLink
+          ? `<a href="${certLink}" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:11px 24px;background:linear-gradient(135deg,var(--green),#2a9144);color:white;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;">⬇️ Download Certificate</a>`
+          : `<button onclick="downloadCertificate()" style="display:inline-flex;align-items:center;gap:8px;padding:11px 24px;background:linear-gradient(135deg,var(--green),#2a9144);color:white;border-radius:10px;font-size:13px;font-weight:700;border:none;cursor:pointer;">⬇️ Download Certificate</button>`
+        }
+      </div>`;
+  }
+}
+
+function doLogout() {
+  sessionStorage.removeItem('htS');
+  document.getElementById('studentDash').style.display  = 'none';
+  document.getElementById('mainWebsite').style.display  = 'block';
+  if (waBtn) waBtn.style.display     = 'flex';
+  if (waTooltip) waTooltip.style.display = 'block';
+  window.scrollTo(0, 0);
+}
+
+// ─── ATTENDANCE ───
+function loadMyAttendance() {
+  if (!currentStudentEmail) return;
+  document.getElementById('attList').innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:14px;">⏳ Loading...</div>';
+
+  fetch(`${ATT_URL}?action=getAttendanceByEmail&email=${encodeURIComponent(currentStudentEmail)}`)
+    .then(r => r.json())
+    .then(d => {
+      const records = (d.records || []).reverse();
+      const present = records.filter(r => r.status === 'Present').length;
+      const absent  = records.filter(r => r.status === 'Absent').length;
+      const total   = records.length;
+      const pct     = total > 0 ? Math.round((present / total) * 100) : 0;
+      document.getElementById('attPresent').textContent = present;
+      document.getElementById('attAbsent').textContent  = absent;
+      document.getElementById('attPct').textContent     = pct + '%';
+      if (!records.length) {
+        document.getElementById('attList').innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:14px;">Abhi koi attendance record nahi hai 📅</div>';
+        return;
+      }
+      document.getElementById('attList').innerHTML = records.map(r => `
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);">
+          <span style="font-size:13px;font-weight:600;">${r.date}</span>
+          <span class="pill ${r.status==='Present'?'p-active':'p-inactive'}">${r.status==='Present'?'✅ Present':'❌ Absent'}</span>
+        </div>`).join('');
+    })
+    .catch(() => {
+      document.getElementById('attList').innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:14px;">Data load nahi ho saka. Baad me try karein.</div>';
+    });
+}
+
+// ─── RECORDINGS ───
+function loadMyRecordings() {
+  const course = currentStudentCourse || '';
+  document.getElementById('myRecList').innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:24px;">⏳ Loading...</div>';
+
+  fetch(`${ATT_URL}?action=getRecordings&course=${encodeURIComponent(course)}`)
+    .then(r => r.json())
+    .then(d => { myRecordings = d.records || []; renderMyRec(myRecordings); })
+    .catch(() => {
+      document.getElementById('myRecList').innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:24px;">Data load nahi ho saka. Baad me try karein.</div>';
+    });
+}
+
+function renderMyRec(arr) {
+  const el = document.getElementById('myRecList');
+  if (!arr.length) {
+    el.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:24px;">Abhi koi recording available nahi hai 🎥</div>';
+    return;
+  }
+  el.innerHTML = arr.map(r => `
+    <div class="rec-item">
+      <div class="rec-icon">🎥</div>
+      <div style="flex:1;">
+        <div class="rec-title">${r.title}</div>
+        <div class="rec-meta">
+          📅 ${r.date} &nbsp;|&nbsp;
+          <span class="pill p-blue" style="font-size:11px;">${r.course}</span>
+        </div>
+        <div class="rec-actions">
+          ${r.recordingLink ? `<a href="${r.recordingLink}" target="_blank" class="rec-btn rec-btn-watch">▶️ Watch Recording</a>` : ''}
+          ${r.notesLink     ? `<a href="${r.notesLink}"     target="_blank" class="rec-btn rec-btn-notes">📄 Download Notes</a>`  : ''}
+          ${!r.recordingLink && !r.notesLink ? '<span style="font-size:12px;color:var(--text-muted);">Coming soon...</span>' : ''}
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function filterMyRec(q) {
+  const ql = q.toLowerCase();
+  renderMyRec(myRecordings.filter(r =>
+    r.title.toLowerCase().includes(ql) || r.course.toLowerCase().includes(ql)
+  ));
+}
+
+// ─── CERTIFICATE DOWNLOAD ───
+function downloadCertificate() {
+  const saved = sessionStorage.getItem('htS');
+  if (!saved) return;
+  const s = JSON.parse(saved);
+  const today   = new Date();
+  const dateStr = today.toLocaleDateString('en-IN', {day:'numeric', month:'long', year:'numeric'});
+  const certNo  = 'HT-' + today.getFullYear() + '-' + String(s.mobile || '0000').slice(-4);
+
+  const certHTML = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Certificate — ${s.name}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Inter',sans-serif;background:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;}.cert{width:800px;height:580px;background:#fff;border:3px solid #1a1f36;position:relative;overflow:hidden;}.cert::before{content:'';position:absolute;inset:8px;border:1px solid rgba(21,101,192,.3);pointer-events:none;z-index:1;}.top-band{background:linear-gradient(135deg,#1565C0,#0D47A1,#1a237e);height:12px;}.watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-size:120px;font-weight:700;color:rgba(21,101,192,.04);pointer-events:none;user-select:none;white-space:nowrap;z-index:1;}.inner{padding:28px 60px 24px;text-align:center;position:relative;z-index:2;}.inst-name{font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#1565C0;margin-bottom:2px;}.inst-sub{font-size:10px;color:#8898aa;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;}.divider{display:flex;align-items:center;gap:12px;margin-bottom:16px;}.divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,#1565C0,transparent);}.divider-dot{width:6px;height:6px;border-radius:50%;background:#1565C0;}.cert-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#1a1f36;letter-spacing:2px;margin-bottom:6px;}.cert-sub{font-size:11px;color:#8898aa;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;}.presented-to{font-size:13px;color:#4a5568;margin-bottom:6px;}.student-name{font-family:'Playfair Display',serif;font-size:38px;font-weight:700;font-style:italic;color:#1a1f36;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid #1565C0;display:inline-block;}.course-text{font-size:13px;color:#4a5568;margin-top:10px;margin-bottom:4px;}.course-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#1565C0;margin-bottom:20px;}.bottom-row{display:flex;justify-content:space-between;align-items:flex-end;margin-top:16px;padding-top:16px;border-top:1px solid #e2e6ef;}.sign-block{text-align:center;}.sign-name{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:#1a1f36;margin-bottom:2px;}.sign-line{width:140px;height:1px;background:#1a1f36;margin:0 auto 6px;}.sign-role{font-size:10px;color:#8898aa;letter-spacing:1px;text-transform:uppercase;}.g-dots{display:flex;gap:6px;justify-content:center;margin-top:8px;}.g-dots span{width:8px;height:8px;border-radius:50%;}.cert-no{font-size:10px;color:#8898aa;letter-spacing:1px;}.cert-date{font-size:11px;color:#4a5568;font-weight:600;margin-top:2px;}.bottom-band{background:linear-gradient(135deg,#34A853,#4285F4,#EA4335,#FBBC04);height:8px;position:absolute;bottom:0;left:0;right:0;}@media print{body{padding:0;}.no-print{display:none;}}</style></head>
+  <body><div class="cert"><div class="top-band"></div><div class="watermark">HT</div>
+  <div class="inner">
+    <div class="inst-name">HorizonTech Institute</div>
+    <div class="inst-sub">Horizon Institute of Information Technology Pvt. Ltd. | ISO 9001:2015</div>
+    <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+    <div class="cert-title">CERTIFICATE</div><div class="cert-sub">of Completion</div>
+    <div class="presented-to">This is to certify that</div>
+    <div class="student-name">${s.name}</div>
+    <div class="course-text">has successfully completed the course</div>
+    <div class="course-name">${s.course}</div>
+    <div class="bottom-row">
+      <div class="sign-block"><div class="sign-name">Chandan Kumar</div><div class="sign-line"></div><div class="sign-role">Google & AI Expert</div></div>
+      <div style="text-align:center;"><div class="g-dots"><span style="background:#4285F4"></span><span style="background:#EA4335"></span><span style="background:#FBBC04"></span><span style="background:#34A853"></span></div><div class="cert-no">CERT NO: ${certNo}</div><div class="cert-date">Date: ${dateStr}</div></div>
+      <div class="sign-block"><div class="sign-name">Roushan Sir</div><div class="sign-line"></div><div class="sign-role">Founder, Horizon Institute</div></div>
+    </div>
+  </div><div class="bottom-band"></div></div>
+  <div class="no-print" style="position:fixed;bottom:24px;right:24px;"><button onclick="window.print()" style="background:#1565C0;color:white;border:none;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;">⬇️ Save as PDF</button></div>
+  <script>setTimeout(()=>window.print(),800);<\/script></body></html>`;
+
+  const win = window.open('', '_blank');
+  win.document.write(certHTML);
+  win.document.close();
+}
+
+// ─── NAVBAR ───
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.boxShadow =
+    window.scrollY > 20 ? '0 4px 24px rgba(21,101,192,.12)' : '0 2px 16px rgba(21,101,192,.08)';
+});
+
+function toggleMenu() {
+  const links = document.getElementById('navLinks');
+  if (links.style.display === 'flex' && links.getAttribute('data-mobile') === '1') {
+    links.style.display = 'none'; links.removeAttribute('data-mobile');
+  } else {
+    links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:white;padding:16px 24px;gap:4px;border-bottom:1px solid #E2E8F0;box-shadow:0 8px 24px rgba(0,0,0,.08);z-index:999;';
+    links.setAttribute('data-mobile','1');
+  }
+}
+
+// ─── WHATSAPP TOOLTIP ───
+if (waBtn) {
+  setTimeout(() => {
+    waTooltip.style.opacity = '1'; waTooltip.style.transform = 'translateX(0)';
+    setTimeout(() => { waTooltip.style.opacity='0'; waTooltip.style.transform='translateX(10px)'; }, 4000);
+  }, 3000);
+  waBtn.addEventListener('mouseover', () => { waTooltip.style.opacity='1'; waTooltip.style.transform='translateX(0)'; });
+  waBtn.addEventListener('mouseout',  () => { waTooltip.style.opacity='0'; waTooltip.style.transform='translateX(10px)'; });
+}
+
+// ─── SCROLL ANIMATIONS ───
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ─── AUTO LOGIN (session persist) ───
+window.addEventListener('load', () => {
+  const saved = sessionStorage.getItem('htS');
+  if (saved) showDash(JSON.parse(saved));
+});
+
+// ════════════════════════════════════════════════
+//              ADMIN PANEL JAVASCRIPT
+// ════════════════════════════════════════════════
+
+const ADMIN_EMAIL = 'ck603305@gmail.com';
+let admAllStudents = [];
+let admAllRecordings = [];
+let admAllAtt = [];
+
+// ─── ADMIN LOGIN MODAL ───
+function showAdminLogin() {
+  document.getElementById('adminLoginModal').style.display = 'flex';
+  setTimeout(() => document.getElementById('aEmail').focus(), 100);
+}
+function hideAdminLogin() {
+  document.getElementById('adminLoginModal').style.display = 'none';
+  document.getElementById('aErr').style.display = 'none';
+}
+
+function doAdminLogin() {
+  const email = document.getElementById('aEmail').value.trim();
+  const pass  = document.getElementById('aPass').value.trim();
+  const err   = document.getElementById('aErr');
+  err.style.display = 'none';
+  if (!email || !pass) { err.style.display='block'; err.textContent='Email aur password dono bharo.'; return; }
+
+  // Local check — Google Sheets pe depend nahi karta
+  const ADMIN_PASS = 'Plumber';
+  if (email.toLowerCase() === ADMIN_EMAIL.toLowerCase() && pass === ADMIN_PASS) {
+    sessionStorage.setItem('htAdmin', '1');
+    hideAdminLogin();
+    openAdminPanel();
+  } else {
+    err.style.display='block'; err.textContent='❌ Admin credentials galat hain!';
+  }
+}
+
+function openAdminPanel() {
+  document.getElementById('adminPanel').style.display = 'block';
+  document.getElementById('mainWebsite').style.display = 'none';
+  document.getElementById('studentDash').style.display = 'none';
+  if (waBtn) waBtn.style.display = 'none';
+  const d = new Date(); document.getElementById('attDate').valueAsDate = d;
+  document.getElementById('recDate').valueAsDate = d;
+  admLoadStudents();
+  admLoadRecordings();
+  admLoadAllAtt();
+}
+
+function doAdminLogout() {
+  sessionStorage.removeItem('htAdmin');
+  document.getElementById('adminPanel').style.display = 'none';
+  document.getElementById('mainWebsite').style.display = 'block';
+  if (waBtn) waBtn.style.display = 'flex';
+  window.scrollTo(0,0);
+}
+
+// ─── TABS ───
+function admTab(name, el) {
+  document.querySelectorAll('.adm-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.adm-section').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('admSec-' + name).classList.add('active');
+}
+
+// ─── LOAD STUDENTS ───
+function admLoadStudents() {
+  fetch(`${LOGIN_URL}?action=getStudents`)
+    .then(r => r.json())
+    .then(d => {
+      admAllStudents = d.students || [];
+      renderAdmStudents(admAllStudents);
+      populateAdmStats(admAllStudents);
+      populateMeetSelect(admAllStudents);
+      populateAttCourseFilter(admAllStudents);
+      renderAttMarkList(admAllStudents);
+    })
+    .catch(() => {
+      document.getElementById('admStuBody').innerHTML = '<tr><td colspan="8" class="adm-msg">Students load nahi ho sake. Baad me try karein.</td></tr>';
+    });
+}
+
+function populateAdmStats(students) {
+  const active = students.filter(s => s.status === 'Active').length;
+  const totalPaid = students.reduce((a,s) => a + (parseFloat(s.feePaid)||0), 0);
+  const totalDue  = students.reduce((a,s) => a + (parseFloat(s.feeDue)||0), 0);
+  document.getElementById('admTotalStu').textContent = students.length;
+  document.getElementById('admActiveStu').textContent = active;
+  document.getElementById('admFeeCollected').textContent = '₹' + totalPaid.toLocaleString('en-IN');
+  document.getElementById('admFeeDue').textContent = '₹' + totalDue.toLocaleString('en-IN');
+
+  const recent = [...students].reverse().slice(0,5);
+  document.getElementById('admRecentList').innerHTML = recent.length
+    ? `<div class="adm-table-wrap"><table class="adm-table"><thead><tr><th>Name</th><th>Course</th><th>Status</th><th>Fee Due</th></tr></thead><tbody>${
+        recent.map(s => `<tr><td><strong>${s.name||'—'}</strong><br><span style="font-size:11px;color:var(--text-muted);">${s.email||''}</span></td><td>${s.course||'—'}</td><td><span class="adm-badge ${s.status==='Active'?'adm-badge-green':s.status==='Completed'?'adm-badge-blue':'adm-badge-red'}">${s.status||'Active'}</span></td><td style="color:var(--red);font-weight:700;">₹${parseFloat(s.feeDue||0).toLocaleString('en-IN')}</td></tr>`).join('')
+      }</tbody></table></div>`
+    : '<div class="adm-msg">Koi students nahi.</div>';
+}
+
+function renderAdmStudents(arr) {
+  const tb = document.getElementById('admStuBody');
+  if (!arr.length) { tb.innerHTML = '<tr><td colspan="8" class="adm-msg">Koi student nahi mila.</td></tr>'; return; }
+  tb.innerHTML = arr.map(s => `
+    <tr>
+      <td><strong>${s.name||'—'}</strong><br><span style="font-size:11px;color:var(--text-muted);">${s.mobile||''}</span></td>
+      <td style="font-size:12px;">${s.email||'—'}</td>
+      <td>${s.course||'—'}</td>
+      <td>${s.city||'—'}</td>
+      <td style="color:var(--green);font-weight:700;">₹${parseFloat(s.feePaid||0).toLocaleString('en-IN')}</td>
+      <td style="color:var(--red);font-weight:700;">₹${parseFloat(s.feeDue||0).toLocaleString('en-IN')}</td>
+      <td><span class="adm-badge ${s.status==='Active'?'adm-badge-green':s.status==='Completed'?'adm-badge-blue':'adm-badge-red'}">${s.status||'Active'}</span></td>
+      <td>
+        <button class="adm-btn" style="background:#e6f4ea;color:#34A853;font-size:11px;padding:4px 8px;" onclick='openReceiveFee(${JSON.stringify(s)})'>💰 Fee</button>
+        <button class="adm-btn adm-btn-blue" onclick='openEditStudent(${JSON.stringify(s)})'>&#9998; Edit</button>
+        <button class="adm-btn adm-btn-red" onclick="deleteStudent('${s.row}','${(s.name||'').replace(/'/g,"\\'")}')">&#128465;</button>
+      </td>
+    </tr>`).join('');
+}
+
+function filterAdmStudents(q) {
+  const ql = q.toLowerCase();
+  renderAdmStudents(admAllStudents.filter(s =>
+    (s.name||'').toLowerCase().includes(ql) ||
+    (s.email||'').toLowerCase().includes(ql) ||
+    (s.mobile||'').includes(ql) ||
+    (s.course||'').toLowerCase().includes(ql) ||
+    (s.city||'').toLowerCase().includes(ql)
+  ));
+}
+
+// ─── RECEIVE FEE ───
+let feeCurrentStudent = null;
+
+function openReceiveFee(s) {
+  feeCurrentStudent = s;
+  const existing = document.getElementById('feeReceiveModal');
+  if(existing) existing.remove();
+
+  const modal = document.createElement('div');
+  modal.id = 'feeReceiveModal';
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
+  modal.innerHTML = `
+    <div style="background:white;border-radius:20px;padding:28px;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,0.2);position:relative;">
+      <button onclick="document.getElementById('feeReceiveModal').remove()" style="position:absolute;top:14px;right:14px;background:#f8faff;border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:15px;">✕</button>
+      <h3 style="font-family:'Poppins',sans-serif;font-size:17px;font-weight:700;margin-bottom:4px;">💰 Fee Receive Karein</h3>
+      <p style="font-size:13px;color:#5C6B8A;margin-bottom:18px;">${s.name} — ${s.course}</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;">
+        <div style="background:#e6f4ea;border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:10px;font-weight:700;color:rgba(52,168,83,0.7);margin-bottom:3px;">PAID</div>
+          <div style="font-size:20px;font-weight:800;color:#34A853;">₹${parseFloat(s.feePaid||0).toLocaleString('en-IN')}</div>
+        </div>
+        <div style="background:#fce8e6;border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:10px;font-weight:700;color:rgba(234,67,53,0.7);margin-bottom:3px;">DUE</div>
+          <div style="font-size:20px;font-weight:800;color:#EA4335;">₹${parseFloat(s.feeDue||0).toLocaleString('en-IN')}</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:12px;">
+        <label style="display:block;font-size:12px;font-weight:600;color:#5C6B8A;margin-bottom:5px;">Amount Received (₹) *</label>
+        <input type="number" id="feeRecAmt" placeholder="e.g. 500" min="1"
+          style="width:100%;padding:10px 14px;background:#f8faff;border:1.5px solid #E2E8F0;border-radius:9px;font-size:14px;outline:none;">
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block;font-size:12px;font-weight:600;color:#5C6B8A;margin-bottom:5px;">Payment Mode</label>
+        <select id="feeRecMode" style="width:100%;padding:10px 14px;background:#f8faff;border:1.5px solid #E2E8F0;border-radius:9px;font-size:14px;outline:none;">
+          <option>Cash</option><option>UPI</option><option>Bank Transfer</option><option>Other</option>
+        </select>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;padding:10px 14px;background:#e8f0fe;border-radius:9px;">
+        <input type="checkbox" id="sendFeeEmail" checked style="width:15px;height:15px;accent-color:#4285F4;">
+        <label for="sendFeeEmail" style="font-size:12px;color:#1565C0;font-weight:500;cursor:pointer;">Student ko email receipt bhejein</label>
+      </div>
+
+      <button onclick="saveFeeReceived()" id="feeRecBtn"
+        style="width:100%;padding:12px;background:linear-gradient(135deg,#34A853,#2a9144);color:white;border:none;border-radius:10px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(52,168,83,0.3);">
+        💰 Fee Add Karein
+      </button>
+      <div id="feeRecMsg" style="text-align:center;margin-top:10px;font-size:13px;"></div>
+    </div>`;
+  document.body.appendChild(modal);
+}
+
+function saveFeeReceived() {
+  const amt  = parseFloat(document.getElementById('feeRecAmt').value);
+  const mode = document.getElementById('feeRecMode').value;
+  const sendMail = document.getElementById('sendFeeEmail').checked;
+  const msg  = document.getElementById('feeRecMsg');
+  const btn  = document.getElementById('feeRecBtn');
+  const s    = feeCurrentStudent;
+
+  if(!amt || amt<=0) { msg.style.color='var(--red)'; msg.textContent='Sahi amount daalein!'; return; }
+
+  const newPaid = parseFloat(s.feePaid||0) + amt;
+  const newDue  = Math.max(0, parseFloat(s.feeTotal||0) - newPaid);
+
+  btn.disabled=true; btn.textContent='⏳ Saving...';
+
+  const payload = {
+    action:'updateStudent', row:parseInt(s.row||0),
+    email:s.email, password:'', name:s.name, mobile:s.mobile||'',
+    course:s.course, city:s.city||'',
+    feeTotal:s.feeTotal, feePaid:newPaid, feeDue:newDue,
+    meetLink:s.meetLink||'', certificate:s.certificate||'Pending',
+    status:s.status, nextClass:s.nextClass||'',
+    certificateLink:s.certificateLink||''
+  };
+
+  fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
+    .then(() => afterFeeReceived(s, amt, mode, newPaid, newDue, sendMail, msg, btn))
+    .catch(() => afterFeeReceived(s, amt, mode, newPaid, newDue, sendMail, msg, btn));
+}
+
+function afterFeeReceived(s, amt, mode, newPaid, newDue, sendMail, msg, btn) {
+  msg.style.color='var(--green)';
+  msg.textContent = `✅ ₹${amt.toLocaleString('en-IN')} fee add ho gayi!`;
+  btn.disabled=false; btn.textContent='💰 Fee Add Karein';
+
+  // Update local data
+  const idx = admAllStudents.findIndex(x=>x.email===s.email);
+  if(idx>=0){ admAllStudents[idx].feePaid=newPaid; admAllStudents[idx].feeDue=newDue; }
+  renderAdmStudents(admAllStudents);
+
+  // Send email receipt
+  if(sendMail) {
+    const subject = 'HorizonTech Institute — Fee Receipt';
+    const body = `Namaste ${s.name},\n\nAapki fee successfully receive ho gayi!\n\n✅ Amount Paid: Rs.${amt.toLocaleString('en-IN')} (${mode})\n💰 Total Paid So Far: Rs.${newPaid.toLocaleString('en-IN')}\n⏳ Remaining Due: Rs.${newDue.toLocaleString('en-IN')}\n\nCourse: ${s.course}\n\nDhanyavaad,\nChandan Kumar\nHorizonTech Institute\n📞 8102441435`;
+    sendEmailViaGet(s.email, subject, body)
+      .then(() => { msg.textContent = `✅ ₹${amt.toLocaleString('en-IN')} add ho gayi! Email bhi bheja 📧`; });
+  }
+
+  setTimeout(() => { document.getElementById('feeReceiveModal')?.remove(); admLoadStudents(); }, 2000);
+}
+
+// ─── ADD / EDIT STUDENT ───
+function openAddStudent() {
+  document.getElementById('addStuModalTitle').textContent = '👤 Add New Student';
+  document.getElementById('saveStuBtn').textContent = '💾 Save Student';
+  document.getElementById('stuSaveMsg').textContent = '';
+  document.getElementById('editStuEmail').value = '';
+  ['stuName','stuMobile','stuEmail','stuPass','stuCity','stuMeetLink'].forEach(id => document.getElementById(id).value='');
+  ['stuFeeTotal','stuFeePaid'].forEach(id => document.getElementById(id).value='');
+  document.getElementById('stuCourse').value='';
+  document.getElementById('stuStatus').value='Active';
+  document.getElementById('stuNextClass').value='Sunday 11AM - 2PM';
+  document.getElementById('addStuModal').style.display='flex';
+}
+
+function openEditStudent(s) {
+  document.getElementById('addStuModalTitle').textContent = '✏️ Edit Student: ' + (s.name||'');
+  document.getElementById('saveStuBtn').textContent = '💾 Update Student';
+  document.getElementById('stuSaveMsg').textContent = '';
+  document.getElementById('editStuEmail').value = s.email||'';
+  document.getElementById('editStuRow').value   = s.row||'';
+  document.getElementById('stuName').value    = s.name||'';
+  document.getElementById('stuMobile').value  = s.mobile||'';
+  document.getElementById('stuEmail').value   = s.email||'';
+  document.getElementById('stuPass').value    = s.password||'';
+  document.getElementById('stuCourse').value  = s.course||'';
+  document.getElementById('stuCity').value    = s.city||'';
+  document.getElementById('stuFeeTotal').value= s.feeTotal||'';
+  document.getElementById('stuFeePaid').value = s.feePaid||'';
+  document.getElementById('stuStatus').value  = s.status||'Active';
+  document.getElementById('stuNextClass').value=s.nextClass||'';
+  document.getElementById('stuMeetLink').value= s.meetLink||'';
+  document.getElementById('addStuModal').style.display='flex';
+}
+
+function closeAddStudent() {
+  document.getElementById('addStuModal').style.display='none';
+}
+
+function saveStudent() {
+  const btn  = document.getElementById('saveStuBtn');
+  const msg  = document.getElementById('stuSaveMsg');
+  const isEdit = !!document.getElementById('editStuEmail').value;
+  const name  = document.getElementById('stuName').value.trim();
+  const email = document.getElementById('stuEmail').value.trim();
+  const pass  = document.getElementById('stuPass').value.trim();
+  const course= document.getElementById('stuCourse').value;
+  if (!name||!email||!pass||!course) { msg.style.color='var(--red)'; msg.textContent='Saare * wale fields bharo.'; return; }
+
+  const feeTotal = parseFloat(document.getElementById('stuFeeTotal').value)||0;
+  const feePaid  = parseFloat(document.getElementById('stuFeePaid').value)||0;
+  const payload  = {
+    action:    isEdit ? 'updateStudent' : 'addStudent',
+    email, password:pass, name,
+    mobile:    document.getElementById('stuMobile').value.trim(),
+    course,
+    city:      document.getElementById('stuCity').value.trim(),
+    feeTotal, feePaid, feeDue: feeTotal - feePaid,
+    status:    document.getElementById('stuStatus').value,
+    nextClass: document.getElementById('stuNextClass').value.trim(),
+    meetLink:  document.getElementById('stuMeetLink').value.trim(),
+    markedBy: 'Admin'
+  };
+  if (isEdit) {
+    payload.row = parseInt(document.getElementById('editStuRow').value) || 0;
+    payload.certificateLink = admAllStudents.find(x=>x.email===email)?.certificateLink || '';
+    payload.certificate     = admAllStudents.find(x=>x.email===email)?.certificate || 'Pending';
+  }
+
+  btn.disabled=true; btn.textContent='Saving...'; msg.textContent='';
+  fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body: JSON.stringify(payload) })
+    .then(() => {
+      msg.style.color='var(--green)'; msg.textContent = isEdit ? '✅ Student updated!' : '✅ Student added!';
+      btn.disabled=false; btn.textContent=isEdit?'💾 Update Student':'💾 Save Student';
+      setTimeout(() => { closeAddStudent(); admLoadStudents(); }, 1500);
+    })
+    .catch(() => {
+      msg.style.color='var(--red)'; msg.textContent='Error! Try again.';
+      btn.disabled=false; btn.textContent=isEdit?'💾 Update Student':'💾 Save Student';
+    });
+}
+
+function deleteStudent(row, name) {
+  if (!confirm(`"${name}" ko delete karna chahte ho? Ye undo nahi hoga.`)) return;
+  fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body: JSON.stringify({ action:'deleteStudent', row: parseInt(row) }) })
+    .then(() => setTimeout(()=>admLoadStudents(), 1500))
+    .catch(() => alert('Delete failed. Try again.'));
+}
+
+// ─── REGISTRATIONS ───
+// Registrations come from the same Students sheet rows with no password yet
+// We'll show students who have no password set as "registrations"
+function admLoadRegs() {
+  fetch(`${SCRIPT_URL}?action=getRegistrations`)
+    .then(r => r.json())
+    .then(d => renderAdmRegs(d.registrations||[]))
+    .catch(() => {
+      // Fallback: show from students list those with no password
+      const regs = admAllStudents.filter(s => !s.password);
+      renderAdmRegs(regs);
+    });
+}
+
+function renderAdmRegs(arr) {
+  const tb = document.getElementById('admRegBody');
+  if (!arr.length) { tb.innerHTML='<tr><td colspan="8" class="adm-msg">Abhi koi new registration nahi.</td></tr>'; return; }
+  tb.innerHTML = arr.map(r=>`
+    <tr>
+      <td><strong>${r.name||r.rName||'—'}</strong></td>
+      <td>${r.mobile||r.rMobile||'—'}</td>
+      <td style="font-size:12px;">${r.email||r.rEmail||'—'}</td>
+      <td>${r.course||r.rCourse||'—'}</td>
+      <td>${r.city||r.rCity||'—'}</td>
+      <td>${r.education||r.rEdu||'—'}</td>
+      <td style="font-size:11px;">${r.date||r.timestamp||'—'}</td>
+      <td><button class="adm-btn adm-btn-green" onclick='promoteToStudent(${JSON.stringify(r)})'>+ Add as Student</button></td>
+    </tr>`).join('');
+}
+
+function promoteToStudent(r) {
+  openAddStudent();
+  document.getElementById('stuName').value   = r.name||r.rName||'';
+  document.getElementById('stuMobile').value = r.mobile||r.rMobile||'';
+  document.getElementById('stuEmail').value  = r.email||r.rEmail||'';
+  document.getElementById('stuCourse').value = r.course||r.rCourse||'';
+  document.getElementById('stuCity').value   = r.city||r.rCity||'';
+}
+
+// ─── ATTENDANCE ───
+function populateAttCourseFilter(students) {
+  const courses = [...new Set(students.map(s=>s.course).filter(Boolean))];
+  const sel = document.getElementById('attCourseFilter');
+  sel.innerHTML = '<option value="">All Courses</option>' + courses.map(c=>`<option>${c}</option>`).join('');
+}
+
+function filterAttStudents() {
+  const course = document.getElementById('attCourseFilter').value;
+  const filtered = course ? admAllStudents.filter(s=>s.course===course&&s.status==='Active') : admAllStudents.filter(s=>s.status==='Active');
+  renderAttMarkList(filtered);
+}
+
+function renderAttMarkList(students) {
+  const active = students.filter(s=>s.status==='Active');
+  const el = document.getElementById('attMarkList');
+  if (!active.length) { el.innerHTML='<div class="adm-msg">Koi active student nahi.</div>'; return; }
+  el.innerHTML = `<div style="display:flex;flex-direction:column;gap:8px;">${active.map(s=>`
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#f8faff;border-radius:10px;border:1.5px solid var(--border);">
+      <div>
+        <div style="font-weight:600;font-size:14px;">${s.name||'—'}</div>
+        <div style="font-size:12px;color:var(--text-muted);">${s.course||'—'} | ${s.email||''}</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:13px;font-weight:600;color:var(--green);">
+          <input type="radio" name="att_${s.email}" value="Present" checked style="accent-color:var(--green);"> Present
+        </label>
+        <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:13px;font-weight:600;color:var(--red);">
+          <input type="radio" name="att_${s.email}" value="Absent" style="accent-color:var(--red);"> Absent
+        </label>
+      </div>
+    </div>`).join('')}</div>`;
+}
+
+function markAllPresent() {
+  document.querySelectorAll('[name^="att_"]').forEach(r => { if(r.value==='Present') r.checked=true; });
+}
+function markAllAbsent() {
+  document.querySelectorAll('[name^="att_"]').forEach(r => { if(r.value==='Absent') r.checked=true; });
+}
+
+function submitAttendance() {
+  const date = document.getElementById('attDate').value;
+  if (!date) { alert('Date select karo!'); return; }
+  const course = document.getElementById('attCourseFilter').value;
+  const active = course ? admAllStudents.filter(s=>s.course===course&&s.status==='Active') : admAllStudents.filter(s=>s.status==='Active');
+  if (!active.length) { alert('Koi active student nahi!'); return; }
+
+  const records = active.map(s => {
+    const sel = document.querySelector(`[name="att_${s.email}"]:checked`);
+    return { email: s.email, name: s.name, course: s.course, status: sel ? sel.value : 'Present' };
+  });
+
+  const presentCount = records.filter(r=>r.status==='Present').length;
+  if (!confirm(`${date} ka attendance submit karna hai?\n✅ Present: ${presentCount}\n❌ Absent: ${records.length - presentCount}`)) return;
+
+  // Apps Script ek ek student ki entry expect karta hai — loop se bhejo
+  let sent = 0;
+  records.forEach(r => {
+    fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body: JSON.stringify({
+      action:'markAttendance', date,
+      email: r.email, name: r.name, course: r.course,
+      status: r.status, markedBy: 'Admin'
+    }) }).then(() => {
+      sent++;
+      if (sent === records.length) {
+        alert(`✅ Attendance saved!\nPresent: ${presentCount} | Absent: ${records.length - presentCount}`);
+        setTimeout(()=>admLoadAllAtt(), 2000);
+      }
+    }).catch(()=>{});
+  });
+}
+
+function admLoadAllAtt() {
+  fetch(`${LOGIN_URL}?action=getAllAttendance`)
+    .then(r => r.json())
+    .then(d => { admAllAtt = (d.records||[]).reverse(); renderAllAtt(admAllAtt); })
+    .catch(() => {});
+}
+
+function renderAllAtt(arr) {
+  const tb = document.getElementById('allAttBody');
+  if (!arr.length) { tb.innerHTML='<tr><td colspan="6" class="adm-msg">Koi attendance record nahi.</td></tr>'; return; }
+  tb.innerHTML = arr.slice(0,200).map(r=>`
+    <tr>
+      <td>${r.date||'—'}</td>
+      <td><strong>${r.name||'—'}</strong></td>
+      <td style="font-size:12px;">${r.email||'—'}</td>
+      <td>${r.course||'—'}</td>
+      <td><span class="adm-badge ${r.status==='Present'?'adm-badge-green':'adm-badge-red'}">${r.status==='Present'?'✅ Present':'❌ Absent'}</span></td>
+      <td style="font-size:12px;">${r.markedBy||'—'}</td>
+    </tr>`).join('');
+}
+
+function filterAllAtt(q) {
+  const ql = q.toLowerCase();
+  renderAllAtt(admAllAtt.filter(r=>(r.name||'').toLowerCase().includes(ql)||(r.date||'').includes(ql)||(r.email||'').toLowerCase().includes(ql)));
+}
+
+// ─── RECORDINGS ───
+function admLoadRecordings() {
+  fetch(`${LOGIN_URL}?action=getRecordings`)
+    .then(r => r.json())
+    .then(d => { admAllRecordings = (d.records||[]).reverse(); renderAdmRec(admAllRecordings); })
+    .catch(() => {});
+}
+
+function renderAdmRec(arr) {
+  const tb = document.getElementById('admRecBody');
+  if (!arr.length) { tb.innerHTML='<tr><td colspan="7" class="adm-msg">Koi recording nahi.</td></tr>'; return; }
+  tb.innerHTML = arr.map((r,i)=>`
+    <tr>
+      <td>${r.date||'—'}</td>
+      <td><strong>${r.title||'—'}</strong></td>
+      <td>${r.course||'All'}</td>
+      <td>${r.recordingLink?`<a href="${r.recordingLink}" target="_blank" class="adm-btn adm-btn-blue" style="text-decoration:none;">▶ Watch</a>`:'—'}</td>
+      <td>${r.notesLink?`<a href="${r.notesLink}" target="_blank" class="adm-btn adm-btn-green" style="text-decoration:none;">📄 Notes</a>`:'—'}</td>
+      <td style="font-size:12px;">${r.addedBy||'Admin'}</td>
+      <td><button class="adm-btn adm-btn-red" onclick="deleteRecording('${r.row}','${(r.title||'').replace(/'/g,"\\'")}')">🗑</button></td>
+    </tr>`).join('');
+}
+
+function filterAdmRec(q) {
+  const ql = q.toLowerCase();
+  const cf = document.getElementById('recFilterCourse').value;
+  let arr = admAllRecordings.filter(r=>(r.title||'').toLowerCase().includes(ql));
+  if (cf) arr = arr.filter(r=>r.course===cf);
+  renderAdmRec(arr);
+}
+function filterAdmRecCourse(c) {
+  let arr = c ? admAllRecordings.filter(r=>r.course===c) : admAllRecordings;
+  renderAdmRec(arr);
+}
+
+function addRecording() {
+  const title = document.getElementById('recTitle').value.trim();
+  const link  = document.getElementById('recLink').value.trim();
+  const msg   = document.getElementById('recMsg');
+  if (!title||!link) { msg.style.color='var(--red)'; msg.textContent='Title aur link dono required hain!'; return; }
+  const payload = {
+    action:'addRecording',
+    date:  document.getElementById('recDate').value,
+    title, recordingLink:link,
+    notesLink: document.getElementById('recNotesLink').value.trim(),
+    course:    document.getElementById('recCourse').value,
+    addedBy:'Admin'
+  };
+  fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body:JSON.stringify(payload) })
+    .then(() => {
+      msg.style.color='var(--green)'; msg.textContent='✅ Recording added!';
+      ['recTitle','recLink','recNotesLink'].forEach(id=>document.getElementById(id).value='');
+      setTimeout(() => { msg.textContent=''; admLoadRecordings(); }, 2000);
+    })
+    .catch(() => { msg.style.color='var(--red)'; msg.textContent='Error! Try again.'; });
+}
+
+function deleteRecording(row, title) {
+  if (!confirm(`"${title}" ko delete karna chahte ho?`)) return;
+  fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body:JSON.stringify({ action:'deleteRecording', row: parseInt(row) }) })
+    .then(() => setTimeout(()=>admLoadRecordings(), 1500))
+    .catch(() => alert('Delete failed.'));
+}
+
+// ─── BULK EMAIL ───
+function sendBulkEmail() {
+  const subject = document.getElementById('emailSubject').value.trim();
+  const body    = document.getElementById('emailBody').value.trim();
+  const toVal   = document.getElementById('emailTo').value;
+  const msg     = document.getElementById('emailMsg');
+  if (!subject||!body) { msg.style.color='var(--red)'; msg.textContent='Subject aur message required!'; return; }
+
+  const scriptTo = (toVal==='due') ? 'pending' : 'all';
+
+  let count;
+  if (toVal==='all' || toVal==='active') count = admAllStudents.filter(s=>s.status==='Active').length;
+  else count = admAllStudents.filter(s=>parseFloat(s.feeDue||0)>0).length;
+
+  if (!count) { msg.style.color='var(--red)'; msg.textContent='Koi recipient nahi mila!'; return; }
+  if (!confirm(`~${count} students ko email bhejoge?`)) return;
+
+  msg.style.color='var(--text-muted)'; msg.textContent='⏳ Sending...';
+
+  sendEmailViaGet(scriptTo, subject, body)
+    .then(() => { msg.style.color='var(--green)'; msg.textContent=`✅ Email send ho gaya! ${count} students ko.`; })
+    .catch(() => { msg.style.color='var(--red)'; msg.textContent='Error! Dobara try karein.'; });
+}
+
+// ─── MEET LINK & CERT ───
+function populateMeetSelect(students) {
+  // data-row aur data-meet dono store karo option me
+  const opts = students.map(s=>`<option value="${s.email}" data-row="${s.row||''}" data-meet="${s.meetLink||''}">${s.name||s.email} (${s.course||''})</option>`).join('');
+  ['meetStuSelect','certStuSelect'].forEach(id => document.getElementById(id).innerHTML = '<option value="">-- Select Student --</option>' + opts);
+  document.getElementById('meetStuSelect').addEventListener('change', function() {
+    const opt = this.selectedOptions[0];
+    document.getElementById('meetLinkInput').value = opt ? (opt.dataset.meet||'') : '';
+  });
+}
+
+function updateMeetLink() {
+  const sel  = document.getElementById('meetStuSelect');
+  const opt  = sel.selectedOptions[0];
+  const link = document.getElementById('meetLinkInput').value.trim();
+  const msg  = document.getElementById('meetMsg');
+  if (!sel.value) { msg.style.color='var(--red)'; msg.textContent='Student select karo!'; return; }
+  // Apps Script ko row, aur poora student data chahiye (baaki fields unchanged rakhne ke liye sheet se read hoge)
+  const s = admAllStudents.find(x=>x.email===sel.value) || {};
+  const payload = {
+    action:'updateStudent', row: parseInt(opt.dataset.row||s.row||0),
+    email:s.email, password:s.password||'', name:s.name||'', mobile:s.mobile||'',
+    course:s.course||'', city:s.city||'', feeTotal:s.feeTotal||0,
+    feePaid:s.feePaid||0, feeDue:s.feeDue||0, meetLink:link,
+    certificate:s.certificate||'', status:s.status||'Active',
+    nextClass:s.nextClass||'', certificateLink:s.certificateLink||''
+  };
+  fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body:JSON.stringify(payload) })
+    .then(() => { msg.style.color='var(--green)'; msg.textContent='✅ Meet link updated!'; setTimeout(()=>{ msg.textContent=''; admLoadStudents(); },2000); })
+    .catch(() => { msg.style.color='var(--red)'; msg.textContent='Error! Try again.'; });
+}
+
+function updateCertStatus() {
+  const sel    = document.getElementById('certStuSelect');
+  const opt    = sel.selectedOptions[0];
+  const status = document.getElementById('certStatus').value;
+  const link   = document.getElementById('certLink').value.trim();
+  const msg    = document.getElementById('certMsg');
+  if (!sel.value) { msg.style.color='var(--red)'; msg.textContent='Student select karo!'; return; }
+  const s = admAllStudents.find(x=>x.email===sel.value) || {};
+  const payload = {
+    action:'updateStudent', row: parseInt(opt.dataset.row||s.row||0),
+    email:s.email, password:s.password||'', name:s.name||'', mobile:s.mobile||'',
+    course:s.course||'', city:s.city||'', feeTotal:s.feeTotal||0,
+    feePaid:s.feePaid||0, feeDue:s.feeDue||0, meetLink:s.meetLink||'',
+    certificate:status, status:s.status||'Active',
+    nextClass:s.nextClass||'', certificateLink:link
+  };
+  fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body:JSON.stringify(payload) })
+    .then(() => { msg.style.color='var(--green)'; msg.textContent='✅ Certificate status updated!'; setTimeout(()=>{ msg.textContent=''; admLoadStudents(); },2000); })
+    .catch(() => { msg.style.color='var(--red)'; msg.textContent='Error! Try again.'; });
+}
+
+// ─── ADMIN TAB CLICK - LAZY LOAD ───
+document.querySelectorAll('.adm-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    const sec = this.getAttribute('onclick').match(/'(\w+)'/)?.[1];
+    if (sec === 'registrations') admLoadRegs();
+  });
+});
+</script>
+
+</body>
+</html>
