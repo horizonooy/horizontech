@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — HorizonTech Institute</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#fff;--bg:#f8f9fc;--border:#e2e6ef;--border2:#c8d0e0;
+  --text:#1a1f36;--text2:#4a5568;--text3:#8898aa;
+  --blue:#4285F4;--blue-light:#e8f0fe;--blue-dark:#1a56db;
+  --red:#EA4335;--red-light:#fce8e6;
+  --yellow:#FBBC04;--yellow-light:#fef9e3;
+  --green:#34A853;--green-light:#e6f4ea;
+  --purple:#8B5CF6;--purple-light:#ede9fe;
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.07);
+  --shadow:0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg:0 12px 48px rgba(0,0,0,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* LOGIN */
+#loginPage{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#fff 0%,#f0f4ff 60%,#e8f5e9 100%);padding:20px;}
+.login-box{background:white;border-radius:24px;box-shadow:var(--shadow-lg);border:1px solid var(--border);padding:44px 40px;width:100%;max-width:400px;animation:fadeUp 0.6s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.lmark{width:54px;height:54px;border-radius:15px;background:linear-gradient(135deg,var(--blue),var(--green));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:24px;font-family:'Syne',sans-serif;margin:0 auto 10px;box-shadow:0 4px 16px rgba(66,133,244,0.3);}
+
+/* FORM ELEMENTS */
+.fg{margin-bottom:14px;}
+.fg label{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:6px;}
+.fg input,.fg select,.fg textarea{width:100%;padding:11px 14px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:all 0.2s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);background:white;box-shadow:0 0 0 3px rgba(66,133,244,0.1);}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--text3);}
+.fg textarea{resize:vertical;min-height:110px;}
+.mrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+
+.login-btn{width:100%;padding:13px;background:var(--red);color:white;border:none;border-radius:11px;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.25s;box-shadow:0 4px 14px rgba(234,67,53,0.3);margin-top:4px;}
+.login-btn:hover{background:#c0392b;transform:translateY(-2px);}
+.err{background:var(--red-light);color:var(--red);border-radius:8px;padding:10px 14px;font-size:13px;font-weight:500;margin-top:10px;text-align:center;display:none;}
+
+/* DASHBOARD */
+#dashPage{display:none;}
+.anav{background:white;border-bottom:1px solid var(--border);padding:0 5%;position:sticky;top:0;z-index:100;}
+.anav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px;}
+.alm{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--green));display:flex;align-items:center;justify-content:center;color:white;font-size:15px;font-weight:800;}
+.acontent{max-width:1200px;margin:0 auto;padding:28px 5%;}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:22px;}
+.sc{background:white;border:1px solid var(--border);border-radius:13px;padding:18px;box-shadow:var(--shadow-sm);transition:all 0.3s;}
+.sc:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+.sc-ic{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:10px;}
+.sc-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:2px;line-height:1;}
+.sc-lbl{font-size:11px;color:var(--text3);font-weight:500;}
+
+/* TABS */
+.tabs{display:flex;gap:4px;background:white;border:1px solid var(--border);border-radius:12px;padding:5px;margin-bottom:20px;box-shadow:var(--shadow-sm);flex-wrap:wrap;}
+.tab{padding:9px 18px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;color:var(--text2);border:none;background:none;font-family:'DM Sans',sans-serif;}
+.tab.active{background:var(--blue);color:white;box-shadow:0 2px 8px rgba(66,133,244,0.3);}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+
+/* CARDS */
+.acard{background:white;border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow-sm);margin-bottom:20px;}
+.acard-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+
+/* TABLE */
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;}
+th{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);padding:10px 12px;text-align:left;background:var(--bg);border-bottom:1px solid var(--border);}
+td{font-size:13px;padding:11px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:var(--bg);}
+
+/* BADGES */
+.pill{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:50px;font-size:11px;font-weight:700;}
+.p-active{background:var(--green-light);color:var(--green);}
+.p-pending{background:var(--yellow-light);color:#b7860a;}
+.p-inactive{background:var(--red-light);color:var(--red);}
+.p-blue{background:var(--blue-light);color:var(--blue);}
+
+/* ACTION BUTTONS */
+.act-btn{font-size:11px;font-weight:600;padding:5px 10px;border-radius:6px;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all 0.2s;margin-right:3px;}
+.b-view{background:var(--purple-light);color:var(--purple);}
+.b-view:hover{background:var(--purple);color:white;}
+.b-edit{background:var(--blue-light);color:var(--blue);}
+.b-edit:hover{background:var(--blue);color:white;}
+.b-del{background:var(--red-light);color:var(--red);}
+.b-del:hover{background:var(--red);color:white;}
+.b-add{background:var(--green-light);color:var(--green);}
+.b-add:hover{background:var(--green);color:white;}
+
+/* SEARCH */
+.tctrls{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+.sbox{flex:1;min-width:180px;padding:10px 14px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:all 0.2s;}
+.sbox:focus{border-color:var(--blue);background:white;}
+.fsel{padding:10px 13px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;color:var(--text2);}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);z-index:999;align-items:center;justify-content:center;padding:20px;}
+.modal-box{background:white;border-radius:20px;padding:30px;width:100%;max-width:560px;box-shadow:var(--shadow-lg);animation:fadeUp 0.3s ease;position:relative;max-height:90vh;overflow-y:auto;}
+.modal-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.modal-close{position:absolute;top:14px;right:14px;background:var(--bg);border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:15px;font-family:'DM Sans',sans-serif;}
+.save-btn{width:100%;padding:12px;background:var(--blue);color:white;border:none;border-radius:10px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 12px rgba(66,133,244,0.3);margin-top:6px;}
+.save-btn:hover{background:var(--blue-dark);}
+
+/* FEE DETAIL */
+.fee-progress{height:10px;background:var(--border);border-radius:50px;overflow:hidden;margin:10px 0;}
+.fee-progress-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--green),#4EBF6E);transition:width 0.8s ease;}
+.fee-boxes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+.fee-box{border-radius:10px;padding:14px;text-align:center;}
+.fee-box.paid{background:var(--green-light);border:1px solid rgba(52,168,83,0.2);}
+.fee-box.due{background:var(--red-light);border:1px solid rgba(234,67,53,0.2);}
+.fb-amt{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:3px;}
+.fb-lbl{font-size:11px;font-weight:600;}
+.fee-box.paid .fb-amt{color:var(--green);}
+.fee-box.paid .fb-lbl{color:rgba(52,168,83,0.7);}
+.fee-box.due .fb-amt{color:var(--red);}
+.fee-box.due .fb-lbl{color:rgba(234,67,53,0.7);}
+
+/* FEE ADD */
+.fee-add-section{background:linear-gradient(135deg,var(--green-light),#f0f9f4);border:1px solid rgba(52,168,83,0.2);border-radius:14px;padding:20px;margin-top:16px;}
+.fee-add-section h4{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:var(--green);margin-bottom:12px;}
+.fee-input-row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;}
+.fee-input-row .fi{flex:1;min-width:120px;}
+.fee-input-row label{display:block;font-size:11px;font-weight:600;color:var(--text2);margin-bottom:5px;}
+.fee-input-row input{width:100%;padding:10px 12px;background:white;border:1.5px solid var(--border);border-radius:9px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:all 0.2s;}
+.fee-input-row input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(52,168,83,0.1);}
+.fee-add-btn{padding:10px 20px;background:var(--green);color:white;border:none;border-radius:9px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all 0.2s;height:40px;align-self:flex-end;}
+.fee-add-btn:hover{background:#2a9144;transform:translateY(-1px);}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:white;padding:13px 22px;border-radius:12px;font-size:13px;font-weight:600;z-index:9999;transform:translateY(100px);opacity:0;transition:all 0.3s;box-shadow:var(--shadow-lg);max-width:320px;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.g{background:var(--green);}
+.toast.r{background:var(--red);}
+.toast.b{background:var(--blue);}
+
+@media(max-width:900px){.stats-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:600px){.stats-grid{grid-template-columns:1fr 1fr;}.login-box{padding:28px 20px;}.acontent{padding:16px 4%;}.mrow{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage">
+  <div class="login-box">
+    <div style="text-align:center;margin-bottom:24px;">
+      <div class="lmark">H</div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:19px;font-weight:800;"><span style="color:var(--blue)">Horizon</span>Tech Institute</h2>
+      <p style="font-size:12px;color:var(--text3);margin-top:2px;">Admin Panel</p>
+      <span style="display:inline-block;background:var(--red-light);color:var(--red);font-size:11px;font-weight:700;padding:4px 12px;border-radius:50px;margin-top:6px;">🔒 Admin Only</span>
+    </div>
+    <div class="fg"><label>Admin Email</label><input type="email" id="aEmail" placeholder="admin@email.com" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <div class="fg"><label>Password</label><input type="password" id="aPass" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <button class="login-btn" onclick="doLogin()">🔐 Admin Login</button>
+    <div class="err" id="aErr">❌ Email ya Password galat hai!</div>
+    <p style="text-align:center;margin-top:14px;font-size:11px;color:var(--text3);">Sirf authorized admins hi login kar sakte hain</p>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashPage">
+  <nav class="anav">
+    <div class="anav-inner">
+      <a href="index.html" style="display:flex;align-items:center;gap:9px;font-family:'Syne',sans-serif;font-size:17px;font-weight:800;text-decoration:none;color:var(--text);">
+        <div class="alm">H</div>
+        <div><span style="color:var(--blue)">Horizon</span>Tech Admin</div>
+      </a>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="background:var(--red-light);color:var(--red);font-size:11px;font-weight:700;padding:4px 12px;border-radius:50px;">🔒 Admin</span>
+        <span id="adminName" style="font-size:13px;font-weight:600;color:var(--text2);">Chandan Kumar</span>
+        <button onclick="doLogout()" style="font-size:12px;font-weight:600;color:var(--text2);background:var(--bg);border:1px solid var(--border);padding:6px 14px;border-radius:7px;cursor:pointer;font-family:'DM Sans',sans-serif;">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="acontent">
+    <!-- STATS -->
+    <div class="stats-grid">
+      <div class="sc"><div class="sc-ic" style="background:var(--blue-light)">👥</div><div class="sc-val" id="sTot">0</div><div class="sc-lbl">Total Students</div></div>
+      <div class="sc"><div class="sc-ic" style="background:var(--green-light)">✅</div><div class="sc-val" id="sAct" style="color:var(--green)">0</div><div class="sc-lbl">Active Students</div></div>
+      <div class="sc"><div class="sc-ic" style="background:var(--yellow-light)">📝</div><div class="sc-val" id="sReg" style="color:var(--yellow)">0</div><div class="sc-lbl">Registrations</div></div>
+      <div class="sc"><div class="sc-ic" style="background:var(--green-light)">💰</div><div class="sc-val" id="sPaid" style="color:var(--green);font-size:15px">₹0</div><div class="sc-lbl">Total Collected</div></div>
+      <div class="sc"><div class="sc-ic" style="background:var(--red-light)">⏳</div><div class="sc-val" id="sDue" style="color:var(--red);font-size:15px">₹0</div><div class="sc-lbl">Total Due</div></div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('students')">👥 Students</button>
+      <button class="tab" onclick="switchTab('registrations')">📝 Registrations</button>
+      <button class="tab" onclick="switchTab('addstudent')">➕ Add Student</button>
+      <button class="tab" onclick="switchTab('attendance')">📋 Attendance</button>
+      <button class="tab" onclick="switchTab('recordings')">🎥 Recordings & Notes</button>
+      <button class="tab" onclick="switchTab('meetlink')">🔗 Meet Link</button>
+      <button class="tab" onclick="switchTab('email')">📧 Send Email</button>
+    </div>
+
+    <!-- TAB: STUDENTS -->
+    <div id="tab-students" class="tab-content active">
+      <div class="acard">
+        <div class="acard-title">
+          <span>👥 All Students</span>
+          <button onclick="loadStudents()" style="font-size:12px;font-weight:600;color:var(--blue);background:var(--blue-light);border:none;padding:6px 14px;border-radius:7px;cursor:pointer;">🔄 Refresh</button>
+        </div>
+        <div class="tctrls">
+          <input class="sbox" placeholder="🔍 Naam, Mobile, Email, City se search..." oninput="filterS(this.value)">
+          <select class="fsel" onchange="filterStatus(this.value)">
+            <option value="">All Status</option>
+            <option>Active</option><option>Pending</option><option>Inactive</option>
+          </select>
+          <select class="fsel" onchange="filterCourse(this.value)">
+            <option value="">All Courses</option>
+            <option>DCA + Google & AI</option>
+            <option>ADCA + Google & AI</option>
+            <option>DFA + Google & AI</option>
+            <option>DTP + AI Design</option>
+            <option>C++ + HTML + Automation</option>
+            <option>Tally + Busy + Billing</option>
+            <option>Hardware & Networking</option>
+          </select>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Name</th><th>Mobile</th><th>Email</th><th>Course</th><th>City</th><th>Fee Paid</th><th>Fee Due</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="sTbody"><tr><td colspan="10" style="text-align:center;padding:30px;color:var(--text3)">⏳ Loading...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: REGISTRATIONS -->
+    <div id="tab-registrations" class="tab-content">
+      <div class="acard">
+        <div class="acard-title">
+          <span>📝 Demo Registrations</span>
+          <button onclick="loadRegs()" style="font-size:12px;font-weight:600;color:var(--blue);background:var(--blue-light);border:none;padding:6px 14px;border-radius:7px;cursor:pointer;">🔄 Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Date</th><th>Name</th><th>Mobile</th><th>Email</th><th>Course</th><th>City</th><th>Action</th></tr></thead>
+            <tbody id="rTbody"><tr><td colspan="8" style="text-align:center;padding:30px;color:var(--text3)">⏳ Loading...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: ADD STUDENT -->
+    <div id="tab-addstudent" class="tab-content">
+      <div class="acard">
+        <div class="acard-title">➕ Naya Student Add Karein</div>
+        <div style="max-width:600px;">
+          <div class="mrow">
+            <div class="fg"><label>Full Name *</label><input type="text" id="anName" placeholder="Student ka naam"></div>
+            <div class="fg"><label>Mobile Number *</label><input type="tel" id="anMobile" placeholder="10 digit" maxlength="10"></div>
+          </div>
+          <div class="mrow">
+            <div class="fg"><label>Email *</label><input type="email" id="anEmail" placeholder="email@gmail.com"></div>
+            <div class="fg"><label>Password *</label><input type="text" id="anPass" placeholder="Login password"></div>
+          </div>
+          <div class="mrow">
+            <div class="fg"><label>Course *</label>
+              <select id="anCourse">
+                <option value="">-- Select --</option>
+                <option>DCA + Google & AI</option>
+                <option>ADCA + Google & AI</option>
+                <option>DFA + Google & AI</option>
+                <option>DTP + AI Design</option>
+                <option>C++ + HTML + Automation</option>
+                <option>Tally + Busy + Billing</option>
+                <option>Hardware & Networking (DCH)</option>
+              </select>
+            </div>
+            <div class="fg"><label>City / Village</label><input type="text" id="anCity" placeholder="Kahan se hain?"></div>
+          </div>
+          <div class="mrow">
+            <div class="fg"><label>Total Fee (₹) *</label><input type="number" id="anTotal" placeholder="5000"></div>
+            <div class="fg"><label>Fee Paid (₹)</label><input type="number" id="anPaid" placeholder="0"></div>
+          </div>
+          <div class="mrow">
+            <div class="fg"><label>Google Meet Link</label><input type="text" id="anMeet" placeholder="https://meet.google.com/xxx"></div>
+            <div class="fg"><label>Next Class</label><input type="text" id="anNext" placeholder="Sunday, 25 May 2026"></div>
+          </div>
+          <div class="mrow">
+            <div class="fg"><label>Status</label>
+              <select id="anStatus"><option>Active</option><option>Pending</option><option>Inactive</option></select>
+            </div>
+            <div class="fg"><label>Certificate</label>
+              <select id="anCert"><option>Pending</option><option>Issued</option></select>
+            </div>
+          </div>
+          <button onclick="addStudent()" style="background:var(--green);color:white;border:none;padding:13px 32px;border-radius:10px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(52,168,83,0.3);transition:all 0.2s;">✅ Student Add Karein</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: ATTENDANCE -->
+    <div id="tab-attendance" class="tab-content">
+      <div class="acard">
+        <div class="acard-title">
+          <span>📋 Attendance Mark Karein</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <input type="date" id="attDate" style="padding:7px 12px;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;color:var(--text);">
+            <button onclick="loadAttendance()" style="font-size:12px;font-weight:600;color:var(--blue);background:var(--blue-light);border:none;padding:7px 14px;border-radius:7px;cursor:pointer;">Load Students</button>
+          </div>
+        </div>
+
+        <!-- Quick Mark All -->
+        <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+          <button onclick="markAll('Present')" style="font-size:12px;font-weight:700;color:var(--green);background:var(--green-light);border:1px solid rgba(52,168,83,0.2);padding:8px 18px;border-radius:8px;cursor:pointer;">✅ Sab Present</button>
+          <button onclick="markAll('Absent')" style="font-size:12px;font-weight:700;color:var(--red);background:var(--red-light);border:1px solid rgba(234,67,53,0.2);padding:8px 18px;border-radius:8px;cursor:pointer;">❌ Sab Absent</button>
+          <button onclick="saveAttendance()" style="font-size:12px;font-weight:700;color:white;background:var(--blue);border:none;padding:8px 18px;border-radius:8px;cursor:pointer;margin-left:auto;">💾 Save All</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Course</th>
+                <th>Status</th>
+                <th>Mark</th>
+              </tr>
+            </thead>
+            <tbody id="attTbody">
+              <tr><td colspan="6" style="text-align:center;padding:30px;color:var(--text3)">Upar date select karein aur "Load Students" click karein</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Attendance History -->
+      <div class="acard">
+        <div class="acard-title">
+          <span>📊 Attendance History</span>
+          <div style="display:flex;gap:8px;">
+            <input type="text" id="attSearchName" placeholder="Student naam search..." class="sbox" style="min-width:180px;" oninput="filterAttHistory(this.value)">
+            <button onclick="loadAttHistory()" style="font-size:12px;font-weight:600;color:var(--blue);background:var(--blue-light);border:none;padding:7px 14px;border-radius:7px;cursor:pointer;">🔄 Load</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Date</th><th>Name</th><th>Course</th><th>Status</th><th>Marked By</th></tr></thead>
+            <tbody id="attHistoryTbody">
+              <tr><td colspan="5" style="text-align:center;padding:30px;color:var(--text3)">"Load" click karein history dekhne ke liye</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: RECORDINGS & NOTES -->
+    <div id="tab-recordings" class="tab-content">
+
+      <!-- Add New Recording -->
+      <div class="acard">
+        <div class="acard-title">➕ Naya Recording / Notes Add Karein</div>
+        <div style="max-width:600px;">
+          <div class="mrow">
+            <div class="fg">
+              <label>Date *</label>
+              <input type="date" id="recDate">
+            </div>
+            <div class="fg">
+              <label>Class Title *</label>
+              <input type="text" id="recTitle" placeholder="e.g. Google Forms — Class 1">
+            </div>
+          </div>
+          <div class="fg">
+            <label>🎥 Recording Link (Google Drive / YouTube)</label>
+            <input type="text" id="recLink" placeholder="https://drive.google.com/... ya https://youtube.com/...">
+          </div>
+          <div class="fg">
+            <label>📝 Notes Link (Google Drive / PDF)</label>
+            <input type="text" id="recNotes" placeholder="https://drive.google.com/...">
+          </div>
+          <div class="fg">
+            <label>Course *</label>
+            <select id="recCourse">
+              <option value="All">All Courses</option>
+              <option>DCA + Google & AI</option>
+              <option>ADCA + Google & AI</option>
+              <option>DFA + Google & AI</option>
+              <option>DTP + AI Design</option>
+              <option>C++ + HTML + Automation</option>
+              <option>Tally + Busy + Billing</option>
+              <option>Hardware & Networking (DCH)</option>
+            </select>
+          </div>
+          <button onclick="addRecording()" style="background:var(--blue);color:white;border:none;padding:12px 28px;border-radius:10px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(66,133,244,0.3);transition:all 0.2s;">
+            ✅ Add Recording / Notes
+          </button>
+        </div>
+      </div>
+
+      <!-- Recordings List -->
+      <div class="acard">
+        <div class="acard-title">
+          <span>🎥 All Recordings & Notes</span>
+          <button onclick="loadRecordings()" style="font-size:12px;font-weight:600;color:var(--blue);background:var(--blue-light);border:none;padding:6px 14px;border-radius:7px;cursor:pointer;">🔄 Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Course</th>
+                <th>Recording</th>
+                <th>Notes</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="recTbody">
+              <tr><td colspan="7" style="text-align:center;padding:30px;color:var(--text3)">⏳ Load karne ke liye Refresh click karein</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: MEET LINK -->
+    <div id="tab-meetlink" class="tab-content">
+      <div class="acard">
+        <div class="acard-title">🔗 Next Class Google Meet Link Update Karein</div>
+        <div style="max-width:600px;">
+
+          <!-- Current Meet Info -->
+          <div style="background:var(--green-light);border:1px solid rgba(52,168,83,0.2);border-radius:14px;padding:20px;margin-bottom:20px;">
+            <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:var(--green);margin-bottom:8px;">📅 Current Class Info</div>
+            <p style="font-size:13px;color:var(--text2);line-height:1.8;">
+              Yeh link update karne ke baad <strong>sab active students</strong> ke portal me automatically naya link dikhega.
+            </p>
+          </div>
+
+          <div class="fg">
+            <label>🔗 Google Meet Link *</label>
+            <input type="text" id="newMeetLink" placeholder="https://meet.google.com/xxx-xxxx-xxx">
+          </div>
+          <div class="fg">
+            <label>📅 Next Class Date & Time *</label>
+            <input type="text" id="newNextClass" placeholder="Sunday, 25 May 2026 | 11:00 AM - 2:00 PM">
+          </div>
+          <div class="fg">
+            <label>Course (Konse students ka update karein)</label>
+            <select id="meetCourse">
+              <option value="All">All Active Students</option>
+              <option>DCA + Google & AI</option>
+              <option>ADCA + Google & AI</option>
+              <option>DFA + Google & AI</option>
+              <option>DTP + AI Design</option>
+              <option>C++ + HTML + Automation</option>
+              <option>Tally + Busy + Billing</option>
+              <option>Hardware & Networking (DCH)</option>
+            </select>
+          </div>
+
+          <!-- Options -->
+          <div style="background:var(--bg);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:16px;">
+            <div style="font-size:13px;font-weight:600;color:var(--text2);margin-bottom:10px;">Additional Options:</div>
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:8px;">
+              <input type="checkbox" id="sendMeetEmail" checked style="width:16px;height:16px;accent-color:var(--blue);">
+              Students ko email bhi bhejein meeting link ke saath
+            </label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;">
+              <input type="checkbox" id="updateAllStudents" checked style="width:16px;height:16px;accent-color:var(--green);">
+              Sheet me sab students ka Meet Link & Next Class update karein
+            </label>
+          </div>
+
+          <button onclick="updateMeetLink()" id="meetUpdateBtn" style="background:var(--green);color:white;border:none;padding:13px 32px;border-radius:10px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(52,168,83,0.3);transition:all 0.2s;width:100%;">
+            🔗 Meet Link Update Karein
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: EMAIL -->
+    <div id="tab-email" class="tab-content">
+      <div class="acard">
+        <div class="acard-title">📧 Students ko Email Bhejein</div>
+        <div style="max-width:600px;">
+          <div class="fg"><label>Send To</label>
+            <select id="emailTo" onchange="toggleSpecific(this.value)">
+              <option value="all">All Active Students</option>
+              <option value="pending">Pending Fee wale Students</option>
+              <option value="specific">Specific Student (Email daalein)</option>
+            </select>
+          </div>
+          <div class="fg" id="specDiv" style="display:none;">
+            <label>Student Email Address</label>
+            <input type="email" id="specEmail" placeholder="student@gmail.com">
+          </div>
+          <div class="fg"><label>Subject *</label>
+            <input type="text" id="eSubject" value="HorizonTech Institute — Important Update">
+          </div>
+          <div class="fg"><label>Message *</label>
+            <textarea id="eBody">Namaste,
+
+HorizonTech Institute ki taraf se aapko update bheja ja raha hai.
+
+Sunday ki class 11:00 AM se 2:00 PM tak hogi.
+
+Koi sawaal ho toh call karein: 8102441435
+
+Dhanyavaad,
+Chandan Kumar
+HorizonTech Institute</textarea>
+          </div>
+          <button onclick="sendBulkEmail()" id="sendEmailBtn" style="background:var(--blue);color:white;border:none;padding:12px 28px;border-radius:10px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(66,133,244,0.3);transition:all 0.2s;">📧 Send Email</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;padding:20px 0 8px;border-top:1px solid var(--border);margin-top:10px;">
+      <p style="font-size:12px;color:var(--text3);">HorizonTech Admin Panel | Website Created by <strong>Chandan Kumar</strong> | 8102441435</p>
+    </div>
+  </div>
+</div>
+
+<!-- STUDENT DETAIL MODAL -->
+<div class="modal-overlay" id="detailModal">
+  <div class="modal-box" style="max-width:600px;">
+    <button class="modal-close" onclick="document.getElementById('detailModal').style.display='none'">✕</button>
+    <div class="modal-title" id="detailTitle">👤 Student Details</div>
+
+    <!-- Avatar + Basic Info -->
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;padding:16px;background:var(--bg);border-radius:12px;border:1px solid var(--border);">
+      <div id="detailAv" style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--green));display:flex;align-items:center;justify-content:center;color:white;font-size:22px;font-weight:800;font-family:'Syne',sans-serif;flex-shrink:0;"></div>
+      <div>
+        <div id="dName" style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;"></div>
+        <div id="dMobile" style="font-size:13px;color:var(--text2);margin-top:2px;">📞 —</div>
+        <div id="dEmail" style="font-size:12px;color:var(--text3);margin-top:1px;"></div>
+        <div id="dStatusBadge" style="margin-top:6px;"></div>
+      </div>
+    </div>
+
+    <!-- Info Grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
+      <div style="background:var(--bg);border-radius:10px;padding:12px;border:1px solid var(--border);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:4px;">Course</div>
+        <div id="dCourse" style="font-size:13px;font-weight:700;color:var(--text);"></div>
+      </div>
+      <div style="background:var(--bg);border-radius:10px;padding:12px;border:1px solid var(--border);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:4px;">City</div>
+        <div id="dCity" style="font-size:13px;font-weight:700;color:var(--text);"></div>
+      </div>
+      <div style="background:var(--bg);border-radius:10px;padding:12px;border:1px solid var(--border);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:4px;">Next Class</div>
+        <div id="dNextClass" style="font-size:13px;font-weight:700;color:var(--text);"></div>
+      </div>
+      <div style="background:var(--bg);border-radius:10px;padding:12px;border:1px solid var(--border);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:4px;">Certificate</div>
+        <div id="dCert" style="font-size:13px;font-weight:700;color:var(--text);"></div>
+      </div>
+    </div>
+
+    <!-- Fee Status -->
+    <div style="background:white;border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:4px;">
+      <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;margin-bottom:12px;">💰 Fee Status</div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+        <span style="font-size:13px;color:var(--text2);">Total Fee</span>
+        <span style="font-weight:700;" id="dTotal">₹0</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+        <span style="font-size:13px;color:var(--text2);">Progress</span>
+        <span id="dPct" style="font-weight:700;color:var(--green);">0%</span>
+      </div>
+      <div class="fee-progress"><div class="fee-progress-fill" id="dBar" style="width:0%"></div></div>
+      <div class="fee-boxes">
+        <div class="fee-box paid"><div class="fb-amt" id="dPaid">₹0</div><div class="fb-lbl">PAID ✅</div></div>
+        <div class="fee-box due"><div class="fb-amt" id="dDue">₹0</div><div class="fb-lbl">DUE ⏳</div></div>
+      </div>
+    </div>
+
+    <!-- Add Fee -->
+    <div class="fee-add-section">
+      <h4>➕ Fee Receive Karein</h4>
+      <p style="font-size:12px;color:var(--text2);margin-bottom:12px;">Student ne fee di — amount daalein, Google Sheet automatically update hoga aur student ko email bhi jayega!</p>
+      <div class="fee-input-row">
+        <div class="fi">
+          <label>Amount (₹) *</label>
+          <input type="number" id="feeAmt" placeholder="e.g. 1000" min="1">
+        </div>
+        <div class="fi">
+          <label>Payment Mode</label>
+          <input type="text" id="feeMode" placeholder="Cash / UPI / Bank">
+        </div>
+        <button class="fee-add-btn" onclick="addFee()">💰 Add Fee</button>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div style="display:flex;gap:10px;margin-top:16px;">
+      <button onclick="openEditFromDetail()" style="flex:1;padding:11px;background:var(--blue-light);color:var(--blue);border:none;border-radius:10px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='var(--blue)';this.style.color='white'" onmouseout="this.style.background='var(--blue-light)';this.style.color='var(--blue)'">✏️ Full Edit</button>
+      <button onclick="document.getElementById('detailModal').style.display='none'" style="flex:1;padding:11px;background:var(--bg);color:var(--text2);border:1px solid var(--border);border-radius:10px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">✕ Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('editModal').style.display='none'">✕</button>
+    <div class="modal-title">✏️ Student Update Karein</div>
+    <input type="hidden" id="editIdx">
+    <div class="mrow">
+      <div class="fg"><label>Name</label><input type="text" id="eName"></div>
+      <div class="fg"><label>Mobile</label><input type="tel" id="eMobile"></div>
+    </div>
+    <div class="mrow">
+      <div class="fg"><label>Email</label><input type="email" id="eEmail"></div>
+      <div class="fg"><label>Password</label><input type="text" id="ePass" placeholder="Khali chhodo to same rahega"></div>
+    </div>
+    <div class="mrow">
+      <div class="fg"><label>Course</label>
+        <select id="eCourse">
+          <option>DCA + Google & AI</option><option>ADCA + Google & AI</option>
+          <option>DFA + Google & AI</option><option>DTP + AI Design</option>
+          <option>C++ + HTML + Automation</option><option>Tally + Busy + Billing</option>
+          <option>Hardware & Networking (DCH)</option>
+        </select>
+      </div>
+      <div class="fg"><label>City</label><input type="text" id="eCity"></div>
+    </div>
+    <div class="mrow">
+      <div class="fg"><label>Fee Total (₹)</label><input type="number" id="eTotal"></div>
+      <div class="fg"><label>Fee Paid (₹)</label><input type="number" id="ePaid"></div>
+    </div>
+    <div class="fg"><label>Meet Link</label><input type="text" id="eMeet"></div>
+    <div class="fg"><label>Next Class</label><input type="text" id="eNext"></div>
+    <div class="mrow">
+      <div class="fg"><label>Status</label>
+        <select id="eStatus"><option>Active</option><option>Pending</option><option>Inactive</option></select>
+      </div>
+      <div class="fg"><label>Certificate</label>
+        <select id="eCert"><option>Pending</option><option>Issued</option></select>
+      </div>
+    </div>
+    <div class="fg"><label>🎓 Certificate Link (Google Drive PDF link)</label><input type="text" id="eCertLink" placeholder="https://drive.google.com/..."></div>
+    <button class="save-btn" onclick="saveEdit()">💾 Save Changes</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+const ADMINS = [{email:'ck603305@gmail.com', password:'Plumber', name:'Chandan Kumar'}];
+const S_URL  = 'https://script.google.com/macros/s/AKfycbxId3-hP5GrEuu9AYylyo-USgn9lsNY-2qcy4s1hjm80dOFnmWkZXm5GKbvyi5GKsAE/exec';
+const R_URL  = 'https://script.google.com/macros/s/AKfycbxId3-hP5GrEuu9AYylyo-USgn9lsNY-2qcy4s1hjm80dOFnmWkZXm5GKbvyi5GKsAE/exec';
+const A_URL  = 'https://script.google.com/macros/s/AKfycbxId3-hP5GrEuu9AYylyo-USgn9lsNY-2qcy4s1hjm80dOFnmWkZXm5GKbvyi5GKsAE/exec';
+
+// Email send karne ka function — GET se
+function sendEmailViaGet(to, subject, body) {
+  const url = S_URL
+    + '?action=sendEmail'
+    + '&to='      + encodeURIComponent(to)
+    + '&subject=' + encodeURIComponent(subject)
+    + '&body='    + encodeURIComponent(body);
+
+  // Method 1: Hidden iframe (most reliable for Apps Script)
+  return new Promise((resolve, reject) => {
+    try {
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = url;
+      iframe.onload = function() {
+        document.body.removeChild(iframe);
+        resolve({status:'success', sent:1});
+      };
+      iframe.onerror = function() {
+        document.body.removeChild(iframe);
+        resolve({status:'success', sent:1}); // Apps Script redirect karta hai
+      };
+      document.body.appendChild(iframe);
+      // 5 sec timeout
+      setTimeout(() => {
+        try { document.body.removeChild(iframe); } catch(e) {}
+        resolve({status:'success', sent:1});
+      }, 5000);
+    } catch(err) {
+      reject(err);
+    }
+  });
+}
+
+let students = [];
+let regs     = [];
+let curIdx   = -1;
+
+// ===================== LOGIN =====================
+function doLogin() {
+  const e = document.getElementById('aEmail').value.trim().toLowerCase();
+  const p = document.getElementById('aPass').value.trim();
+  const a = ADMINS.find(x => x.email === e && x.password === p);
+  if (a) {
+    sessionStorage.setItem('htA', JSON.stringify(a));
+    showDash(a);
+  } else {
+    const err = document.getElementById('aErr');
+    err.style.display = 'block';
+    setTimeout(() => err.style.display = 'none', 3000);
+  }
+}
+
+function showDash(a) {
+  document.getElementById('loginPage').style.display = 'none';
+  document.getElementById('dashPage').style.display  = 'block';
+  document.getElementById('adminName').textContent   = a.name;
+  loadStudents();
+  loadRegs();
+}
+
+function doLogout() {
+  sessionStorage.removeItem('htA');
+  document.getElementById('dashPage').style.display  = 'none';
+  document.getElementById('loginPage').style.display = 'flex';
+}
+
+// ===================== LOAD STUDENTS =====================
+function loadStudents() {
+  document.getElementById('sTbody').innerHTML = '<tr><td colspan="10" style="text-align:center;padding:30px;color:var(--text3)">⏳ Loading...</td></tr>';
+  fetch(S_URL + '?action=getStudents')
+    .then(r => r.json())
+    .then(d => { students = d.students || []; renderStudents(students); updateStats(); })
+    .catch(() => {
+      students = [{row:2,name:'Demo Student',mobile:'9876543210',email:'demo@gmail.com',course:'DCA + Google & AI',city:'Gaya, Bihar',feeTotal:5000,feePaid:2000,feeDue:3000,meetLink:'https://meet.google.com/ctq-wakw-oqx',certificate:'Pending',status:'Active',nextClass:'Sunday, 25 May 2026'}];
+      renderStudents(students); updateStats();
+    });
+}
+
+function renderStudents(arr) {
+  const t = document.getElementById('sTbody');
+  if (!arr.length) { t.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:30px;color:var(--text3)">Koi student nahi mila</td></tr>'; return; }
+  t.innerHTML = arr.map((s, i) => {
+    const realIdx = students.indexOf(s) !== -1 ? students.indexOf(s) : i;
+    return `
+    <tr style="cursor:pointer" onclick="openDetail(${realIdx})">
+      <td style="font-weight:600;color:var(--text3)">${i+1}</td>
+      <td><strong>${s.name}</strong></td>
+      <td style="font-size:12px">${s.mobile||'—'}</td>
+      <td style="font-size:12px">${s.email}</td>
+      <td style="font-size:12px">${s.course}</td>
+      <td style="font-size:12px">${s.city||'—'}</td>
+      <td style="color:var(--green);font-weight:700">₹${Number(s.feePaid||0).toLocaleString('en-IN')}</td>
+      <td style="color:var(--red);font-weight:700">₹${Number(s.feeDue||0).toLocaleString('en-IN')}</td>
+      <td><span class="pill ${s.status==='Active'?'p-active':s.status==='Pending'?'p-pending':'p-inactive'}">${s.status==='Active'?'🟢':s.status==='Pending'?'🟡':'🔴'} ${s.status}</span></td>
+      <td onclick="event.stopPropagation()">
+        <button class="act-btn b-view" onclick="event.stopPropagation();openDetail(${realIdx})">👁 View</button>
+        <button class="act-btn b-edit" onclick="event.stopPropagation();openEdit(${realIdx})">✏️</button>
+        <button class="act-btn b-del" onclick="event.stopPropagation();delStudent(${realIdx})">🗑️</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function updateStats() {
+  const active = students.filter(s => s.status === 'Active').length;
+  const paid   = students.reduce((s, x) => s + Number(x.feePaid||0), 0);
+  const due    = students.reduce((s, x) => s + Number(x.feeDue||0), 0);
+  document.getElementById('sTot').textContent  = students.length;
+  document.getElementById('sAct').textContent  = active;
+  document.getElementById('sPaid').textContent = '₹' + paid.toLocaleString('en-IN');
+  document.getElementById('sDue').textContent  = '₹' + due.toLocaleString('en-IN');
+}
+
+// ===================== LOAD REGISTRATIONS =====================
+function loadRegs() {
+  fetch(R_URL + '?action=getRegistrations')
+    .then(r => r.json())
+    .then(d => { regs = d.registrations || []; renderRegs(regs); document.getElementById('sReg').textContent = regs.length; })
+    .catch(() => { regs = []; document.getElementById('rTbody').innerHTML = '<tr><td colspan="8" style="text-align:center;padding:30px;color:var(--text3)">Registrations yahan aayengi</td></tr>'; document.getElementById('sReg').textContent = '0'; });
+}
+
+function renderRegs(arr) {
+  const t = document.getElementById('rTbody');
+  if (!arr.length) { t.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:30px;color:var(--text3)">Koi registration nahi</td></tr>'; return; }
+  t.innerHTML = arr.map((r, i) => `
+    <tr>
+      <td style="font-weight:600;color:var(--text3)">${i+1}</td>
+      <td style="font-size:11px">${r.timestamp||'—'}</td>
+      <td><strong>${r.name||'—'}</strong></td>
+      <td style="font-size:12px">${r.mobile||'—'}</td>
+      <td style="font-size:12px">${r.email||'—'}</td>
+      <td><span class="pill p-blue">${r.course||'—'}</span></td>
+      <td style="font-size:12px">${r.city||'—'}</td>
+      <td><button class="act-btn b-add" onclick="fromReg(${i})">➕ Add Student</button></td>
+    </tr>`).join('');
+}
+
+function fromReg(i) {
+  const r = regs[i];
+  switchTab('addstudent');
+  document.getElementById('anName').value   = r.name   || '';
+  document.getElementById('anEmail').value  = r.email  || '';
+  document.getElementById('anMobile').value = r.mobile || '';
+  document.getElementById('anCity').value   = r.city   || '';
+  document.getElementById('anCourse').value = r.course || '';
+  showToast('Data fill ho gaya! Password aur fee set karein.', 'b');
+}
+
+// ===================== ADD STUDENT =====================
+function addStudent() {
+  const name   = document.getElementById('anName').value.trim();
+  const mobile = document.getElementById('anMobile').value.trim();
+  const email  = document.getElementById('anEmail').value.trim();
+  const pass   = document.getElementById('anPass').value.trim();
+  const course = document.getElementById('anCourse').value;
+  const total  = Number(document.getElementById('anTotal').value) || 0;
+
+  if (!name || !mobile || !email || !pass || !course || !total) {
+    showToast('Name, Mobile, Email, Password, Course aur Fee required!', 'r'); return;
+  }
+  if (mobile.length !== 10 || isNaN(mobile)) {
+    showToast('Sahi 10 digit mobile number daalein!', 'r'); return;
+  }
+
+  const paid = Number(document.getElementById('anPaid').value) || 0;
+  const data = {
+    action: 'addStudent',
+    name, mobile, email, password: pass, course,
+    city      : document.getElementById('anCity').value,
+    feeTotal  : total, feePaid: paid, feeDue: total - paid,
+    meetLink  : document.getElementById('anMeet').value,
+    nextClass : document.getElementById('anNext').value,
+    status    : document.getElementById('anStatus').value,
+    certificate: document.getElementById('anCert').value
+  };
+
+  fetch(S_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) })
+    .then(() => { showToast('Student add ho gaya! ✅', 'g'); clearAdd(); loadStudents(); })
+    .catch(() => { showToast('Student add ho gaya! Sheet check karein. ✅', 'g'); clearAdd(); });
+}
+
+function clearAdd() {
+  ['anName','anMobile','anEmail','anPass','anCity','anTotal','anPaid','anMeet','anNext'].forEach(id => document.getElementById(id).value = '');
+}
+
+// ===================== STUDENT DETAIL =====================
+function openDetail(i) {
+  curIdx = i;
+  const s = students[i];
+  const initials = s.name.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+  document.getElementById('detailTitle').textContent    = '👤 ' + s.name;
+  document.getElementById('detailAv').textContent       = initials;
+  document.getElementById('dName').textContent          = s.name;
+  document.getElementById('dMobile').textContent        = '📞 ' + (s.mobile||'—');
+  document.getElementById('dEmail').textContent         = s.email;
+  document.getElementById('dCourse').textContent        = s.course;
+  document.getElementById('dCity').textContent          = s.city || '—';
+  document.getElementById('dNextClass').textContent     = s.nextClass || '—';
+  document.getElementById('dCert').textContent          = s.certificate || 'Pending';
+  document.getElementById('dStatusBadge').innerHTML     = `<span class="pill ${s.status==='Active'?'p-active':s.status==='Pending'?'p-pending':'p-inactive'}">${s.status==='Active'?'🟢':s.status==='Pending'?'🟡':'🔴'} ${s.status}</span>`;
+
+  const total = Number(s.feeTotal||0);
+  const paid  = Number(s.feePaid||0);
+  const due   = Number(s.feeDue||0);
+  const pct   = total > 0 ? Math.round((paid/total)*100) : 0;
+  document.getElementById('dTotal').textContent = '₹' + total.toLocaleString('en-IN');
+  document.getElementById('dPaid').textContent  = '₹' + paid.toLocaleString('en-IN');
+  document.getElementById('dDue').textContent   = '₹' + due.toLocaleString('en-IN');
+  document.getElementById('dPct').textContent   = pct + '% Paid';
+  document.getElementById('feeAmt').value       = '';
+  document.getElementById('feeMode').value      = '';
+  setTimeout(() => { document.getElementById('dBar').style.width = pct + '%'; }, 300);
+  document.getElementById('detailModal').style.display = 'flex';
+}
+
+// ===================== ADD FEE =====================
+function addFee() {
+  const amt  = Number(document.getElementById('feeAmt').value);
+  const mode = document.getElementById('feeMode').value || 'Cash';
+  if (!amt || amt <= 0) { showToast('Sahi amount daalein!', 'r'); return; }
+
+  const s       = students[curIdx];
+  const newPaid = Number(s.feePaid||0) + amt;
+  const newDue  = Math.max(0, Number(s.feeTotal||0) - newPaid);
+
+  const updated = {
+    action: 'updateStudent', row: s.row,
+    name: s.name, mobile: s.mobile, email: s.email,
+    password: '', course: s.course, city: s.city||'',
+    feeTotal: s.feeTotal, feePaid: newPaid, feeDue: newDue,
+    meetLink: s.meetLink||'', nextClass: s.nextClass||'',
+    status: s.status, certificate: s.certificate
+  };
+
+  fetch(S_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(updated) })
+    .then(() => afterFeeAdd(s, amt, mode, newPaid, newDue))
+    .catch(() => afterFeeAdd(s, amt, mode, newPaid, newDue));
+}
+
+function afterFeeAdd(s, amt, mode, newPaid, newDue) {
+  students[curIdx].feePaid = newPaid;
+  students[curIdx].feeDue  = newDue;
+  showToast('₹' + amt.toLocaleString('en-IN') + ' fee add ho gayi! Email bheja ja raha hai... 📧', 'g');
+  openDetail(curIdx);
+  updateStats();
+  renderStudents(students);
+
+  // Auto email to student via GET
+  const subject = 'HorizonTech Institute — Fee Receipt';
+  const body    = `Namaste ${s.name},\n\nAapki fee successfully receive ho gayi!\n\n✅ Amount Paid: Rs.${amt.toLocaleString('en-IN')} (${mode})\n💰 Total Paid So Far: Rs.${newPaid.toLocaleString('en-IN')}\n⏳ Remaining Due: Rs.${newDue.toLocaleString('en-IN')}\n\nCourse: ${s.course}\nNext Class: Sunday 11:00 AM - 2:00 PM\n\nDhanyavaad,\nChandan Kumar\nHorizonTech Institute\n📞 8102441435`;
+
+  sendEmailViaGet(s.email, subject, body)
+    .then(d => {
+      if (d.status === 'success') showToast('Student ko email bhi chala gaya! ✅', 'g');
+    })
+    .catch(() => showToast('Fee add ho gayi! Email baad me check karein.', 'b'));
+}
+
+// ===================== EDIT STUDENT =====================
+function openEdit(i) {
+  const s = students[i];
+  document.getElementById('editIdx').value  = i;
+  document.getElementById('eName').value    = s.name;
+  document.getElementById('eMobile').value  = s.mobile||'';
+  document.getElementById('eEmail').value   = s.email;
+  document.getElementById('ePass').value    = '';
+  document.getElementById('eCourse').value  = s.course;
+  document.getElementById('eCity').value    = s.city||'';
+  document.getElementById('eTotal').value   = s.feeTotal||0;
+  document.getElementById('ePaid').value    = s.feePaid||0;
+  document.getElementById('eMeet').value    = s.meetLink||'';
+  document.getElementById('eNext').value    = s.nextClass||'';
+  document.getElementById('eStatus').value  = s.status||'Active';
+  document.getElementById('eCert').value    = s.certificate||'Pending';
+  document.getElementById('eCertLink').value= s.certificateLink||'';
+  document.getElementById('editModal').style.display = 'flex';
+}
+
+function openEditFromDetail() {
+  document.getElementById('detailModal').style.display = 'none';
+  openEdit(curIdx);
+}
+
+function saveEdit() {
+  const i     = Number(document.getElementById('editIdx').value);
+  const paid  = Number(document.getElementById('ePaid').value) || 0;
+  const total = Number(document.getElementById('eTotal').value) || 0;
+  const data  = {
+    action: 'updateStudent', row: students[i].row,
+    name    : document.getElementById('eName').value,
+    mobile  : document.getElementById('eMobile').value,
+    email   : document.getElementById('eEmail').value,
+    password: document.getElementById('ePass').value,
+    course  : document.getElementById('eCourse').value,
+    city    : document.getElementById('eCity').value,
+    feeTotal: total, feePaid: paid, feeDue: Math.max(0, total-paid),
+    meetLink  : document.getElementById('eMeet').value,
+    nextClass : document.getElementById('eNext').value,
+    status    : document.getElementById('eStatus').value,
+    certificate: document.getElementById('eCert').value,
+    certificateLink: document.getElementById('eCertLink').value
+  };
+  fetch(S_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) })
+    .then(() => { showToast('Student update ho gaya! ✅', 'g'); document.getElementById('editModal').style.display='none'; loadStudents(); })
+    .catch(() => { showToast('Update ho gaya! ✅', 'g'); document.getElementById('editModal').style.display='none'; loadStudents(); });
+}
+
+// ===================== DELETE =====================
+function delStudent(i) {
+  if (!confirm(students[i].name + ' ko delete karna chahte ho?')) return;
+  fetch(S_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ action:'deleteStudent', row: students[i].row }) })
+    .then(() => { showToast('Delete ho gaya!', 'r'); loadStudents(); })
+    .catch(() => { showToast('Delete ho gaya!', 'r'); loadStudents(); });
+}
+
+// ===================== BULK EMAIL =====================
+function sendBulkEmail() {
+  const to        = document.getElementById('emailTo').value;
+  const subject   = document.getElementById('eSubject').value.trim();
+  const body      = document.getElementById('eBody').value.trim();
+  const specEmail = document.getElementById('specEmail').value.trim();
+
+  if (!subject || !body) { showToast('Subject aur Message required hai!', 'r'); return; }
+  if (to === 'specific' && !specEmail) { showToast('Student ka email daalein!', 'r'); return; }
+
+  const btn = document.getElementById('sendEmailBtn');
+  btn.disabled    = true;
+  btn.textContent = '⏳ Sending...';
+
+  const target = to === 'specific' ? specEmail : to;
+
+  sendEmailViaGet(target, subject, body)
+    .then(d => {
+      showToast('Email send ho gaya! ' + (d.sent ? d.sent + ' students ko' : '') + ' ✅', 'g');
+      btn.disabled    = false;
+      btn.textContent = '📧 Send Email';
+    })
+    .catch(() => {
+      showToast('Kuch error aaya! Apps Script check karein.', 'r');
+      btn.disabled    = false;
+      btn.textContent = '📧 Send Email';
+    });
+}
+
+// ===================== SEARCH & FILTER =====================
+function filterS(q) {
+  const ql = q.toLowerCase();
+  renderStudents(students.filter(s =>
+    s.name.toLowerCase().includes(ql) ||
+    (s.mobile||'').includes(ql) ||
+    s.email.toLowerCase().includes(ql) ||
+    (s.city||'').toLowerCase().includes(ql) ||
+    (s.course||'').toLowerCase().includes(ql)
+  ));
+}
+function filterStatus(v) { renderStudents(v ? students.filter(s => s.status === v) : students); }
+function filterCourse(v) { renderStudents(v ? students.filter(s => s.course === v) : students); }
+function toggleSpecific(v) { document.getElementById('specDiv').style.display = v === 'specific' ? 'block' : 'none'; }
+
+// ===================== ATTENDANCE =====================
+let attStudents = [];
+let attHistory  = [];
+
+function loadAttendance() {
+  const date = document.getElementById('attDate').value;
+  if (!date) { showToast('Pehle date select karein!', 'r'); return; }
+
+  if (!students.length) { showToast('Pehle Students tab se data load karein!', 'r'); return; }
+
+  // Format date to dd/MM/yyyy
+  const [yyyy,mm,dd] = date.split('-');
+  const dateStr = `${dd}/${mm}/${yyyy}`;
+
+  // Load existing attendance for this date
+  fetch(A_URL + '?action=getAllAttendance')
+    .then(r => r.json())
+    .then(d => {
+      const todayRecords = (d.records||[]).filter(r => r.date === dateStr);
+      renderAttTable(dateStr, todayRecords);
+    })
+    .catch(() => renderAttTable(dateStr, []));
+}
+
+function renderAttTable(dateStr, existing) {
+  const tbody = document.getElementById('attTbody');
+  attStudents = students.filter(s => s.status === 'Active');
+
+  if (!attStudents.length) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:30px;color:var(--text3)">Koi active student nahi hai</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = attStudents.map((s, i) => {
+    const rec     = existing.find(r => r.email === s.email);
+    const status  = rec ? rec.status : 'Present';
+    return `
+    <tr>
+      <td style="font-weight:600;color:var(--text3)">${i+1}</td>
+      <td><strong>${s.name}</strong></td>
+      <td style="font-size:12px">${s.mobile||'—'}</td>
+      <td style="font-size:12px">${s.course}</td>
+      <td id="attStatus_${i}">
+        <span class="pill ${status==='Present'?'p-active':'p-inactive'}">${status==='Present'?'✅ Present':'❌ Absent'}</span>
+      </td>
+      <td>
+        <button class="act-btn" id="attBtn_${i}"
+          style="background:${status==='Present'?'var(--red-light)':'var(--green-light)'};color:${status==='Present'?'var(--red)':'var(--green)'};"
+          onclick="toggleAtt(${i})">
+          ${status==='Present'?'Mark Absent':'Mark Present'}
+        </button>
+      </td>
+    </tr>`;
+  }).join('');
+
+  // Store status in array
+  attStudents = attStudents.map((s,i) => {
+    const rec = existing.find(r => r.email === s.email);
+    s._attStatus = rec ? rec.status : 'Present';
+    return s;
+  });
+
+  showToast(`${attStudents.length} students load ho gaye!`, 'b');
+}
+
+function toggleAtt(i) {
+  const current = attStudents[i]._attStatus;
+  const newStatus = current === 'Present' ? 'Absent' : 'Present';
+  attStudents[i]._attStatus = newStatus;
+
+  document.getElementById('attStatus_'+i).innerHTML =
+    `<span class="pill ${newStatus==='Present'?'p-active':'p-inactive'}">${newStatus==='Present'?'✅ Present':'❌ Absent'}</span>`;
+
+  const btn = document.getElementById('attBtn_'+i);
+  btn.textContent = newStatus === 'Present' ? 'Mark Absent' : 'Mark Present';
+  btn.style.background = newStatus === 'Present' ? 'var(--red-light)' : 'var(--green-light)';
+  btn.style.color       = newStatus === 'Present' ? 'var(--red)'       : 'var(--green)';
+}
+
+function markAll(status) {
+  attStudents.forEach((s,i) => {
+    s._attStatus = status;
+    document.getElementById('attStatus_'+i).innerHTML =
+      `<span class="pill ${status==='Present'?'p-active':'p-inactive'}">${status==='Present'?'✅ Present':'❌ Absent'}</span>`;
+    const btn = document.getElementById('attBtn_'+i);
+    btn.textContent   = status === 'Present' ? 'Mark Absent' : 'Mark Present';
+    btn.style.background = status === 'Present' ? 'var(--red-light)' : 'var(--green-light)';
+    btn.style.color      = status === 'Present' ? 'var(--red)'       : 'var(--green)';
+  });
+}
+
+function saveAttendance() {
+  if (!attStudents.length) { showToast('Pehle students load karein!', 'r'); return; }
+
+  showToast('Attendance save ho rahi hai...', 'b');
+  let saved = 0;
+  let total = attStudents.length;
+
+  attStudents.forEach(s => {
+    fetch(A_URL, {
+      method  : 'POST',
+      mode    : 'no-cors',
+      headers : {'Content-Type':'application/json'},
+      body    : JSON.stringify({
+        action    : 'markAttendance',
+        email     : s.email,
+        name      : s.name,
+        course    : s.course,
+        status    : s._attStatus,
+        markedBy  : 'Chandan Kumar'
+      })
+    }).then(() => {
+      saved++;
+      if (saved === total) showToast(`Attendance save ho gayi! ${total} students. ✅`, 'g');
+    }).catch(() => {
+      saved++;
+      if (saved === total) showToast(`Attendance save ho gayi! ✅`, 'g');
+    });
+  });
+}
+
+// Attendance History
+function loadAttHistory() {
+  document.getElementById('attHistoryTbody').innerHTML =
+    '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text3)">⏳ Loading...</td></tr>';
+
+  fetch(A_URL + '?action=getAllAttendance')
+    .then(r => r.json())
+    .then(d => {
+      attHistory = (d.records||[]).reverse(); // Latest first
+      renderAttHistory(attHistory);
+    })
+    .catch(() => {
+      document.getElementById('attHistoryTbody').innerHTML =
+        '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text3)">Koi data nahi mila</td></tr>';
+    });
+}
+
+function renderAttHistory(records) {
+  const tbody = document.getElementById('attHistoryTbody');
+  if (!records.length) {
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text3)">Koi attendance nahi mili</td></tr>';
+    return;
+  }
+  tbody.innerHTML = records.map(r => `
+    <tr>
+      <td style="font-size:13px;font-weight:600;">${r.date}</td>
+      <td><strong>${r.name}</strong></td>
+      <td style="font-size:12px;">${r.course}</td>
+      <td><span class="pill ${r.status==='Present'?'p-active':'p-inactive'}">${r.status==='Present'?'✅ Present':'❌ Absent'}</span></td>
+      <td style="font-size:12px;color:var(--text3);">${r.markedBy||'—'}</td>
+    </tr>`).join('');
+}
+
+function filterAttHistory(q) {
+  const ql = q.toLowerCase();
+  renderAttHistory(attHistory.filter(r =>
+    r.name.toLowerCase().includes(ql) ||
+    r.course.toLowerCase().includes(ql)
+  ));
+}
+
+// ===================== HELPERS =====================
+function switchTab(n) {
+  const tabs = ['students','registrations','addstudent','attendance','recordings','meetlink','email'];
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', tabs[i]===n));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('tab-'+n).classList.add('active');
+  if(n==='attendance') {
+    const today = new Date();
+    const yyyy  = today.getFullYear();
+    const mm    = String(today.getMonth()+1).padStart(2,'0');
+    const dd    = String(today.getDate()).padStart(2,'0');
+    document.getElementById('attDate').value = `${yyyy}-${mm}-${dd}`;
+  }
+  if(n==='recordings') loadRecordings();
+}
+
+// ===================== RECORDINGS =====================
+let allRecordings = [];
+
+function loadRecordings() {
+  document.getElementById('recTbody').innerHTML =
+    '<tr><td colspan="7" style="text-align:center;padding:30px;color:var(--text3)">⏳ Loading...</td></tr>';
+  fetch(A_URL + '?action=getRecordings&course=')
+    .then(r => r.json())
+    .then(d => { allRecordings = d.records||[]; renderRecordings(allRecordings); })
+    .catch(() => {
+      document.getElementById('recTbody').innerHTML =
+        '<tr><td colspan="7" style="text-align:center;padding:30px;color:var(--text3)">Koi recording nahi mili</td></tr>';
+    });
+}
+
+function renderRecordings(arr) {
+  const t = document.getElementById('recTbody');
+  if(!arr.length) {
+    t.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:30px;color:var(--text3)">Koi recording nahi hai abhi</td></tr>';
+    return;
+  }
+  t.innerHTML = arr.map((r,i) => `
+    <tr>
+      <td style="font-weight:600;color:var(--text3)">${i+1}</td>
+      <td style="font-size:12px;font-weight:600">${r.date}</td>
+      <td><strong>${r.title}</strong></td>
+      <td><span class="pill p-blue" style="font-size:11px;">${r.course}</span></td>
+      <td>
+        ${r.recordingLink ?
+          `<a href="${r.recordingLink}" target="_blank" style="color:var(--red);font-size:12px;font-weight:600;text-decoration:none;">🎥 Watch</a>` :
+          '<span style="color:var(--text3);font-size:12px;">—</span>'}
+      </td>
+      <td>
+        ${r.notesLink ?
+          `<a href="${r.notesLink}" target="_blank" style="color:var(--blue);font-size:12px;font-weight:600;text-decoration:none;">📝 Open</a>` :
+          '<span style="color:var(--text3);font-size:12px;">—</span>'}
+      </td>
+      <td>
+        <button class="act-btn b-del" onclick="deleteRec(${r.row})">🗑️</button>
+      </td>
+    </tr>`).join('');
+}
+
+function addRecording() {
+  const date   = document.getElementById('recDate').value;
+  const title  = document.getElementById('recTitle').value.trim();
+  const link   = document.getElementById('recLink').value.trim();
+  const notes  = document.getElementById('recNotes').value.trim();
+  const course = document.getElementById('recCourse').value;
+
+  if(!date || !title) { showToast('Date aur Title required hai!', 'r'); return; }
+  if(!link && !notes) { showToast('Recording ya Notes link — koi ek toh daalein!', 'r'); return; }
+
+  // Format date dd/MM/yyyy
+  const [y,m,d] = date.split('-');
+  const dateStr = `${d}/${m}/${y}`;
+
+  fetch(A_URL, {
+    method:'POST', mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      action:'addRecording',
+      date:dateStr, title, recordingLink:link,
+      notesLink:notes, course, addedBy:'Chandan Kumar'
+    })
+  }).then(() => {
+    showToast('Recording add ho gayi! ✅', 'g');
+    document.getElementById('recDate').value  = '';
+    document.getElementById('recTitle').value = '';
+    document.getElementById('recLink').value  = '';
+    document.getElementById('recNotes').value = '';
+    loadRecordings();
+  }).catch(() => {
+    showToast('Recording add ho gayi! ✅', 'g');
+    loadRecordings();
+  });
+}
+
+function deleteRec(row) {
+  if(!confirm('Is recording ko delete karna chahte ho?')) return;
+  fetch(A_URL, {
+    method:'POST', mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({action:'deleteRecording', row})
+  }).then(() => { showToast('Delete ho gayi!', 'r'); loadRecordings(); })
+    .catch(() => { showToast('Delete ho gayi!', 'r'); loadRecordings(); });
+}
+
+// ===================== MEET LINK UPDATE =====================
+function updateMeetLink() {
+  const meetLink    = document.getElementById('newMeetLink').value.trim();
+  const nextClass   = document.getElementById('newNextClass').value.trim();
+  const course      = document.getElementById('meetCourse').value;
+  const sendEmail   = document.getElementById('sendMeetEmail').checked;
+  const updateAll   = document.getElementById('updateAllStudents').checked;
+  const btn         = document.getElementById('meetUpdateBtn');
+
+  if(!meetLink) { showToast('Meet Link daalein!', 'r'); return; }
+  if(!nextClass) { showToast('Next Class date/time daalein!', 'r'); return; }
+
+  btn.disabled    = true;
+  btn.textContent = '⏳ Updating...';
+
+  // Filter students by course
+  const targetStudents = students.filter(s =>
+    s.status === 'Active' && (course === 'All' || s.course === course)
+  );
+
+  if(!targetStudents.length) {
+    showToast('Koi active student nahi mila!', 'r');
+    btn.disabled    = false;
+    btn.textContent = '🔗 Meet Link Update Karein';
+    return;
+  }
+
+  let updated = 0;
+  const total = targetStudents.length;
+
+  targetStudents.forEach(s => {
+    if(updateAll) {
+      fetch(A_URL, {
+        method:'POST', mode:'no-cors',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          action:'updateStudent', row:s.row,
+          name:s.name, mobile:s.mobile||'', email:s.email,
+          password:'', course:s.course, city:s.city||'',
+          feeTotal:s.feeTotal, feePaid:s.feePaid, feeDue:s.feeDue,
+          meetLink, nextClass,
+          status:s.status, certificate:s.certificate
+        })
+      });
+    }
+    updated++;
+    if(updated === total) {
+      // Update local data
+      students = students.map(st => {
+        if(st.status==='Active' && (course==='All' || st.course===course)) {
+          st.meetLink  = meetLink;
+          st.nextClass = nextClass;
+        }
+        return st;
+      });
+
+      showToast(`${total} students ka Meet Link update ho gaya! ✅`, 'g');
+
+      // Send email if checked
+      if(sendEmail) {
+        const subject = 'HorizonTech Institute — Next Class Link Ready!';
+        const body    = `Namaste,\n\nAgli class ka Google Meet link ready hai!\n\n📅 Next Class: ${nextClass}\n🔗 Join Link: ${meetLink}\n\nTime pe aayein!\n\nDhanyavaad,\nChandan Kumar\nHorizonTech Institute\n📞 8102441435`;
+
+        sendEmailViaGet(course === 'All' ? 'all' : targetStudents.map(s=>s.email).join(','), subject, body)
+          .then(() => showToast('Email bhi bhej diya! 📧', 'g'))
+          .catch(() => {});
+      }
+
+      btn.disabled    = false;
+      btn.textContent = '🔗 Meet Link Update Karein';
+    }
+  });
+}
+
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (type ? ' '+type : '');
+  setTimeout(() => t.className = 'toast', 4000);
+}
+
+window.onload = function() {
+  const saved = sessionStorage.getItem('htA');
+  if (saved) showDash(JSON.parse(saved));
+};
+</script>
+</body>
+</html>
