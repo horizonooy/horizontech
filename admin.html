@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#18181b">
+<meta name="theme-color" content="#4285F4">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.json">
@@ -12,12 +12,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --white:#fff;--bg:#fafbfc;--bg2:#f5f5f4;--border:#e7e5e4;--border2:#d6d3d1;
-  --navy:#18181b;--text:#1c1917;--text2:#57534e;--text3:#a8a29e;
-  --blue:#2563eb;--blue-light:#eff6ff;--blue-dark:#1d4ed8;
-  --red:#dc2626;--red-light:#fef2f2;
-  --yellow:#ca8a04;--yellow-light:#fefce8;
-  --green:#ea580c;--green-light:#fff7ed;
+  --white:#fff;--bg:#f0f4ff;--bg2:#e8edf8;--border:#dce3f0;--border2:#c4cedf;
+  --navy:#0f172a;--text:#1a1f36;--text2:#4a5568;--text3:#8898aa;
+  --blue:#4285F4;--blue-light:#e8f0fe;--blue-dark:#1a56db;
+  --red:#EA4335;--red-light:#fce8e6;
+  --yellow:#FBBC04;--yellow-light:#fef9e3;
+  --green:#34A853;--green-light:#e6f4ea;
   --purple:#7c3aed;--purple-light:#f5f3ff;
   --shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
   --shadow:0 4px 6px -1px rgba(0,0,0,0.07),0 2px 4px -2px rgba(0,0,0,0.05);
@@ -31,7 +31,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 #loginPage{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--white);padding:20px;}
 .login-box{background:white;border-radius:24px;box-shadow:var(--shadow-lg);border:1px solid var(--border);padding:44px 40px;width:100%;max-width:400px;animation:fadeUp 0.6s ease both;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-.lmark{width:48px;height:48px;border-radius:14px;background:var(--navy);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px;font-family:'Outfit',sans-serif;margin:0 auto 10px;letter-spacing:-0.5px;}
+.lmark{width:48px;height:48px;border-radius:14px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px;font-family:'Outfit',sans-serif;margin:0 auto 10px;letter-spacing:-0.5px;}
 
 /* FORM ELEMENTS */
 .fg{margin-bottom:14px;}
@@ -42,15 +42,15 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 .fg textarea{resize:vertical;min-height:110px;}
 .mrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
 
-.login-btn{width:100%;padding:14px;background:var(--navy);color:white;border:none;border-radius:11px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 1px 3px rgba(15,23,42,0.2);margin-top:4px;letter-spacing:-0.2px;}
-.login-btn:hover{background:#1e293b;transform:translateY(-2px);}
+.login-btn{width:100%;padding:14px;background:var(--blue);color:white;border:none;border-radius:11px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 2px 8px rgba(66,133,244,0.3);margin-top:4px;letter-spacing:-0.2px;}
+.login-btn:hover{background:var(--blue-dark);transform:translateY(-2px);}
 .err{background:var(--red-light);color:var(--red);border-radius:8px;padding:10px 14px;font-size:13px;font-weight:500;margin-top:10px;text-align:center;display:none;}
 
 /* DASHBOARD */
 #dashPage{display:none;}
 .anav{background:white;border-bottom:1px solid var(--border);padding:0 5%;position:sticky;top:0;z-index:100;}
 .anav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px;}
-.alm{width:32px;height:32px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;color:white;font-size:14px;font-weight:800;letter-spacing:-0.5px;}
+.alm{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:14px;font-weight:800;letter-spacing:-0.5px;}
 .acontent{max-width:1200px;margin:0 auto;padding:28px 5%;}
 
 /* STATS */
@@ -109,31 +109,31 @@ tr:hover td{background:var(--bg);}
 .modal-box{background:white;border-radius:20px;padding:30px;width:100%;max-width:560px;box-shadow:var(--shadow-lg);animation:fadeUp 0.3s ease;position:relative;max-height:90vh;overflow-y:auto;}
 .modal-title{font-family:'Outfit',sans-serif;font-size:17px;font-weight:800;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);}
 .modal-close{position:absolute;top:14px;right:14px;background:var(--bg);border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:15px;font-family:'Plus Jakarta Sans',sans-serif;}
-.save-btn{width:100%;padding:12px;background:var(--navy);color:white;border:none;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;box-shadow:0 1px 3px rgba(15,23,42,0.2);margin-top:6px;letter-spacing:-0.2px;}
-.save-btn:hover{background:#1e293b;}
+.save-btn{width:100%;padding:12px;background:var(--blue);color:white;border:none;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;box-shadow:0 2px 8px rgba(66,133,244,0.3);margin-top:6px;letter-spacing:-0.2px;}
+.save-btn:hover{background:var(--blue-dark);}
 
 /* FEE DETAIL */
 .fee-progress{height:10px;background:var(--border);border-radius:50px;overflow:hidden;margin:10px 0;}
 .fee-progress-fill{height:100%;border-radius:50px;background:var(--green);transition:width 0.8s ease;}
 .fee-boxes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
 .fee-box{border-radius:10px;padding:14px;text-align:center;}
-.fee-box.paid{background:var(--green-light);border:1px solid rgba(234,88,12,0.2);}
+.fee-box.paid{background:var(--green-light);border:1px solid rgba(52,168,83,0.2);}
 .fee-box.due{background:var(--red-light);border:1px solid rgba(234,67,53,0.2);}
 .fb-amt{font-family:'Outfit',sans-serif;font-size:20px;font-weight:800;margin-bottom:3px;}
 .fb-lbl{font-size:11px;font-weight:600;}
 .fee-box.paid .fb-amt{color:var(--green);}
-.fee-box.paid .fb-lbl{color:rgba(234,88,12,0.7);}
+.fee-box.paid .fb-lbl{color:rgba(52,168,83,0.7);}
 .fee-box.due .fb-amt{color:var(--red);}
 .fee-box.due .fb-lbl{color:rgba(234,67,53,0.7);}
 
 /* FEE ADD */
-.fee-add-section{background:linear-gradient(135deg,var(--green-light),#fff7ed);border:1px solid rgba(234,88,12,0.2);border-radius:14px;padding:20px;margin-top:16px;}
+.fee-add-section{background:linear-gradient(135deg,var(--green-light),#fff7ed);border:1px solid rgba(52,168,83,0.2);border-radius:14px;padding:20px;margin-top:16px;}
 .fee-add-section h4{font-family:'Outfit',sans-serif;font-size:14px;font-weight:800;color:var(--green);margin-bottom:12px;}
 .fee-input-row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;}
 .fee-input-row .fi{flex:1;min-width:120px;}
 .fee-input-row label{display:block;font-size:11px;font-weight:600;color:var(--text2);margin-bottom:5px;}
 .fee-input-row input{width:100%;padding:10px 12px;background:white;border:1.5px solid var(--border);border-radius:9px;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;outline:none;transition:all 0.2s;}
-.fee-input-row input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(234,88,12,0.1);}
+.fee-input-row input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(52,168,83,0.1);}
 .fee-add-btn{padding:10px 20px;background:var(--green);color:white;border:none;border-radius:9px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all 0.2s;height:40px;align-self:flex-end;}
 .fee-add-btn:hover{background:#2a9144;transform:translateY(-1px);}
 
@@ -155,7 +155,7 @@ tr:hover td{background:var(--bg);}
   <div class="login-box">
     <div style="text-align:center;margin-bottom:24px;">
       <div class="lmark">H</div>
-      <h2 style="font-family:'Outfit',sans-serif;font-size:19px;font-weight:800;color:var(--navy);letter-spacing:-0.3px;">Horizon<span style="color:var(--green)">Tech</span> Institute</h2>
+      <h2 style="font-family:'Outfit',sans-serif;font-size:19px;font-weight:800;color:var(--navy);letter-spacing:-0.3px;"><span style="color:var(--blue)">Horizon</span>Tech Institute</h2>
       <p style="font-size:12px;color:var(--text3);margin-top:2px;">Admin Panel</p>
       <span style="display:inline-block;background:var(--bg2);color:var(--text2);font-size:11px;font-weight:700;padding:4px 12px;border-radius:50px;margin-top:6px;">Admin Only</span>
     </div>
@@ -173,7 +173,7 @@ tr:hover td{background:var(--bg);}
     <div class="anav-inner">
       <a href="index.html" style="display:flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-size:17px;font-weight:800;text-decoration:none;color:var(--navy);letter-spacing:-0.3px;">
         <div class="alm">H</div>
-        <div>Horizon<span style="color:var(--green)">Tech</span> Admin</div>
+        <div><span style="color:var(--blue)">Horizon</span>Tech Admin</div>
       </a>
       <div style="display:flex;align-items:center;gap:10px;">
         <span style="background:var(--bg2);color:var(--text2);font-size:11px;font-weight:700;padding:4px 12px;border-radius:50px;">Admin</span>
@@ -297,7 +297,7 @@ tr:hover td{background:var(--bg);}
               <select id="anCert"><option>Pending</option><option>Issued</option></select>
             </div>
           </div>
-          <button onclick="addStudent()" style="background:var(--green);color:white;border:none;padding:13px 32px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(234,88,12,0.3);transition:all 0.2s;">✅ Student Add Karein</button>
+          <button onclick="addStudent()" style="background:var(--green);color:white;border:none;padding:13px 32px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(52,168,83,0.3);transition:all 0.2s;">✅ Student Add Karein</button>
         </div>
       </div>
     </div>
@@ -315,7 +315,7 @@ tr:hover td{background:var(--bg);}
 
         <!-- Quick Mark All -->
         <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
-          <button onclick="markAll('Present')" style="font-size:12px;font-weight:700;color:var(--green);background:var(--green-light);border:1px solid rgba(234,88,12,0.2);padding:8px 18px;border-radius:8px;cursor:pointer;">✅ Sab Present</button>
+          <button onclick="markAll('Present')" style="font-size:12px;font-weight:700;color:var(--green);background:var(--green-light);border:1px solid rgba(52,168,83,0.2);padding:8px 18px;border-radius:8px;cursor:pointer;">✅ Sab Present</button>
           <button onclick="markAll('Absent')" style="font-size:12px;font-weight:700;color:var(--red);background:var(--red-light);border:1px solid rgba(234,67,53,0.2);padding:8px 18px;border-radius:8px;cursor:pointer;">❌ Sab Absent</button>
           <button onclick="saveAttendance()" style="font-size:12px;font-weight:700;color:white;background:var(--blue);border:none;padding:8px 18px;border-radius:8px;cursor:pointer;margin-left:auto;">💾 Save All</button>
         </div>
@@ -437,7 +437,7 @@ tr:hover td{background:var(--bg);}
         <div style="max-width:600px;">
 
           <!-- Current Meet Info -->
-          <div style="background:var(--green-light);border:1px solid rgba(234,88,12,0.2);border-radius:14px;padding:20px;margin-bottom:20px;">
+          <div style="background:var(--green-light);border:1px solid rgba(52,168,83,0.2);border-radius:14px;padding:20px;margin-bottom:20px;">
             <div style="font-family:'Outfit',sans-serif;font-size:14px;font-weight:800;color:var(--green);margin-bottom:8px;">📅 Current Class Info</div>
             <p style="font-size:13px;color:var(--text2);line-height:1.8;">
               Yeh link update karne ke baad <strong>sab active students</strong> ke portal me automatically naya link dikhega.
@@ -479,7 +479,7 @@ tr:hover td{background:var(--bg);}
             </label>
           </div>
 
-          <button onclick="updateMeetLink()" id="meetUpdateBtn" style="background:var(--green);color:white;border:none;padding:13px 32px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(234,88,12,0.3);transition:all 0.2s;width:100%;">
+          <button onclick="updateMeetLink()" id="meetUpdateBtn" style="background:var(--green);color:white;border:none;padding:13px 32px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(52,168,83,0.3);transition:all 0.2s;width:100%;">
             🔗 Meet Link Update Karein
           </button>
         </div>
@@ -537,7 +537,7 @@ HorizonTech Institute</textarea>
 
     <!-- Avatar + Basic Info -->
     <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;padding:16px;background:var(--bg);border-radius:12px;border:1px solid var(--border);">
-      <div id="detailAv" style="width:56px;height:56px;border-radius:14px;background:var(--navy);display:flex;align-items:center;justify-content:center;color:white;font-size:22px;font-weight:800;font-family:'Outfit',sans-serif;flex-shrink:0;letter-spacing:-0.5px;"></div>
+      <div id="detailAv" style="width:56px;height:56px;border-radius:14px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:22px;font-weight:800;font-family:'Outfit',sans-serif;flex-shrink:0;letter-spacing:-0.5px;"></div>
       <div>
         <div id="dName" style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:800;"></div>
         <div id="dMobile" style="font-size:13px;color:var(--text2);margin-top:2px;">📞 —</div>
