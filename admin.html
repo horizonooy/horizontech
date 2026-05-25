@@ -162,8 +162,8 @@ tr:hover td{background:var(--bg);}
     <div class="fg"><label>Admin Email</label><input type="email" id="aEmail" placeholder="admin@email.com" onkeydown="if(event.key==='Enter')doLogin()"></div>
     <div class="fg"><label>Password</label><input type="password" id="aPass" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"></div>
     <button class="login-btn" onclick="doLogin()">🔐 Admin Login</button>
-    <div class="err" id="aErr">❌ Email ya Password galat hai!</div>
-    <p style="text-align:center;margin-top:14px;font-size:11px;color:var(--text3);">Sirf authorized admins hi login kar sakte hain</p>
+    <div class="err" id="aErr">❌ Invalid Email or Password!</div>
+    <p style="text-align:center;margin-top:14px;font-size:11px;color:var(--text3);">Only authorized admins can login</p>
   </div>
 </div>
 
@@ -256,7 +256,7 @@ tr:hover td{background:var(--bg);}
     <!-- TAB: ADD STUDENT -->
     <div id="tab-addstudent" class="tab-content">
       <div class="acard">
-        <div class="acard-title">➕ Naya Student Add Karein</div>
+        <div class="acard-title">➕ Add New Student</div>
         <div style="max-width:600px;">
           <div class="mrow">
             <div class="fg"><label>Full Name *</label><input type="text" id="anName" placeholder="Student ka naam"></div>
@@ -297,7 +297,7 @@ tr:hover td{background:var(--bg);}
               <select id="anCert"><option>Pending</option><option>Issued</option></select>
             </div>
           </div>
-          <button onclick="addStudent()" style="background:var(--green);color:white;border:none;padding:13px 32px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(52,168,83,0.3);transition:all 0.2s;">✅ Student Add Karein</button>
+          <button onclick="addStudent()" style="background:var(--green);color:white;border:none;padding:13px 32px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(52,168,83,0.3);transition:all 0.2s;">✅ Add Student</button>
         </div>
       </div>
     </div>
@@ -306,7 +306,7 @@ tr:hover td{background:var(--bg);}
     <div id="tab-attendance" class="tab-content">
       <div class="acard">
         <div class="acard-title">
-          <span>📋 Attendance Mark Karein</span>
+          <span>📋 Mark Attendance</span>
           <div style="display:flex;gap:8px;align-items:center;">
             <input type="date" id="attDate" style="padding:7px 12px;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;outline:none;color:var(--text);">
             <button onclick="loadAttendance()" style="font-size:12px;font-weight:600;color:var(--blue);background:var(--blue-light);border:none;padding:7px 14px;border-radius:7px;cursor:pointer;">Load Students</button>
@@ -315,8 +315,8 @@ tr:hover td{background:var(--bg);}
 
         <!-- Quick Mark All -->
         <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
-          <button onclick="markAll('Present')" style="font-size:12px;font-weight:700;color:var(--green);background:var(--green-light);border:1px solid rgba(52,168,83,0.2);padding:8px 18px;border-radius:8px;cursor:pointer;">✅ Sab Present</button>
-          <button onclick="markAll('Absent')" style="font-size:12px;font-weight:700;color:var(--red);background:var(--red-light);border:1px solid rgba(234,67,53,0.2);padding:8px 18px;border-radius:8px;cursor:pointer;">❌ Sab Absent</button>
+          <button onclick="markAll('Present')" style="font-size:12px;font-weight:700;color:var(--green);background:var(--green-light);border:1px solid rgba(52,168,83,0.2);padding:8px 18px;border-radius:8px;cursor:pointer;">✅ All Present</button>
+          <button onclick="markAll('Absent')" style="font-size:12px;font-weight:700;color:var(--red);background:var(--red-light);border:1px solid rgba(234,67,53,0.2);padding:8px 18px;border-radius:8px;cursor:pointer;">❌ All Absent</button>
           <button onclick="saveAttendance()" style="font-size:12px;font-weight:700;color:white;background:var(--blue);border:none;padding:8px 18px;border-radius:8px;cursor:pointer;margin-left:auto;">💾 Save All</button>
         </div>
 
@@ -333,7 +333,7 @@ tr:hover td{background:var(--bg);}
               </tr>
             </thead>
             <tbody id="attTbody">
-              <tr><td colspan="6" style="text-align:center;padding:30px;color:var(--text3)">Upar date select karein aur "Load Students" click karein</td></tr>
+              <tr><td colspan="6" style="text-align:center;padding:30px;color:var(--text3)">Select a date above and click "Load Students"</td></tr>
             </tbody>
           </table>
         </div>
@@ -352,7 +352,7 @@ tr:hover td{background:var(--bg);}
           <table>
             <thead><tr><th>Date</th><th>Name</th><th>Course</th><th>Status</th><th>Marked By</th></tr></thead>
             <tbody id="attHistoryTbody">
-              <tr><td colspan="5" style="text-align:center;padding:30px;color:var(--text3)">"Load" click karein history dekhne ke liye</td></tr>
+              <tr><td colspan="5" style="text-align:center;padding:30px;color:var(--text3)">Click "Load" to view history</td></tr>
             </tbody>
           </table>
         </div>
@@ -364,7 +364,7 @@ tr:hover td{background:var(--bg);}
 
       <!-- Add New Recording -->
       <div class="acard">
-        <div class="acard-title">➕ Naya Recording / Notes Add Karein</div>
+        <div class="acard-title">➕ Add New Recording / Notes</div>
         <div style="max-width:600px;">
           <div class="mrow">
             <div class="fg">
@@ -423,7 +423,7 @@ tr:hover td{background:var(--bg);}
               </tr>
             </thead>
             <tbody id="recTbody">
-              <tr><td colspan="7" style="text-align:center;padding:30px;color:var(--text3)">⏳ Load karne ke liye Refresh click karein</td></tr>
+              <tr><td colspan="7" style="text-align:center;padding:30px;color:var(--text3)">⏳ Click Refresh to load data</td></tr>
             </tbody>
           </table>
         </div>
@@ -433,7 +433,7 @@ tr:hover td{background:var(--bg);}
     <!-- TAB: MEET LINK -->
     <div id="tab-meetlink" class="tab-content">
       <div class="acard">
-        <div class="acard-title">🔗 Next Class Google Meet Link Update Karein</div>
+        <div class="acard-title">🔗 Update Next Class Google Meet Link</div>
         <div style="max-width:600px;">
 
           <!-- Current Meet Info -->
@@ -453,7 +453,7 @@ tr:hover td{background:var(--bg);}
             <input type="text" id="newNextClass" placeholder="Sunday, 25 May 2026 | 11:00 AM - 2:00 PM">
           </div>
           <div class="fg">
-            <label>Course (Konse students ka update karein)</label>
+            <label>Course (Which students to update)</label>
             <select id="meetCourse">
               <option value="All">All Active Students</option>
               <option>DCA + Google & AI</option>
@@ -471,16 +471,16 @@ tr:hover td{background:var(--bg);}
             <div style="font-size:13px;font-weight:600;color:var(--text2);margin-bottom:10px;">Additional Options:</div>
             <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:8px;">
               <input type="checkbox" id="sendMeetEmail" checked style="width:16px;height:16px;accent-color:var(--blue);">
-              Students ko email bhi bhejein meeting link ke saath
+              Also send email to students with meeting link
             </label>
             <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;">
               <input type="checkbox" id="updateAllStudents" checked style="width:16px;height:16px;accent-color:var(--green);">
-              Sheet me sab students ka Meet Link & Next Class update karein
+              Update Meet Link & Next Class for all students in sheet
             </label>
           </div>
 
           <button onclick="updateMeetLink()" id="meetUpdateBtn" style="background:var(--green);color:white;border:none;padding:13px 32px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(52,168,83,0.3);transition:all 0.2s;width:100%;">
-            🔗 Meet Link Update Karein
+            🔗 Update Meet Link
           </button>
         </div>
       </div>
@@ -495,7 +495,7 @@ tr:hover td{background:var(--bg);}
             <select id="emailTo" onchange="toggleSpecific(this.value)">
               <option value="all">All Active Students</option>
               <option value="pending">Pending Fee wale Students</option>
-              <option value="specific">Specific Student (Email daalein)</option>
+              <option value="specific">Specific Student (Enter email)</option>
             </select>
           </div>
           <div class="fg" id="specDiv" style="display:none;">
@@ -506,15 +506,15 @@ tr:hover td{background:var(--bg);}
             <input type="text" id="eSubject" value="Horizon Institute — Important Update">
           </div>
           <div class="fg"><label>Message *</label>
-            <textarea id="eBody">Namaste,
+            <textarea id="eBody">Hello,
 
-Horizon Institute ki taraf se aapko update bheja ja raha hai.
+This is an update from Horizon Institute Of Information Technology.
 
 Sunday ki class 11:00 AM se 2:00 PM tak hogi.
 
-Koi sawaal ho toh call karein: 8102441435
+For any queries, call: 8102441435
 
-Dhanyavaad,
+Thank you,
 Chandan Kumar
 Horizon Institute</textarea>
           </div>
@@ -586,8 +586,8 @@ Horizon Institute</textarea>
 
     <!-- Add Fee -->
     <div class="fee-add-section">
-      <h4>➕ Fee Receive Karein</h4>
-      <p style="font-size:12px;color:var(--text2);margin-bottom:12px;">Student ne fee di — amount daalein, Google Sheet automatically update hoga aur student ko email bhi jayega!</p>
+      <h4>➕ Record Fee Payment</h4>
+      <p style="font-size:12px;color:var(--text2);margin-bottom:12px;">Student paid fee — enter amount, Google Sheet will auto-update and student will receive an email receipt!</p>
       <div class="fee-input-row">
         <div class="fi">
           <label>Amount (₹) *</label>
@@ -613,7 +613,7 @@ Horizon Institute</textarea>
 <div class="modal-overlay" id="editModal">
   <div class="modal-box">
     <button class="modal-close" onclick="document.getElementById('editModal').style.display='none'">✕</button>
-    <div class="modal-title">✏️ Student Update Karein</div>
+    <div class="modal-title">✏️ Update Student</div>
     <input type="hidden" id="editIdx">
     <div class="mrow">
       <div class="fg"><label>Name</label><input type="text" id="eName"></div>
@@ -805,7 +805,7 @@ function fromReg(i) {
   document.getElementById('anMobile').value = r.mobile || '';
   document.getElementById('anCity').value   = r.city   || '';
   document.getElementById('anCourse').value = r.course || '';
-  showToast('Data fill ho gaya! Password aur fee set karein.', 'b');
+  showToast('Data filled! Set password and fee details.', 'b');
 }
 
 // ===================== ADD STUDENT =====================
@@ -821,7 +821,7 @@ function addStudent() {
     showToast('Name, Mobile, Email, Password, Course aur Fee required!', 'r'); return;
   }
   if (mobile.length !== 10 || isNaN(mobile)) {
-    showToast('Sahi 10 digit mobile number daalein!', 'r'); return;
+    showToast('Please enter a valid 10-digit mobile number!', 'r'); return;
   }
 
   const paid = Number(document.getElementById('anPaid').value) || 0;
@@ -838,7 +838,7 @@ function addStudent() {
 
   fetch(S_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) })
     .then(() => { showToast('Student add ho gaya! ✅', 'g'); clearAdd(); loadStudents(); })
-    .catch(() => { showToast('Student add ho gaya! Sheet check karein. ✅', 'g'); clearAdd(); });
+    .catch(() => { showToast('Student added! Check sheet. ✅', 'g'); clearAdd(); });
 }
 
 function clearAdd() {
@@ -879,7 +879,7 @@ function openDetail(i) {
 function addFee() {
   const amt  = Number(document.getElementById('feeAmt').value);
   const mode = document.getElementById('feeMode').value || 'Cash';
-  if (!amt || amt <= 0) { showToast('Sahi amount daalein!', 'r'); return; }
+  if (!amt || amt <= 0) { showToast('Please enter a valid amount!', 'r'); return; }
 
   const s       = students[curIdx];
   const newPaid = Number(s.feePaid||0) + amt;
@@ -902,20 +902,20 @@ function addFee() {
 function afterFeeAdd(s, amt, mode, newPaid, newDue) {
   students[curIdx].feePaid = newPaid;
   students[curIdx].feeDue  = newDue;
-  showToast('₹' + amt.toLocaleString('en-IN') + ' fee add ho gayi! Email bheja ja raha hai... 📧', 'g');
+  showToast('₹' + amt.toLocaleString('en-IN') + ' fee add ho gayi! Sending email... 📧', 'g');
   openDetail(curIdx);
   updateStats();
   renderStudents(students);
 
   // Auto email to student via GET
   const subject = 'Horizon Institute — Fee Receipt';
-  const body    = `Namaste ${s.name},\n\nAapki fee successfully receive ho gayi!\n\n✅ Amount Paid: Rs.${amt.toLocaleString('en-IN')} (${mode})\n💰 Total Paid So Far: Rs.${newPaid.toLocaleString('en-IN')}\n⏳ Remaining Due: Rs.${newDue.toLocaleString('en-IN')}\n\nCourse: ${s.course}\nNext Class: Sunday 11:00 AM - 2:00 PM\n\nDhanyavaad,\nChandan Kumar\nHorizon Institute\n📞 8102441435`;
+  const body    = `Hello ${s.name},\n\nYour fee has been received successfully!\n\n✅ Amount Paid: Rs.${amt.toLocaleString('en-IN')} (${mode})\n💰 Total Paid So Far: Rs.${newPaid.toLocaleString('en-IN')}\n⏳ Remaining Due: Rs.${newDue.toLocaleString('en-IN')}\n\nCourse: ${s.course}\nNext Class: Sunday 11:00 AM - 2:00 PM\n\nThank you,\nChandan Kumar\nHorizon Institute\n📞 8102441435`;
 
   sendEmailViaGet(s.email, subject, body)
     .then(d => {
-      if (d.status === 'success') showToast('Student ko email bhi chala gaya! ✅', 'g');
+      if (d.status === 'success') showToast('Email sent to student! ✅', 'g');
     })
-    .catch(() => showToast('Fee add ho gayi! Email baad me check karein.', 'b'));
+    .catch(() => showToast('Fee added! Check email later.', 'b'));
 }
 
 // ===================== EDIT STUDENT =====================
@@ -983,7 +983,7 @@ function sendBulkEmail() {
   const specEmail = document.getElementById('specEmail').value.trim();
 
   if (!subject || !body) { showToast('Subject aur Message required hai!', 'r'); return; }
-  if (to === 'specific' && !specEmail) { showToast('Student ka email daalein!', 'r'); return; }
+  if (to === 'specific' && !specEmail) { showToast('Please enter student email!', 'r'); return; }
 
   const btn = document.getElementById('sendEmailBtn');
   btn.disabled    = true;
@@ -998,7 +998,7 @@ function sendBulkEmail() {
       btn.textContent = '📧 Send Email';
     })
     .catch(() => {
-      showToast('Kuch error aaya! Apps Script check karein.', 'r');
+      showToast('Something went wrong! Please check Apps Script.', 'r');
       btn.disabled    = false;
       btn.textContent = '📧 Send Email';
     });
@@ -1025,9 +1025,9 @@ let attHistory  = [];
 
 function loadAttendance() {
   const date = document.getElementById('attDate').value;
-  if (!date) { showToast('Pehle date select karein!', 'r'); return; }
+  if (!date) { showToast('Please select a date first!', 'r'); return; }
 
-  if (!students.length) { showToast('Pehle Students tab se data load karein!', 'r'); return; }
+  if (!students.length) { showToast('Please load student data from Students tab first!', 'r'); return; }
 
   // Format date to dd/MM/yyyy
   const [yyyy,mm,dd] = date.split('-');
@@ -1111,7 +1111,7 @@ function markAll(status) {
 }
 
 function saveAttendance() {
-  if (!attStudents.length) { showToast('Pehle students load karein!', 'r'); return; }
+  if (!attStudents.length) { showToast('Please load students first!', 'r'); return; }
 
   showToast('Attendance save ho rahi hai...', 'b');
   let saved = 0;
@@ -1132,10 +1132,10 @@ function saveAttendance() {
       })
     }).then(() => {
       saved++;
-      if (saved === total) showToast(`Attendance save ho gayi! ${total} students. ✅`, 'g');
+      if (saved === total) showToast(`Attendance saved successfully! ${total} students. ✅`, 'g');
     }).catch(() => {
       saved++;
-      if (saved === total) showToast(`Attendance save ho gayi! ✅`, 'g');
+      if (saved === total) showToast(`Attendance saved successfully! ✅`, 'g');
     });
   });
 }
@@ -1248,7 +1248,7 @@ function addRecording() {
   const course = document.getElementById('recCourse').value;
 
   if(!date || !title) { showToast('Date aur Title required hai!', 'r'); return; }
-  if(!link && !notes) { showToast('Recording ya Notes link — koi ek toh daalein!', 'r'); return; }
+  if(!link && !notes) { showToast('Please enter at least one — Recording or Notes link!', 'r'); return; }
 
   // Format date dd/MM/yyyy
   const [y,m,d] = date.split('-');
@@ -1294,8 +1294,8 @@ function updateMeetLink() {
   const updateAll   = document.getElementById('updateAllStudents').checked;
   const btn         = document.getElementById('meetUpdateBtn');
 
-  if(!meetLink) { showToast('Meet Link daalein!', 'r'); return; }
-  if(!nextClass) { showToast('Next Class date/time daalein!', 'r'); return; }
+  if(!meetLink) { showToast('Please enter the Meet Link!', 'r'); return; }
+  if(!nextClass) { showToast('Please enter the Next Class date/time!', 'r'); return; }
 
   btn.disabled    = true;
   btn.textContent = '⏳ Updating...';
@@ -1308,7 +1308,7 @@ function updateMeetLink() {
   if(!targetStudents.length) {
     showToast('Koi active student nahi mila!', 'r');
     btn.disabled    = false;
-    btn.textContent = '🔗 Meet Link Update Karein';
+    btn.textContent = '🔗 Update Meet Link';
     return;
   }
 
@@ -1346,15 +1346,15 @@ function updateMeetLink() {
       // Send email if checked
       if(sendEmail) {
         const subject = 'Horizon Institute — Next Class Link Ready!';
-        const body    = `Namaste,\n\nAgli class ka Google Meet link ready hai!\n\n📅 Next Class: ${nextClass}\n🔗 Join Link: ${meetLink}\n\nTime pe aayein!\n\nDhanyavaad,\nChandan Kumar\nHorizon Institute\n📞 8102441435`;
+        const body    = `Hello,\n\nThe next class Google Meet link is ready!\n\n📅 Next Class: ${nextClass}\n🔗 Join Link: ${meetLink}\n\nPlease join on time!\n\nThank you,\nChandan Kumar\nHorizon Institute\n📞 8102441435`;
 
         sendEmailViaGet(course === 'All' ? 'all' : targetStudents.map(s=>s.email).join(','), subject, body)
-          .then(() => showToast('Email bhi bhej diya! 📧', 'g'))
+          .then(() => showToast('Email sent! 📧', 'g'))
           .catch(() => {});
       }
 
       btn.disabled    = false;
-      btn.textContent = '🔗 Meet Link Update Karein';
+      btn.textContent = '🔗 Update Meet Link';
     }
   });
 }
