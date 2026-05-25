@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Admin Panel — HorizonTech Institute</title>
+<title>Admin Panel — Horizon Institute</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -31,7 +31,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 #loginPage{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--white);padding:20px;}
 .login-box{background:white;border-radius:24px;box-shadow:var(--shadow-lg);border:1px solid var(--border);padding:44px 40px;width:100%;max-width:400px;animation:fadeUp 0.6s ease both;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-.lmark{width:48px;height:48px;border-radius:14px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px;font-family:'Outfit',sans-serif;margin:0 auto 10px;letter-spacing:-0.5px;}
+.lmark{width:48px;height:48px;border-radius:14px;overflow:hidden;margin:0 auto 10px;}
 
 /* FORM ELEMENTS */
 .fg{margin-bottom:14px;}
@@ -50,7 +50,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 #dashPage{display:none;}
 .anav{background:white;border-bottom:1px solid var(--border);padding:0 5%;position:sticky;top:0;z-index:100;}
 .anav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px;}
-.alm{width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:14px;font-weight:800;letter-spacing:-0.5px;}
+.alm{width:32px;height:32px;border-radius:8px;overflow:hidden;}
 .acontent{max-width:1200px;margin:0 auto;padding:28px 5%;}
 
 /* STATS */
@@ -154,8 +154,8 @@ tr:hover td{background:var(--bg);}
 <div id="loginPage">
   <div class="login-box">
     <div style="text-align:center;margin-bottom:24px;">
-      <div class="lmark">H</div>
-      <h2 style="font-family:'Outfit',sans-serif;font-size:19px;font-weight:800;color:var(--navy);letter-spacing:-0.3px;"><span style="color:var(--blue)">Horizon</span>Tech Institute</h2>
+      <div class="lmark"><img src="https://lh3.googleusercontent.com/d/1CZAJC14cyEtqAMMlH8fZD-7izm4D_Qp5" alt="Logo" style="width:100%;height:100%;object-fit:contain;border-radius:14px;"></div>
+      <h2 style="font-family:'Outfit',sans-serif;font-size:17px;font-weight:800;color:var(--navy);letter-spacing:-0.3px;">Horizon Institute Of Information Technology</h2>
       <p style="font-size:12px;color:var(--text3);margin-top:2px;">Admin Panel</p>
       <span style="display:inline-block;background:var(--bg2);color:var(--text2);font-size:11px;font-weight:700;padding:4px 12px;border-radius:50px;margin-top:6px;">Admin Only</span>
     </div>
@@ -172,8 +172,8 @@ tr:hover td{background:var(--bg);}
   <nav class="anav">
     <div class="anav-inner">
       <a href="index.html" style="display:flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-size:17px;font-weight:800;text-decoration:none;color:var(--navy);letter-spacing:-0.3px;">
-        <div class="alm">H</div>
-        <div><span style="color:var(--blue)">Horizon</span>Tech Admin</div>
+        <div class="alm"><img src="https://lh3.googleusercontent.com/d/1CZAJC14cyEtqAMMlH8fZD-7izm4D_Qp5" alt="Logo" style="width:100%;height:100%;object-fit:contain;border-radius:8px;"></div>
+        <div><span style="color:var(--blue)">Horizon</span> Institute Admin</div>
       </a>
       <div style="display:flex;align-items:center;gap:10px;">
         <span style="background:var(--bg2);color:var(--text2);font-size:11px;font-weight:700;padding:4px 12px;border-radius:50px;">Admin</span>
@@ -503,12 +503,12 @@ tr:hover td{background:var(--bg);}
             <input type="email" id="specEmail" placeholder="student@gmail.com">
           </div>
           <div class="fg"><label>Subject *</label>
-            <input type="text" id="eSubject" value="HorizonTech Institute — Important Update">
+            <input type="text" id="eSubject" value="Horizon Institute — Important Update">
           </div>
           <div class="fg"><label>Message *</label>
             <textarea id="eBody">Namaste,
 
-HorizonTech Institute ki taraf se aapko update bheja ja raha hai.
+Horizon Institute ki taraf se aapko update bheja ja raha hai.
 
 Sunday ki class 11:00 AM se 2:00 PM tak hogi.
 
@@ -516,7 +516,7 @@ Koi sawaal ho toh call karein: 8102441435
 
 Dhanyavaad,
 Chandan Kumar
-HorizonTech Institute</textarea>
+Horizon Institute</textarea>
           </div>
           <button onclick="sendBulkEmail()" id="sendEmailBtn" style="background:var(--blue);color:white;border:none;padding:12px 28px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(37,99,235,0.3);transition:all 0.2s;">📧 Send Email</button>
         </div>
@@ -524,7 +524,7 @@ HorizonTech Institute</textarea>
     </div>
 
     <div style="text-align:center;padding:20px 0 8px;border-top:1px solid var(--border);margin-top:10px;">
-      <p style="font-size:12px;color:var(--text3);">HorizonTech Admin Panel | Website Created by <strong>Chandan Kumar</strong> | 8102441435</p>
+      <p style="font-size:12px;color:var(--text3);">Horizon Institute Admin Panel | Website Created by <strong>Chandan Kumar</strong> | 8102441435</p>
     </div>
   </div>
 </div>
@@ -908,8 +908,8 @@ function afterFeeAdd(s, amt, mode, newPaid, newDue) {
   renderStudents(students);
 
   // Auto email to student via GET
-  const subject = 'HorizonTech Institute — Fee Receipt';
-  const body    = `Namaste ${s.name},\n\nAapki fee successfully receive ho gayi!\n\n✅ Amount Paid: Rs.${amt.toLocaleString('en-IN')} (${mode})\n💰 Total Paid So Far: Rs.${newPaid.toLocaleString('en-IN')}\n⏳ Remaining Due: Rs.${newDue.toLocaleString('en-IN')}\n\nCourse: ${s.course}\nNext Class: Sunday 11:00 AM - 2:00 PM\n\nDhanyavaad,\nChandan Kumar\nHorizonTech Institute\n📞 8102441435`;
+  const subject = 'Horizon Institute — Fee Receipt';
+  const body    = `Namaste ${s.name},\n\nAapki fee successfully receive ho gayi!\n\n✅ Amount Paid: Rs.${amt.toLocaleString('en-IN')} (${mode})\n💰 Total Paid So Far: Rs.${newPaid.toLocaleString('en-IN')}\n⏳ Remaining Due: Rs.${newDue.toLocaleString('en-IN')}\n\nCourse: ${s.course}\nNext Class: Sunday 11:00 AM - 2:00 PM\n\nDhanyavaad,\nChandan Kumar\nHorizon Institute\n📞 8102441435`;
 
   sendEmailViaGet(s.email, subject, body)
     .then(d => {
@@ -1345,8 +1345,8 @@ function updateMeetLink() {
 
       // Send email if checked
       if(sendEmail) {
-        const subject = 'HorizonTech Institute — Next Class Link Ready!';
-        const body    = `Namaste,\n\nAgli class ka Google Meet link ready hai!\n\n📅 Next Class: ${nextClass}\n🔗 Join Link: ${meetLink}\n\nTime pe aayein!\n\nDhanyavaad,\nChandan Kumar\nHorizonTech Institute\n📞 8102441435`;
+        const subject = 'Horizon Institute — Next Class Link Ready!';
+        const body    = `Namaste,\n\nAgli class ka Google Meet link ready hai!\n\n📅 Next Class: ${nextClass}\n🔗 Join Link: ${meetLink}\n\nTime pe aayein!\n\nDhanyavaad,\nChandan Kumar\nHorizon Institute\n📞 8102441435`;
 
         sendEmailViaGet(course === 'All' ? 'all' : targetStudents.map(s=>s.email).join(','), subject, body)
           .then(() => showToast('Email bhi bhej diya! 📧', 'g'))
